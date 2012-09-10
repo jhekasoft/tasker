@@ -4,7 +4,7 @@
  * to the application root now.
  */
 chdir(dirname(__DIR__));
-print_r(dirname(__DIR__));exit();
+//print_r(dirname(__DIR__));exit();
 
 // Setup autoloading
 include 'init_autoloader.php';
