@@ -21,3 +21,4 @@
 127.0.0.1 - - [11/Sep/2012:06:54:55 +0300] "GET /images/favicon.ico HTTP/1.1" 200 1406
 127.0.0.1 - - [11/Sep/2012:06:54:55 +0300] "GET /images/zf2-logo.png HTTP/1.1" 200 738
 127.0.0.1 - - [11/Sep/2012:12:09:19 +0300] "GET / HTTP/1.1" 200 4089
+127.0.0.1 - - [11/Sep/2012:13:54:14 +0300] "GET /img/glyphicons-halflings.png HTTP/1.1" 404 1726
