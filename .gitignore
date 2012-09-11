@@ -6,3 +6,5 @@ nbproject
 tmp/
 .DS_Store
 composer.lock
+access_log
+error_log
