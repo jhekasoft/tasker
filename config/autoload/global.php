@@ -11,20 +11,33 @@
  * file.
  */
 
-return array(
-    'db' => array(
-        'driver'         => 'Pdo',
-        'dsn'            => 'mysql:dbname=clients_repository5x;host=10.0.0.99',
-        'username'       => 'user',
-        'password'       => 'usbw',
-        'driver_options' => array(
-            PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\''
-        ),
-    ),
-    'service_manager' => array(
-        'factories' => array(
-            'Zend\Db\Adapter\Adapter'
-                    => 'Zend\Db\Adapter\AdapterServiceFactory',
-        ),
+if(preg_match('/.*home\.lan$/', $_SERVER['HTTP_HOST'])){
+    $dbHost = "localhost";
+    $dbName = "clients_repository5x";
+    $dbUser = "user";
+    $dbPass = "usbw";
+} elseif(preg_match('/.*\.lan$/', $_SERVER['HTTP_HOST'])){
+    $dbHost = "10.0.0.99";
+    $dbName = "clients_repository5x";
+    $dbUser = "user";
+    $dbPass = "usbw";
+}
+
+$config = array();
+$config['db'] = array(
+    'driver'         => 'Pdo',
+    'dsn'            => "mysql:dbname={$dbName};host={$dbHost}",
+    'username'       => $dbUser,
+    'password'       => $dbPass,
+    'driver_options' => array(
+        PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\''
     ),
 );
+$config['service_manager'] = array(
+    'factories' => array(
+        'Zend\Db\Adapter\Adapter'
+            => 'Zend\Db\Adapter\AdapterServiceFactory',
+    ),
+);
+
+return $config;

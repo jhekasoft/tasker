@@ -10,12 +10,22 @@
 return array(
     'router' => array(
         'routes' => array(
+            'links' => array(
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => array(
+                    'route'    => '/links',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Index',
+                        'action'     => 'index',
+                    ),
+                ),
+            ),
             'home' => array(
                 'type' => 'Zend\Mvc\Router\Http\Literal',
                 'options' => array(
                     'route'    => '/',
                     'defaults' => array(
-                        'controller' => 'Application\Controller\Index',
+                        'controller' => 'Album\Controller\Album',
                         'action'     => 'index',
                     ),
                 ),
