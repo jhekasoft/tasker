@@ -124,3 +124,4 @@
 127.0.0.1 - - [17/Sep/2012:16:19:15 +0300] "GET /css/bootstrap-responsive.min.css HTTP/1.1" 304 -
 127.0.0.1 - - [17/Sep/2012:16:19:15 +0300] "GET /js/jquery-1.7.2.min.js HTTP/1.1" 304 -
 127.0.0.1 - - [17/Sep/2012:16:19:15 +0300] "GET /images/zf2-logo.png HTTP/1.1" 304 -
+127.0.0.1 - - [18/Sep/2012:08:59:07 +0300] "GET /img/glyphicons-halflings.png HTTP/1.1" 404 1918
