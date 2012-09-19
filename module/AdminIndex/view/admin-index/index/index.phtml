@@ -1,2 +1,28 @@
-<?php $this->headTitle($title);?>
-<h1><?php echo $this->escapeHtml($title); ?></h1>
+<?php $this->headTitle($this->title);?>
+<h1><?php echo $this->escapeHtml($this->title); ?></h1>
+
+<?php
+$colorsArr = array(
+    'red',
+    'blue',
+);
+?>
+<?php
+class Hello_World
+{
+    public $x = 10;
+    public $y = 20;
+    
+    public function toArrayX()
+    {
+        return array(
+            'y' => '25',
+        );
+    }
+}
+?>
+<?php $this->partial()->setObjectKey('ololo');?>
+
+
+<?php echo $this->partial('partials/hello.phtml', 'application', new Hello_World);?>
+<?php //echo $this->partial('album/album/add.phtml', $colorsArr);?>

@@ -9,8 +9,13 @@ class IndexController extends AbstractActionController
 {
     public function indexAction()
     {
-        return new ViewModel(array(
+//        $doctypeHelper = new Doctype();
+//        $doctypeHelper->doctype('XHTML1_STRICT');
+        
+        $view = new ViewModel(array(
             'title' => 'Welcome to ADMINKA!',
         ));
+        //$view->setTerminal(true);
+        return $view;
     }
 }
