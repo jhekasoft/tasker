@@ -1,0 +1,85 @@
+#sideLeft a {
+    color: #000;
+}
+
+#sideLeft ul.sidebar_leftmenu {
+    padding-top: 20px;
+}
+
+#sideLeft ul.sidebar_leftmenu li {
+    list-style-type: none;
+    padding: 1px 0 1px 0;
+    border-bottom: 1px solid #fff;
+}
+
+#sideLeft ul.sidebar_leftmenu li.withsubmenu {
+    background: url('../images/arrow-right.gif') no-repeat;
+}
+
+#sideLeft ul.sidebar_leftmenu li.withsubmenu.opened {
+    background: url('../images/arrow-bottom.gif') no-repeat;
+}
+
+#sideLeft ul.sidebar_leftmenu li a {
+    display: block;
+    padding-left: 20px;
+    width: 1000px;
+    font-weight: bold;
+}
+
+/* активный пункт меню */
+#sideLeft ul.sidebar_leftmenu li.active a {
+    background: #d7d7d7;
+    text-decoration: none;
+}
+#sideLeft ul.sidebar_leftmenu li.active a:hover {
+    text-decoration: underline;
+}
+
+#sideLeft ul.sidebar_leftmenu .sidebar_leftmenu_submenu_right,
+#sideLeft ul.sidebar_leftmenu .sidebar_leftmenu_submenu_right_active {
+    background: url('../images/leftmenu-right.png') repeat-y;
+    width: 10px;
+    height: 18px;
+    position: absolute;
+    right: 0px;
+}
+
+#sideLeft ul.sidebar_leftmenu .sidebar_leftmenu_submenu_right_active {
+    background: url('../images/leftmenu-right-active.png') repeat-y;
+}
+
+/* в подменю другое оформление */
+#sideLeft ul.sidebar_leftmenu_submenu {
+/*    background: #d7d7d7;*/
+}
+#sideLeft ul.sidebar_leftmenu_submenu li {
+    border: none;
+    padding: 1px 0 1px 0;
+    overflow: hidden;
+}
+
+/* первое в иерархии раскрывающееся подменю */
+#sideLeft ul.sidebar_leftmenu > li > ul.sidebar_leftmenu_submenu > li a {
+    padding-left: 36px;
+}
+
+#sideLeft ul.sidebar_leftmenu_submenu li.withsubmenu,
+#sideLeft ul.sidebar_leftmenu_submenu li.withsubmenu.opened {
+    background-position: 16px 0;
+}
+
+#sideLeft ul.sidebar_leftmenu li.withsubmenu > a {
+    text-decoration: none;
+}
+
+#sideLeft ul.sidebar_leftmenu_submenu li a {
+    padding-left: 30px;
+    font-weight: normal;
+    height: 18px;
+    overflow: hidden;
+}
+
+#sideLeft ul.sidebar_leftmenu_submenu ul.sidebar_leftmenu_submenu {
+    padding-left: 20px;
+}

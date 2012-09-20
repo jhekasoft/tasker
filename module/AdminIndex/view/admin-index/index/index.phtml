@@ -30,7 +30,27 @@ class Hello_World
 <?php $this->headTitle('Admin');?>
 <?php $this->headTitle('Алиса');?>
 
+<?php
+//$viewRenderer = new Zend\View\Renderer\PhpRenderer();
+//$broker = $viewRenderer->getBroker();
+//$loader = $broker->getClassLoader();
+//
+//// Register singly:
+//$loader->registerPlugin('lowercase', 'My\Helper\LowerCase');
+//
+//// Register several:
+//$loader->registerPlugins(array(
+//    'lowercase' => 'My\Helper\LowerCase',
+//    'uppercase' => 'My\Helper\UpperCase',
+//));
+?>
+<?php //echo $this->specialPurpose();?>
 
 <?php //echo $this->baseUrl;?>
 <?php //echo $this->partial('partials/hello.phtml', 'application', new Hello_World);?>
 <?php //echo $this->partial('album/album/add.phtml', $colorsArr);?>
+
+<?php
+//$broker = $this->getBroker();
+//echo (new ReflectionObject($broker))->getName();
+?>

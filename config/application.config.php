@@ -5,6 +5,7 @@ return array(
         'Application',
         'Album',
         'AdminIndex',
+        'AdminCommon',
     ),
     'module_listener_options' => array(
         'config_glob_paths'    => array(
