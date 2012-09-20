@@ -23,6 +23,14 @@ class Hello_World
 ?>
 <?php $this->partial()->setObjectKey('ololo');?>
 
+<?php //echo (new ReflectionObject($this->headTitle()))->getName();?>
+<?php $this->headTitle('Hello');?>
+<?php $this->headTitle('Kui');?>
+<?php $this->headTitle('User');?>
+<?php $this->headTitle('Admin');?>
+<?php $this->headTitle('Алиса');?>
 
-<?php echo $this->partial('partials/hello.phtml', 'application', new Hello_World);?>
+
+<?php //echo $this->baseUrl;?>
+<?php //echo $this->partial('partials/hello.phtml', 'application', new Hello_World);?>
 <?php //echo $this->partial('album/album/add.phtml', $colorsArr);?>
