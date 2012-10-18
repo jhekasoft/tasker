@@ -95,3 +95,6 @@
 [Thu Sep 20 22:49:44 2012] [error] [client 127.0.0.1] File does not exist: /home/bondvt04/www/repository5x/public_html/images/logo.jpg, referer: http://repository5x.bondvt04-home.lan/admin
 [Thu Sep 20 22:50:02 2012] [error] [client 127.0.0.1] File does not exist: /home/bondvt04/www/repository5x/public_html/images/logo.jpg, referer: http://repository5x.bondvt04-home.lan/admin
 [Thu Sep 20 22:50:02 2012] [error] [client 127.0.0.1] File does not exist: /home/bondvt04/www/repository5x/public_html/images/logo.jpg, referer: http://repository5x.bondvt04-home.lan/admin
+[Mon Oct 15 22:12:48 2012] [error] [client 127.0.0.1] PHP Fatal error:  Uncaught exception 'RuntimeException' with message 'Unable to load ZF2. Run `php composer.phar install` or define a ZF2_PATH environment variable.' in /home/bondvt04/www/repository5x/init_autoloader.php:48\nStack trace:\n#0 /home/bondvt04/www/repository5x/public_html/index.php(10): include()\n#1 {main}\n  thrown in /home/bondvt04/www/repository5x/init_autoloader.php on line 48
+[Mon Oct 15 22:12:48 2012] [error] [client 127.0.0.1] File does not exist: /home/bondvt04/www/repository5x/public_html/favicon.ico
+[Mon Oct 15 22:12:48 2012] [error] [client 127.0.0.1] File does not exist: /home/bondvt04/www/repository5x/public_html/favicon.ico
