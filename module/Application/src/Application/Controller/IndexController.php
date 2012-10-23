@@ -22,6 +22,7 @@ class IndexController extends AbstractActionController
     {
         $taskModel = new TaskModel();
         $tasksTable = $this->getTasksTable();
+        $tasksTable->getOlolo();
 //        \Zend\Debug\Debug::dump($tasksTable->getOlolo()->current());
 //        \Zend\Debug\Debug::dump($tasksTable->fetchAll()->current());
 //        \Zend\Debug\Debug::dump($tasksTable->fetchAll()->current()->getArrayCopy());

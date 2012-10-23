@@ -26,7 +26,12 @@ class TasksTable extends AbstractTableGateway
     
     public function getOlolo()
     {
-        $resultSet = $this->adapter->query("SELECT * FROM `{$this->table}` WHERE `id` = ?", array(1));
+        $resultSet = $this->select();//$this->adapter->query("SELECT * FROM `{$this->table}` WHERE `id` = ?", array(1));
+        foreach($resultSet as $row) {
+            \Zend\Debug\Debug::dump($row->getHello());
+        }
+        
+        exit();
         return $resultSet;
     }
     

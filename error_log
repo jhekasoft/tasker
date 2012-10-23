@@ -139,3 +139,19 @@
 [Sat Oct 20 16:04:32 2012] [error] [client 127.0.0.1] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/bondvt04/www/tasker/vendor/zendframework/zendframework/library/Zend/Debug/Debug.php:122) in /home/bondvt04/www/tasker/vendor/zendframework/zendframework/library/Zend/Http/PhpEnvironment/Response.php on line 62
 [Sun Oct 21 19:59:21 2012] [error] [client 127.0.0.1] File does not exist: /home/bondvt04/www/tasker/public_html/favicon.ico
 [Sun Oct 21 19:59:21 2012] [error] [client 127.0.0.1] File does not exist: /home/bondvt04/www/tasker/public_html/favicon.ico
+[Mon Oct 22 21:27:05 2012] [error] [client 127.0.0.1] File does not exist: /home/bondvt04/www/tasker/public_html/favicon.ico
+[Mon Oct 22 21:27:05 2012] [error] [client 127.0.0.1] File does not exist: /home/bondvt04/www/tasker/public_html/favicon.ico
+[Mon Oct 22 22:03:50 2012] [error] [client 127.0.0.1] PHP Fatal error:  Class 'Tasks\\Model\\Zend\\Debug\\Debug' not found in /home/bondvt04/www/tasker/module/Tasks/src/Tasks/Model/TasksTable.php on line 30
+[Mon Oct 22 22:04:56 2012] [error] [client 127.0.0.1] PHP Fatal error:  Call to undefined method Zend\\Db\\ResultSet\\ResultSet::getHello() in /home/bondvt04/www/tasker/module/Tasks/src/Tasks/Model/TasksTable.php on line 30
+[Mon Oct 22 22:05:47 2012] [error] [client 127.0.0.1] PHP Fatal error:  Call to undefined method Zend\\Db\\ResultSet\\ResultSet::getHello() in /home/bondvt04/www/tasker/module/Tasks/src/Tasks/Model/TasksTable.php on line 30
+[Mon Oct 22 22:06:42 2012] [error] [client 127.0.0.1] PHP Fatal error:  Call to undefined method ArrayObject::getHello() in /home/bondvt04/www/tasker/module/Tasks/src/Tasks/Model/TasksTable.php on line 30
+[Mon Oct 22 22:11:51 2012] [error] [client 127.0.0.1] PHP Fatal error:  Call to undefined method Zend\\Db\\Adapter\\Driver\\Pdo\\Result::__toString() in /home/bondvt04/www/tasker/module/Tasks/src/Tasks/Model/TasksTable.php on line 30
+[Mon Oct 22 22:12:01 2012] [error] [client 127.0.0.1] PHP Catchable fatal error:  Object of class Zend\\Db\\Adapter\\Driver\\Pdo\\Result could not be converted to string in /home/bondvt04/www/tasker/module/Tasks/src/Tasks/Model/TasksTable.php on line 30
+[Mon Oct 22 22:12:39 2012] [error] [client 127.0.0.1] PHP Catchable fatal error:  Object of class PDOStatement could not be converted to string in /home/bondvt04/www/tasker/module/Tasks/src/Tasks/Model/TasksTable.php on line 30
+[Mon Oct 22 22:27:07 2012] [error] [client 127.0.0.1] PHP Notice:  Undefined property: Tasks\\Model\\TaskModel::$task in /home/bondvt04/www/tasker/module/Tasks/src/Tasks/Model/TaskModel.php on line 27
+[Mon Oct 22 22:27:07 2012] [error] [client 127.0.0.1] PHP Notice:  Undefined property: Tasks\\Model\\TaskModel::$task in /home/bondvt04/www/tasker/module/Tasks/src/Tasks/Model/TaskModel.php on line 27
+[Tue Oct 23 18:53:09 2012] [error] [client 127.0.0.1] File does not exist: /home/bondvt04/www/tasker/public_html/favicon.ico
+[Tue Oct 23 18:53:09 2012] [error] [client 127.0.0.1] File does not exist: /home/bondvt04/www/tasker/public_html/favicon.ico
+[Tue Oct 23 18:59:09 2012] [error] [client 127.0.0.1] PHP Fatal error:  Class 'Tasks\\Model\\DefaultStrategy' not found in /home/bondvt04/www/tasker/module/Tasks/src/Tasks/Model/TaskModel.php on line 11
+[Tue Oct 23 19:59:39 2012] [error] [client 127.0.0.1] PHP Fatal error:  Call to undefined method Zend\\Stdlib\\Hydrator\\ClassMethods::setObject() in /home/bondvt04/www/tasker/module/Tasks/src/Tasks/Model/TaskModel.php on line 76
+[Tue Oct 23 22:51:17 2012] [error] [client 127.0.0.1] PHP Notice:  Undefined property: Tasks\\Model\\MySuperClass::$ololo in /home/bondvt04/www/tasker/module/Tasks/src/Tasks/Model/TaskModel.php on line 63
