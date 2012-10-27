@@ -6,7 +6,6 @@ return array(
             'Tasks\Controller\Tasks' => 'Tasks\Controller\TasksController',
         ),
     ),
-
     'router' => array(
         'routes' => array(
             'tasks' => array(
@@ -23,9 +22,23 @@ return array(
                     ),
                 ),
             ),
+            'tasks-add' => array(
+                'type'    => 'segment',
+                'options' => array(
+                    'route'    => '/tasks/add',
+                    'defaults' => array(
+                        'controller' => 'Tasks\Controller\AddEdit',
+                        'action'     => 'add',
+                    ),
+                ),
+            ),
         ),
     ),
-
+    'controllers' => array(
+        'invokables' => array(
+            'Tasks\Controller\AddEdit' => 'Tasks\Controller\AddEditController'
+        ),
+    ),
     'view_manager' => array(
         'template_path_stack' => array(
             'tasks' => __DIR__ . '/../view',

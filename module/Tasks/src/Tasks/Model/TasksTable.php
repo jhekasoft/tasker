@@ -1,9 +1,9 @@
 <?php
 
-namespace Tasks\Model;
+namespace Tasks\Entity;
 
 use Zend\Db\Adapter\Adapter;
-use Zend\Db\ResultSet\ResultSet;
+use Zend\Db\ResultSet\HydratingResultSet;
 use Zend\Db\TableGateway\AbstractTableGateway;
 
 class TasksTable extends AbstractTableGateway
@@ -13,8 +13,10 @@ class TasksTable extends AbstractTableGateway
     public function __construct(Adapter $adapter)
     {
         $this->adapter = $adapter;
-        $this->resultSetPrototype = new ResultSet();
-        $this->resultSetPrototype->setArrayObjectPrototype(new TaskModel());
+        $this->resultSetPrototype = new HydratingResultSet();
+//        \Zend\Debug\Debug::dump($this->resultSetPrototype);exit();
+        $this->resultSetPrototype->setObjectPrototype(new TaskEntity());
+//        \Zend\Debug\Debug::dump($this->resultSetPrototype);exit();
         $this->initialize();
     }
 
@@ -24,40 +26,6 @@ class TasksTable extends AbstractTableGateway
         return $resultSet;
     }
     
-    public function getOlolo()
-    {
-        $resultSet = $this->select();//$this->adapter->query("SELECT * FROM `{$this->table}` WHERE `id` = ?", array(1));
-        foreach($resultSet as $row) {
-            \Zend\Debug\Debug::dump($row->getHello());
-        }
-        
-        exit();
-        return $resultSet;
-    }
-    
-    public function addColumn($options = array())
-    {
-        $statement = $this->adapter->createStatement("SHOW COLUMNS FROM `{$this->table}` LIKE ?", array('hello'));
-        \Zend\Debug\Debug::dump($statement->getParameterContainer()->setFromArray(array(
-            0 => 'hello',
-        )));
-        
-        \Zend\Debug\Debug::dump($statement->execute()->getAffectedRows());
-//        $this->adapter->query("SHOW COLUMNS FROM `{$this->table}` LIKE '{$options['columnName']}'", Adapter::QUERY_MODE_EXECUTE)->current();
-//        \Zend\Debug\Debug::dump($this->adapter->getQueryResultSetPrototype());
-        exit();
-        
-        
-        $resultSet = null;
-        // прверяем наличие столбца
-        if(!$this->adapter->query("SHOW COLUMNS FROM `{$this->table}` LIKE '{$options['columnName']}'", Adapter::QUERY_MODE_EXECUTE)->current()) {
-            $resultSet = $this->adapter->query("ALTER TABLE `{$this->table}` ADD COLUMN `{$options['columnName']}` {$options['columnType']}", Adapter::QUERY_MODE_EXECUTE);
-        }
-        return $resultSet;
-    }
-    
-    
-
     public function getTask($id)
     {
         $id  = (int) $id;
@@ -69,11 +37,10 @@ class TasksTable extends AbstractTableGateway
         return $row;
     }
 
-    public function saveTask(TaskModel $task)
+    public function saveTask(TaskEntity $task)
     {
         $data = array(
-            'artist' => $task->artist,
-            'title'  => $task->title,
+            'task' => $task->task,
         );
         $id = (int)$task->id;
         if ($id == 0) {

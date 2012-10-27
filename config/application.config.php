@@ -2,10 +2,8 @@
 
 return array(
     'modules' => array(
-        'Application',
-        'Album',
-        'AdminIndex',
-        'AdminCommon',
+        'CommonApplication',
+        'DefaultIndex',
         'Tasks',
     ),
     'module_listener_options' => array(
