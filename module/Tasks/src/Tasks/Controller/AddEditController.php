@@ -4,8 +4,8 @@ namespace Tasks\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
-use Tasks\Model\TaskModel;
-use Tasks\Model\PriorityModel;
+use Tasks\Entity\TaskEntity;
+use Tasks\Entity\PriorityEntity;
 use Tasks\Form\AddEditTaskForm;
 //use Tasks\Form\TasksForm;
 
@@ -14,16 +14,49 @@ class AddEditController extends AbstractActionController
     protected $tasksTable;
     protected $addEditTaskForm;
     
-    public function indexAction()
+    public function init()
     {
-        return new ViewModel();
+        $this->form = $this->getAddEditTaskForm();
+        $this->entity = new TaskEntity();
+        $this->form->bind($this->entity);
     }
     
     public function addAction()
     {
-        $addEditTaskForm = $this->getAddEditTaskForm();
+        $this->init();
+        
+        if($this->getRequest()->isPost()) {
+            $this->form->setData($this->request->getPost());
+            
+            \Zend\Debug\Debug::dump($this->entity);
+
+            if ($form->isValid()) {
+                var_dump($this->entity);
+            }
+        }
         return new ViewModel(array(
-            'addEditTaskForm' => $addEditTaskForm,
+            'addEditTaskForm' => $this->form,
+        ));
+    }
+    
+    public function editAction()
+    {
+        $this->init();
+        
+        if($this->getRequest()->isPost()) {
+            $this->form->setData($this->request->getPost());
+            
+            \Zend\Debug\Debug::dump($this->entity);
+
+            if ($form->isValid()) {
+                var_dump($this->entity);
+            }
+        } else {
+            
+        }
+        
+        return new ViewModel(array(
+            'addEditTaskForm' => $this->form,
         ));
     }
     

@@ -32,6 +32,16 @@ return array(
                     ),
                 ),
             ),
+            'tasks-edit' => array(
+                'type'    => 'segment',
+                'options' => array(
+                    'route'    => '/tasks/edit/:id',
+                    'defaults' => array(
+                        'controller' => 'Tasks\Controller\AddEdit',
+                        'action'     => 'edit',
+                    ),
+                ),
+            ),
         ),
     ),
     'controllers' => array(

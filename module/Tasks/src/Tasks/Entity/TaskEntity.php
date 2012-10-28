@@ -18,6 +18,47 @@ class TaskEntity implements InputFilterAwareInterface
     
     protected $inputFilter;
     
+    
+    /**
+     * @see ParameterObject::__set()
+     * @param string $key
+     * @param mixed $value
+     * @throws \Exception
+     * @return void
+     */
+    public function __set($key, $value)
+    {
+        $setter = 'set' . str_replace(' ', '', ucwords(str_replace('_', ' ', $key)));
+        if (!method_exists($this, $setter)) {
+            throw new \Exception(
+                'The option "' . $key . '" does not '
+                . 'have a matching ' . $setter . ' setter method '
+                . 'which must be defined'
+            );
+        }
+        $this->{$setter}($value);
+    }
+    
+    /**
+     * @see ParameterObject::__get()
+     * @param string $key
+     * @throws \Exception
+     * @return mixed
+     */
+    public function __get($key)
+    {
+        $getter = 'get' . str_replace(' ', '', ucwords(str_replace('_', ' ', $key)));
+        if (!method_exists($this, $getter)) {
+            throw new \Exception(
+                'The option "' . $key . '" does not '
+                . 'have a matching ' . $getter . ' getter method '
+                . 'which must be defined'
+            );
+        }
+        return $this->{$getter}();
+    }
+    
+    
     public function getId()
     {
         return $this->id;
@@ -69,6 +110,17 @@ class TaskEntity implements InputFilterAwareInterface
         $this->task = $task;
         return $this;
     }
+    
+    
+//    
+//    public function setTask($task)
+//    {
+//        $this->task = $task;
+//        return $this;
+//    }
+    
+    
+    
 
     public function exchangeArray($data)
     {

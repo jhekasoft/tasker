@@ -1,10 +1,11 @@
 <?php
 
-namespace Tasks\Entity;
+namespace Tasks\Model;
 
 use Zend\Db\Adapter\Adapter;
 use Zend\Db\ResultSet\HydratingResultSet;
 use Zend\Db\TableGateway\AbstractTableGateway;
+use Tasks\Entity\TaskEntity;
 
 class TasksTable extends AbstractTableGateway
 {

@@ -4,19 +4,20 @@ namespace DefaultIndex\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
-use Tasks\Model\TaskModel;
-use Tasks\Model\PriorityModel;
-use Tasks\Form\AddEditTaskForm;
-//use Tasks\Form\TasksForm;
+
+use Tasks\Model\TasksTable;
 
 class IndexController extends AbstractActionController
 {
     protected $tasksTable;
-    protected $addEditTaskForm;
     
     public function indexAction()
     {
-        return new ViewModel();
+        $tasksTable = $this->getTasksTable();
+        $tasks = $tasksTable->fetchAll();
+        return new ViewModel(array(
+            'tasks' => $tasks,
+        ));
     }
     
     public function addAction()
@@ -24,14 +25,6 @@ class IndexController extends AbstractActionController
         $form = $this->getAddEditTaskForm();
         \Zend\Debug\Debug::dump($form);exit();
         return new ViewModel();
-    }
-    
-    public function getAddEditTaskForm()
-    {
-        if (!$this->addEditTaskForm) {
-            $this->addEditTaskForm = new AddEditTaskForm();
-        }
-        return $this->addEditTaskForm;
     }
     
     public function getTasksTable()

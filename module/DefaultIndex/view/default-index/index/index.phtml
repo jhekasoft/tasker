@@ -1,5 +1,18 @@
+<?php $this->tasks->buffer();// чтобы можно было делать foreach несколько раз?>
 <div>
     <a href="<?php echo $this->url('tasks-add');?>">
         add task
     </a>
+</div>
+
+<?php
+//\Zend\Debug\Debug::dump($this->tasks->toArray());
+$arr = $this->tasks->toArray();
+?>
+<div>
+    <?php if(count($arr) > 0) {?>
+        <ul>
+            <?php echo $this->partialLoop('default-index/index/task-row.phtml', $arr) ?>
+        </ul>
+    <?php }?>
 </div>
