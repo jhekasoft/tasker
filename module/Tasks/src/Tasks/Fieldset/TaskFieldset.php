@@ -57,12 +57,12 @@ class TaskFieldset extends Fieldset implements InputFilterProviderInterface
     public function getInputFilterSpecification()
     {
         return array(
-            'id' => array(
-                'required' => true,
-            ),
-            'task' => array(
-                'required' => true,
-            ),
+//            'id' => array(
+//                'required' => true,
+//            ),
+//            'task' => array(
+//                'required' => true,
+//            ),
 //            'price' => array(
 //                'required' => true,
 //                'validators' => array(

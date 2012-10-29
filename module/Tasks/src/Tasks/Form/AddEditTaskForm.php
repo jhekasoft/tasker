@@ -23,10 +23,10 @@ class AddEditTaskForm extends Form
             )
         ));
 
-        $this->add(array(
-            'type' => 'Zend\Form\Element\Csrf',
-            'name' => 'csrf'
-        ));
+//        $this->add(array(
+//            'type' => 'Zend\Form\Element\Csrf',
+//            'name' => 'csrf'
+//        ));
 
         $this->add(array(
             'name' => 'submit',
