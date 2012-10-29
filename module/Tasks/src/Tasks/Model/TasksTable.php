@@ -3,9 +3,11 @@
 namespace Tasks\Model;
 
 use Zend\Db\Adapter\Adapter;
-use Zend\Db\ResultSet\ResultSet;
+use Zend\Db\ResultSet\HydratingResultSet;
 use Zend\Db\TableGateway\AbstractTableGateway;
 use Zend\Stdlib\Hydrator;
+use Tasks\Entity\TaskEntity;
+
 
 class TasksTable extends AbstractTableGateway
 {
@@ -14,8 +16,10 @@ class TasksTable extends AbstractTableGateway
     public function __construct(Adapter $adapter)
     {
         $this->adapter = $adapter;
-        $this->resultSetPrototype = new ResultSet();
-        $this->resultSetPrototype->setArrayObjectPrototype(new TaskModel());
+        $this->resultSetPrototype = new HydratingResultSet();
+//        \Zend\Debug\Debug::dump($this->resultSetPrototype);exit();
+        $this->resultSetPrototype->setObjectPrototype(new TaskEntity());
+//        \Zend\Debug\Debug::dump($this->resultSetPrototype);exit();
         $this->initialize();
     }
 
@@ -25,28 +29,6 @@ class TasksTable extends AbstractTableGateway
         return $resultSet;
     }
     
-    public function getOlolo()
-    {
-        $resultSet = $this->adapter->query("SELECT * FROM `{$this->table}` WHERE `id` = ?", array(1));
-        return $resultSet;
-    }
-    
-    public function addColumn($options = array())
-    {
-        
-        $hydrator = new \Zend\Stdlib\Hydrator\ArraySerializable();
-        $object = new \ArrayObject(array(
-            'hello' => 'ololo1',
-        ));
-        
-        $hydrator->hydrate(array(
-            'world' => 'ololo2',
-        ), $object);
-        \Zend\Debug\Debug::dump($hydrator);exit();
-    }
-    
-    
-
     public function getTask($id)
     {
         $id  = (int) $id;
@@ -58,11 +40,10 @@ class TasksTable extends AbstractTableGateway
         return $row;
     }
 
-    public function saveTask(TaskModel $task)
+    public function saveTask(TaskEntity $task)
     {
         $data = array(
-            'artist' => $task->artist,
-            'title'  => $task->title,
+            'task' => $task->task,
         );
         $id = (int)$task->id;
         if ($id == 0) {
