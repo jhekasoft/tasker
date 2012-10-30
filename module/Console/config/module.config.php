@@ -11,7 +11,7 @@ return array(
     'console' => array(
         'router' => array(
             'routes' => array(
-                'console/get-summ' => array(
+                'Console/get-summ' => array(
                     'options' => array(
                         'route' => 'get summ <arg1> <arg2> [--verbose|-v]', 
                         'defaults' => array(
@@ -21,7 +21,7 @@ return array(
                         ),
                     ),
                 ),
-                'console/get-cnt' => array(
+                'Console/get-cnt' => array(
                     'options' => array(
                         'route' => 'get cnt [--verbose|-v]',
                         'defaults' => array(

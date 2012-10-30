@@ -10,7 +10,6 @@ class IndexController extends AbstractActionController
 
     public function getSummAction()
     {
-        \Zend\Debug\Debug::dump('11111');exit();
         $request = $this->getRequest();
 
         // Make sure that we are running in a console and the user has not tricked our
