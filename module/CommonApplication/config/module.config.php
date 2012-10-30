@@ -1,8 +1,25 @@
 <?php
 
 return array(
+    'view_helpers' => array(
+        'invokables'=> array(
+            'side_right' => 'CommonApplication\View\Helper\SideRight',
+        )
+    ),
     'router' => array(
-        'routes' => array(),
+        'routes' => array(
+//            'home' => array(
+//                'type' => 'Zend\Mvc\Router\Http\Literal',
+//                'options' => array(
+//                    'route'    => '/',
+//                    'defaults' => array(
+//                        //'controller' => 'DefaultIndex\Controller\Index',
+//                        'controller' => 'CommonApplication\Controller\Index',
+//                        'action'     => 'index',
+//                    ),
+//                ),
+//            ),
+        ),
     ),
     'service_manager' => array(
         'factories' => array(

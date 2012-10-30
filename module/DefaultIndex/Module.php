@@ -5,6 +5,11 @@ namespace DefaultIndex;
 use Zend\Mvc\ModuleRouteListener;
 
 class Module
+//    implements
+//    AutoloaderProviderInterface,
+//    ConfigProviderInterface,
+//    ViewHelperProviderInterface
+
 {
     public function onBootstrap($e)
     {
@@ -29,4 +34,20 @@ class Module
             ),
         );
     }
+    
+//    /**
+//     * describe our view helpers
+//     * @return array
+//     */
+//    public function getViewHelperConfig()
+//    {
+//        return array(
+//            'factories' => array(
+//                'side_right' => function($sm) {
+//                    $helper = new \DefaultIndex\View\Helper\SideRight ;
+//                    return $helper;
+//                }
+//            )
+//        );  
+//   }
 }

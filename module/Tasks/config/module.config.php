@@ -8,6 +8,21 @@ return array(
     ),
     'router' => array(
         'routes' => array(
+            'Tasks/index' => array(
+                'type'    => 'segment',
+                'options' => array(
+                    'route'    => '[/:lang]/tasks[/:page]',
+                    'constraints' => array(
+                        'lang' => '[a-zA-Z]{2}',
+                        'page'     => '[0-9]+',
+                    ),
+                    'defaults' => array(
+                        'controller' => 'Tasks\Controller\Tasks',
+                        'action'     => 'index',
+                        'page'     => '1',
+                    ),
+                ),
+            ),
             'tasks' => array(
                 'type'    => 'segment',
                 'options' => array(

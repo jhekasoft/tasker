@@ -1,6 +1,11 @@
 <?php
 
 return array(
+    'view_helpers' => array(
+        'invokables'=> array(
+            'side_right' => 'DefaultIndex\View\Helper\SideRight',
+        )
+    ),
     'router' => array(
         'routes' => array(
             'links' => array(
@@ -18,6 +23,7 @@ return array(
                 'options' => array(
                     'route'    => '/',
                     'defaults' => array(
+                        //'controller' => 'DefaultIndex\Controller\Index',
                         'controller' => 'DefaultIndex\Controller\Index',
                         'action'     => 'index',
                     ),
