@@ -5,6 +5,7 @@ return array(
         'CommonApplication',
         'DefaultIndex',
         'Tasks',
+        'Console',
     ),
     'module_listener_options' => array(
         'config_glob_paths'    => array(

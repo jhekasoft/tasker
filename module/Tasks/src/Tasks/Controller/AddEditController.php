@@ -54,10 +54,12 @@ class AddEditController extends AbstractActionController
             return $this->redirect()->toRoute('tasks-add');
         }
         
-        $this->entity = $this->getTasksTable()->getTask($id);
+        $this->entity = $this->getTasksTable()->getTask($id);//new \Tasks\Entity\TaskEntity();//$this->getTasksTable()->getTask($id);
         
+        \Zend\Debug\Debug::dump($this->entity->getTask());exit();
         $this->form = $this->getAddEditTaskForm();
         $this->form->bind($this->entity);
+        
         
         $this->form->setAttribute('action', $this->url()->fromRoute('tasks-edit', array(
             'id' => $id,
@@ -68,14 +70,14 @@ class AddEditController extends AbstractActionController
             $this->form->setInputFilter($this->entity->getInputFilter());
             $this->form->setData($this->getRequest()->getPost());
             
-            $this->form->isValid();
-            \Zend\Debug\Debug::dump('123');exit();
-            \Zend\Debug\Debug::dump($this->form->isValid());exit();
-            \Zend\Debug\Debug::dump($this->form->getMessages());
-            exit();
-            \Zend\Debug\Debug::dump($this->entity->getTask());exit();
-
+            
+            //\Zend\Debug\Debug::dump($this->getRequest()->getPost());exit();
+            
+            
             if ($this->form->isValid()) {
+//                \Zend\Debug\Debug::dump($this->form->getData());exit();
+                \Zend\Debug\Debug::dump($this->entity);exit();
+                
                 $this->getTasksTable()->saveTask($this->entity);
 
                 // Redirect to list of albums
