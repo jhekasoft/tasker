@@ -9,12 +9,18 @@ return array(
     'router' => array(
         'routes' => array(
             'links' => array(
-                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'type' => 'Zend\Mvc\Router\Http\Segment',
                 'options' => array(
-                    'route'    => '/links',
+                    'route'    => '[/:lang]/links[_p[=]:page]',
+                    'constraints' => array(
+                        'page' => '[0-9]+',
+                        'lang' => '[a-z]{2}',
+                    ),
                     'defaults' => array(
                         'controller' => 'DefaultIndex\Controller\Index',
                         'action'     => 'index',
+                        'page'     => '1',
+                        'lang'     => 'ru',
                     ),
                 ),
             ),
@@ -26,6 +32,7 @@ return array(
                         //'controller' => 'DefaultIndex\Controller\Index',
                         'controller' => 'DefaultIndex\Controller\Index',
                         'action'     => 'index',
+                        'lang'     => 'ru',
                     ),
                 ),
             ),

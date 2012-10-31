@@ -6,6 +6,7 @@ return array(
             'side_right' => 'CommonApplication\View\Helper\SideRight',
         )
     ),
+    
     'router' => array(
         'routes' => array(
 //            'home' => array(
@@ -25,6 +26,9 @@ return array(
         'factories' => array(
             'translator' => 'Zend\I18n\Translator\TranslatorServiceFactory',
         ),
+//        'aliases' => array(
+//            'side_left' => 'side_right',
+//        ),
     ),
     'translator' => array(
         'locale' => 'en_US',

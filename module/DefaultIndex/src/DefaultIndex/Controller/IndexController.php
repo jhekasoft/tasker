@@ -13,6 +13,7 @@ class IndexController extends AbstractActionController
     
     public function indexAction()
     {
+//        \Zend\Debug\Debug::dump($this->params()->fromRoute());exit();
         $tasksTable = $this->getTasksTable();
         $tasks = $tasksTable->fetchAll();
         return new ViewModel(array(

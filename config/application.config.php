@@ -6,6 +6,7 @@ return array(
         'DefaultIndex',
         'Tasks',
         'Console',
+        'Tags',
     ),
     'module_listener_options' => array(
         'config_glob_paths'    => array(
