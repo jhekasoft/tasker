@@ -7,6 +7,7 @@ return array(
         'Tasks',
         'Console',
         'Tags',
+        'Figlet',
     ),
     'module_listener_options' => array(
         'config_glob_paths'    => array(

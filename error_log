@@ -261,3 +261,6 @@
 [Wed Oct 31 16:42:36 2012] [error] [client 127.0.0.1] PHP Fatal error:  Interface 'Tags\\Controller\\Traversable' not found in /home/bondvt04/www/tasker/module/Tags/src/Tags/Controller/IndexController.php on line 9
 [Wed Oct 31 16:42:44 2012] [error] [client 127.0.0.1] PHP Fatal error:  Class Tags\\Controller\\MyConfig must implement interface Traversable as part of either Iterator or IteratorAggregate in Unknown on line 0
 [Wed Oct 31 17:25:59 2012] [error] [client 127.0.0.1] PHP Fatal error:  Class Tags\\Controller\\MyConfig must implement interface Traversable as part of either Iterator or IteratorAggregate in Unknown on line 0
+[Wed Oct 31 17:34:37 2012] [error] [client 127.0.0.1] PHP Fatal error:  Class 'Figlet\\Controller\\Zend\\Text\\Figlet\\Figlet' not found in /home/bondvt04/www/tasker/module/Figlet/src/Figlet/Controller/IndexController.php on line 21
+[Wed Oct 31 17:42:41 2012] [error] [client 10.0.0.44] File does not exist: /home/bondvt04/www/tasker/public_html/favicon.ico
+[Wed Oct 31 17:42:42 2012] [error] [client 10.0.0.44] File does not exist: /home/bondvt04/www/tasker/public_html/favicon.ico
