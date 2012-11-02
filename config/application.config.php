@@ -9,6 +9,7 @@ return array(
         'Tags',
         'Figlet',
         'TextTable',
+        'Validator',
     ),
     'module_listener_options' => array(
         'config_glob_paths'    => array(
