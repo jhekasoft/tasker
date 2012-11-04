@@ -11,6 +11,7 @@ return array(
         'TextTable',
         'Validator',
         'Mc',
+        'Cache',
     ),
     'module_listener_options' => array(
         'config_glob_paths'    => array(
