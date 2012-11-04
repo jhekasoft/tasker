@@ -11,133 +11,35 @@ use Tasks\Entity\PriorityEntity;
 
 class TaskEntity extends InputFilter//implements InputFilterAwareInterface
 {
-    protected $id;
-    protected $priority;
-    protected $task;
-    protected $creation_time;
+    public $id;
+    //protected $priority;
+    public $task;
+    public $creation_time;
     
     protected $inputFilter;
+    protected $hydrator;
     
-    
-    /**
-     * @see ParameterObject::__set()
-     * @param string $key
-     * @param mixed $value
-     * @throws \Exception
-     * @return void
-     */
-    public function __set($key, $value)
+    public function __construct($options)
     {
-        $setter = 'set' . str_replace(' ', '', ucwords(str_replace('_', ' ', $key)));
-        if (!method_exists($this, $setter)) {
-            throw new \Exception(
-                'The option "' . $key . '" does not '
-                . 'have a matching ' . $setter . ' setter method '
-                . 'which must be defined'
-            );
+        if(null !== $options['hydrator']) {
+            // это должна быть ссылка на ТОТ САМЫЙ гидратор из таблички, такое не прокатит:
+            // 'hydrator' => new \Zend\Stdlib\Hydrator\OloloHydrator
+            if(!($options['hydrator'] instanceof \Zend\Stdlib\Hydrator\HydratorInterface)) {
+                throw new \Exception(sprintf('$options[\'hydrator\'] must implements to \Zend\Stdlib\Hydrator\HydratorInterface, %s given',
+                    (new \ReflectionClass($options['hydrator']))->getName()
+                ));
+            }
+            $this->hydrator = $options['hydrator'];
+            
+            $this->hydrator->addStrategy('task', new \Mc\Hydrator\Strategy\ClosureStrategy(
+                function($value) {
+                    return sprintf('<<<%s>>>', $value);
+                },
+                function($value) {
+                    return sprintf('<<<%s>>>', $value);
+                }
+            ));
         }
-        $this->{$setter}($value);
-    }
-    
-    /**
-     * @see ParameterObject::__get()
-     * @param string $key
-     * @throws \Exception
-     * @return mixed
-     */
-    public function __get($key)
-    {
-        $getter = 'get' . str_replace(' ', '', ucwords(str_replace('_', ' ', $key)));
-        if (!method_exists($this, $getter)) {
-            throw new \Exception(
-                'The option "' . $key . '" does not '
-                . 'have a matching ' . $getter . ' getter method '
-                . 'which must be defined'
-            );
-        }
-        return $this->{$getter}();
-    }
-    
-    
-    public function getId()
-    {
-        return $this->id;
-    }
-    
-    public function setId($id)
-    {
-        $this->id = $id;
-        return $this;
-    }
-    
-    public function getCreationTime()
-    {
-        return $this->creation_time;
-    }
-    
-    public function setCreationTime($creationTime)
-    {
-        $this->creation_time = $creationTime;
-        return $this;
-    }
-    
-    /**
-     * @param Priority $brand
-     * @return Priority
-     \*/
-    public function getPriority()
-    {
-        return $this->priority;
-    }
-    
-    /**
-     * @param Priority $priority
-     * @return Task
-     \*/
-    public function setPriority(Priority $priority)
-    {
-        $this->priority = $priority;
-        return $this;
-    }
-    
-    public function getTask()
-    {
-        return $this->task;
-    }
-    
-    public function setTask($task)
-    {
-        $this->task = $task;
-        return $this;
-    }
-    
-    
-//    
-//    public function setTask($task)
-//    {
-//        $this->task = $task;
-//        return $this;
-//    }
-    
-    
-    
-
-    public function exchangeArray($data)
-    {
-        $this->setId((isset($data['id'])) ? $data['id'] : null);
-        $this->setTask((isset($data['task'])) ? $data['task'] : null);
-        $this->setCreationTime((isset($data['creation_time'])) ? $data['creation_time'] : null);
-    }
-    
-    public function getArrayCopy()
-    {
-        //return get_object_vars($this);
-        $arrayCopy = array(
-            'id' => $this->getId(),
-            'task' => $this->getTask(),
-            'creation_time' => $this->getCreationTime(),
-        );
-        return $arrayCopy;
     }
     
     public function setInputFilter(InputFilterInterface $inputFilter)
@@ -151,13 +53,13 @@ class TaskEntity extends InputFilter//implements InputFilterAwareInterface
             $inputFilter = new InputFilter();
             $factory     = new InputFactory();
 
-//            $inputFilter->add($factory->createInput(array(
-//                'name'     => 'id',
-//                'required' => true,
-//                'filters'  => array(
-//                    array('name' => 'Int'),
-//                ),
-//            )));
+            $inputFilter->add($factory->createInput(array(
+                'name'     => 'id',
+                'required' => true,
+                'filters'  => array(
+                    array('name' => 'Int'),
+                ),
+            )));
 
 //            $inputFilter->add($factory->createInput(array(
 //                'name'     => 'task',

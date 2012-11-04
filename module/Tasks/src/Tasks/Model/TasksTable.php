@@ -13,13 +13,21 @@ class TasksTable extends AbstractTableGateway
 {
     protected $table ='tasks';
 
-    public function __construct(Adapter $adapter)
+    public function __construct(Adapter $adapter = null)
     {
+        if(null === $adapter) {
+            $sm = Hello\World::getOloloLokator();
+            $adapter = $sm->get('Zend\Db\Adapter\Adapter');
+        }
+        
         $this->adapter = $adapter;
         $this->resultSetPrototype = new HydratingResultSet();
-//        \Zend\Debug\Debug::dump($this->resultSetPrototype);exit();
-        $this->resultSetPrototype->setObjectPrototype(new TaskEntity());
-//        \Zend\Debug\Debug::dump($this->resultSetPrototype);exit();
+        $hydrator = new Hydrator\ObjectProperty;
+        $this->resultSetPrototype->setHydrator($hydrator);
+        $this->resultSetPrototype->setObjectPrototype(new TaskEntity(array(
+            'hydrator' => $hydrator,
+        )));
+
         $this->initialize();
     }
 

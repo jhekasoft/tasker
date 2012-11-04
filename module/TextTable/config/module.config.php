@@ -3,7 +3,12 @@
 return array(
     'controllers' => array(
         'invokables' => array(
-            'TextTable\Controller\Index' => 'TextTable\Controller\IndexController',
+            'TextTable\Controller\Index' => 'TextTable\Controller\IndexController'
+        ),
+    ),
+    'view_manager' => array(
+        'template_path_stack' => array(
+            'text-table' => __DIR__ . '/../view',
         ),
     ),
     'router' => array(
@@ -23,16 +28,6 @@ return array(
                     ),
                 ),
             ),
-        ),
-    ),
-    'controllers' => array(
-        'invokables' => array(
-            'TextTable\Controller\Index' => 'TextTable\Controller\IndexController'
-        ),
-    ),
-    'view_manager' => array(
-        'template_path_stack' => array(
-            'text-table' => __DIR__ . '/../view',
         ),
     ),
 );

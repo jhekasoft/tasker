@@ -10,6 +10,7 @@ return array(
         'Figlet',
         'TextTable',
         'Validator',
+        'Mc',
     ),
     'module_listener_options' => array(
         'config_glob_paths'    => array(

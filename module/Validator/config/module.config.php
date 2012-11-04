@@ -6,6 +6,11 @@ return array(
             'Validator\Controller\Index' => 'Validator\Controller\IndexController',
         ),
     ),
+    'view_manager' => array(
+        'template_path_stack' => array(
+            'text-table' => __DIR__ . '/../view',
+        ),
+    ),
     'router' => array(
         'routes' => array(
             'Tags/index' => array(
@@ -23,16 +28,6 @@ return array(
                     ),
                 ),
             ),
-        ),
-    ),
-    'controllers' => array(
-        'invokables' => array(
-            'Validator\Controller\Index' => 'Validator\Controller\IndexController'
-        ),
-    ),
-    'view_manager' => array(
-        'template_path_stack' => array(
-            'text-table' => __DIR__ . '/../view',
         ),
     ),
 );

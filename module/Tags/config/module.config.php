@@ -3,7 +3,12 @@
 return array(
     'controllers' => array(
         'invokables' => array(
-            'Tags\Controller\Index' => 'Tags\Controller\IndexController',
+            'Tags\Controller\Index' => 'Tags\Controller\IndexController'
+        ),
+    ),
+    'view_manager' => array(
+        'template_path_stack' => array(
+            'tags' => __DIR__ . '/../view',
         ),
     ),
     'router' => array(
@@ -23,16 +28,6 @@ return array(
                     ),
                 ),
             ),
-        ),
-    ),
-    'controllers' => array(
-        'invokables' => array(
-            'Tags\Controller\Index' => 'Tags\Controller\IndexController'
-        ),
-    ),
-    'view_manager' => array(
-        'template_path_stack' => array(
-            'tags' => __DIR__ . '/../view',
         ),
     ),
 );

@@ -3,12 +3,18 @@
 return array(
     'controllers' => array(
         'invokables' => array(
-            'Tasks\Controller\Tasks' => 'Tasks\Controller\TasksController',
+            'Tasks\Controller\Index' => 'Tasks\Controller\IndexController',
+            'Tasks\Controller\AddEdit' => 'Tasks\Controller\AddEditController',
+        ),
+    ),
+    'view_manager' => array(
+        'template_path_stack' => array(
+            'tasks' => __DIR__ . '/../view',
         ),
     ),
     'router' => array(
         'routes' => array(
-            'Tasks/index' => array(
+            'Tasks\index' => array(
                 'type'    => 'segment',
                 'options' => array(
                     'route'    => '[/:lang]/tasks[/:page]',
@@ -17,56 +23,34 @@ return array(
                         'page'     => '[0-9]+',
                     ),
                     'defaults' => array(
-                        'controller' => 'Tasks\Controller\Tasks',
+                        'controller' => 'Tasks\Controller\Index',
                         'action'     => 'index',
                         'page'     => '1',
                     ),
                 ),
             ),
-            'tasks' => array(
+            'Tasks\add-task' => array(
                 'type'    => 'segment',
                 'options' => array(
-                    'route'    => '/tasks[/:action][/:id]',
-                    'constraints' => array(
-                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
-                        'id'     => '[0-9]+',
-                    ),
-                    'defaults' => array(
-                        'controller' => 'Tasks\Controller\Tasks',
-                        'action'     => 'index',
-                    ),
-                ),
-            ),
-            'tasks-add' => array(
-                'type'    => 'segment',
-                'options' => array(
-                    'route'    => '/tasks/add',
+                    'route'    => 'add-task',
                     'defaults' => array(
                         'controller' => 'Tasks\Controller\AddEdit',
                         'action'     => 'add',
                     ),
                 ),
             ),
-            'tasks-edit' => array(
+            'Tasks\edit-task' => array(
                 'type'    => 'segment',
                 'options' => array(
-                    'route'    => '/tasks/edit/:id',
+                    'route'    => 'edit-task[/:id][/:url]',
                     'defaults' => array(
+                        'id' => '[0-9]+',
+                        'url' => '[a-zA-Z0-9_-]+',
                         'controller' => 'Tasks\Controller\AddEdit',
                         'action'     => 'edit',
                     ),
                 ),
             ),
-        ),
-    ),
-    'controllers' => array(
-        'invokables' => array(
-            'Tasks\Controller\AddEdit' => 'Tasks\Controller\AddEditController'
-        ),
-    ),
-    'view_manager' => array(
-        'template_path_stack' => array(
-            'tasks' => __DIR__ . '/../view',
         ),
     ),
 );

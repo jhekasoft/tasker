@@ -1,8 +1,6 @@
 <?php
 
-namespace Tasks;
-
-use Tasks\Model\TasksTable;
+namespace Mc;
 
 class Module
 {
@@ -25,14 +23,4 @@ class Module
         return include __DIR__ . '/config/module.config.php';
     }
     
-//    public function getServiceConfig()
-//    {
-//        return array(
-//            'factories' => array(
-//                'Tasks\Model\TasksTable' => function($sm) {
-//                    
-//                },
-//            ),
-//        );
-//    }
 }
