@@ -33,8 +33,25 @@ class IndexController extends AbstractActionController implements ServiceLocator
     {
         $this->init();
         
-        //$table = $this->getServiceLocator()->get('Tasks\Model\TasksTable');
         $table = $this->services->get('Tasks\Model\TasksTable');
+        
+        
+        $zlo = 'zlo';
+        
+        $this->getEventManager()->attach('MyMegaEvent', function ($event) use (&$zlo) {
+            $zlo = array(
+                'event' => array(
+                    'name' => $event->getName(),
+                    'target' => get_class($event->getTarget()),
+                    'params' => json_encode($event->getParams()),
+                ),
+            );
+        });
+        
+        $this->getEventManager()->trigger('MyMegaEvent');
+        
+        
+        \Zend\Debug\Debug::dump($zlo);exit();
         
         return new ViewModel(array(
             'resultSet' => $table->fetchAll(),
