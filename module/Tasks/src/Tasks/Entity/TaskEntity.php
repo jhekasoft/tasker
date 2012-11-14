@@ -3,42 +3,42 @@
 namespace Tasks\Entity;
 
 use Zend\InputFilter\Factory as InputFactory;
-use Zend\InputFilter\InputFilter;
+
 use Zend\InputFilter\InputFilterAwareInterface;
 use Zend\InputFilter\InputFilterInterface;
+use Zend\Stdlib\Hydrator\HydratorInterface;
+use \Mc\Hydrator\Strategy\ClosureStrategy;
+use \Mc\Entity\DefaultEntity;
 
 use Tasks\Entity\PriorityEntity;
 
-class TaskEntity extends InputFilter//implements InputFilterAwareInterface
+class TaskEntity extends DefaultEntity //InputFilter//implements InputFilterAwareInterface
 {
-    public $id;
-    //protected $priority;
-    public $task;
-    public $creation_time;
+    protected $hydrator;
     
     protected $inputFilter;
-    protected $hydrator;
     
     public function __construct($options)
     {
         if(null !== $options['hydrator']) {
-            // это должна быть ссылка на ТОТ САМЫЙ гидратор из таблички, такое не прокатит:
-            // 'hydrator' => new \Zend\Stdlib\Hydrator\OloloHydrator
-            if(!($options['hydrator'] instanceof \Zend\Stdlib\Hydrator\HydratorInterface)) {
-                throw new \Exception(sprintf('$options[\'hydrator\'] must implements to \Zend\Stdlib\Hydrator\HydratorInterface, %s given',
-                    (new \ReflectionClass($options['hydrator']))->getName()
-                ));
-            }
-            $this->hydrator = $options['hydrator'];
-            
-            $this->hydrator->addStrategy('task', new \Mc\Hydrator\Strategy\ClosureStrategy(
-                function($value) {
-                    return sprintf('<<<%s>>>', $value);
-                },
-                function($value) {
-//                    return 'zlo' . $value;
-                    return sprintf('<<<%s>>>', $value);
-                }
+            $this->setHydrator($options['hydrator']);
+            $this->addStrategies(array(
+                'title' => array(
+                    'extract' => function($value) {
+                        return sprintf('<<<%s>>>', $value);
+                    },
+                    'hydrate' => function($value) {
+                        return sprintf('<<<%s>>>', $value);
+                    },
+                ),
+                'datetime' => array(
+                    'extract' => function($value) {
+                        return sprintf('--==%s==--', $value);
+                    },
+                    'hydrate' => function($value) {
+                        return sprintf('--==%s==--', $value);
+                    },
+                ),
             ));
         }
     }

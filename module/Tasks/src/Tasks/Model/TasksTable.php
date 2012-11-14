@@ -11,23 +11,22 @@ use Tasks\Entity\TaskEntity;
 
 class TasksTable extends AbstractTableGateway
 {
+    protected $hydrator = null;
     protected $table ='tasks';
 
+    /**
+     * Ждем адаптер, не обязательно общий
+     */
     public function __construct(Adapter $adapter = null)
     {
-        if(null === $adapter) {
-            $sm = Hello\World::getOloloLokator();
-            $adapter = $sm->get('Zend\Db\Adapter\Adapter');
-        }
+        $this->hydrator = new Hydrator\ObjectProperty;
         
         $this->adapter = $adapter;
         $this->resultSetPrototype = new HydratingResultSet();
-        $hydrator = new Hydrator\ObjectProperty;
-        $this->resultSetPrototype->setHydrator($hydrator);
-        $this->resultSetPrototype->setObjectPrototype(new TaskEntity(array(
-            'hydrator' => $hydrator,
-        )));
-
+        $this->resultSetPrototype->setHydrator($this->hydrator)
+                                 ->setObjectPrototype(new TaskEntity(array(
+                                     'hydrator' => $this->hydrator,
+                                 )));
         $this->initialize();
     }
 
@@ -48,11 +47,11 @@ class TasksTable extends AbstractTableGateway
         return $row;
     }
 
-    public function saveTask(TaskEntity $task)
+    public function save(TaskEntity $task)
     {
-        $data = array(
-            'task' => $task->task,
-        );
+        $data = get_object_vars($task);
+        unset($data['id']);
+        
         $id = (int)$task->id;
         if ($id == 0) {
             $this->insert($data);
@@ -65,8 +64,8 @@ class TasksTable extends AbstractTableGateway
         }
     }
 
-    public function deleteTask($id)
+    public function delete($id)
     {
-        $this->delete(array('id' => $id));
+        parent::delete(array('id' => $id));
     }
 }

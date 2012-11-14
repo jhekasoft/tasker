@@ -2,6 +2,9 @@
 
 namespace Tasks\Controller;
 
+use Zend\ServiceManager\ServiceLocatorAwareInterface;
+use Zend\ServiceManager\ServiceLocatorInterface;
+
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 use Tasks\Entity\TaskEntity;
@@ -10,10 +13,16 @@ use Tasks\Model\TasksTable;
 use Tasks\Form\AddEditTaskForm;
 
 
-class IndexController extends AbstractActionController
+
+
+class IndexController extends AbstractActionController implements ServiceLocatorAwareInterface
 {
-    protected $tasksTable = null;
-    protected $addEditTaskForm = null;
+    protected $services;
+
+    public function setServiceLocator(ServiceLocatorInterface $serviceLocator)
+    {
+        $this->services = $serviceLocator;
+    }
     
     public function init()
     {
@@ -24,21 +33,14 @@ class IndexController extends AbstractActionController
     {
         $this->init();
         
-        $table = $this->getTasksTable();
-        $resultSet = $table->fetchAll();
-        //exit();
-        //\Zend\Debug\Debug::dump();exit();
+        //$table = $this->getServiceLocator()->get('Tasks\Model\TasksTable');
+        $table = $this->services->get('Tasks\Model\TasksTable');
+        
         return new ViewModel(array(
-            'resultSet' => $resultSet,
+            'resultSet' => $table->fetchAll(),
         ));
     }
     
-    public function getTasksTable()
-    {
-        if(null === $this->tasksTable) {
-            $this->tasksTable = new TasksTable($this->getServiceLocator()->get('Zend\Db\Adapter\Adapter'));
-        }
-        return $this->tasksTable;
-    }
+    
     
 }
