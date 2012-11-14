@@ -27,6 +27,9 @@ class IndexController extends AbstractActionController
             'ttl' => 30,
         ));
         
+//        \Zend\Debug\Debug::dump($cache->getCapabilities()->getSupportedDatatypes());
+//        exit();
+        
         $cache->getOptions()->setTtl(30);
         
         $key    = 'unique-cache-key';

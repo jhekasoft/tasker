@@ -27,6 +27,7 @@ class IndexController extends AbstractActionController
         $table = $this->getTasksTable();
         $resultSet = $table->fetchAll();
         //exit();
+        //\Zend\Debug\Debug::dump();exit();
         return new ViewModel(array(
             'resultSet' => $resultSet,
         ));

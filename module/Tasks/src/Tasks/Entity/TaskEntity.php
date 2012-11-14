@@ -36,6 +36,7 @@ class TaskEntity extends InputFilter//implements InputFilterAwareInterface
                     return sprintf('<<<%s>>>', $value);
                 },
                 function($value) {
+//                    return 'zlo' . $value;
                     return sprintf('<<<%s>>>', $value);
                 }
             ));

@@ -21,18 +21,31 @@ class ClosureStrategy implements StrategyInterface
     protected $extractFunc = null;
     protected $hydrateFunc = null;
     
-    public function __construct($extractFunc, $hydrateFunc)
+    public function __construct($extractFunc = null, $hydrateFunc = null)
     {
-        if(!is_callable($extractFunc)) {
-            throw new \Exception('$extractFunc must be collable');
+        if(isset($extractFunc)) {
+            if(!is_callable($extractFunc)) {
+                throw new \Exception('$extractFunc must be collable');
+            }
+            
+            $this->extractFunc = $extractFunc;
+        } else {
+            $this->extractFunc = function($value) {
+                return $value;
+            };
         }
         
-        if(!is_callable($hydrateFunc)) {
-            throw new \Exception('$hydrateFunc must be collable');
+        if(isset($hydrateFunc)) {
+            if(!is_callable($hydrateFunc)) {
+                throw new \Exception('$hydrateFunc must be collable');
+            }
+            
+            $this->hydrateFunc = $hydrateFunc;
+        } else {
+            $this->hydrateFunc = function($value) {
+                return $value;
+            };
         }
-        
-        $this->extractFunc = $extractFunc;
-        $this->hydrateFunc = $hydrateFunc;
     }
     
     /**

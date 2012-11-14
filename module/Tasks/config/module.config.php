@@ -9,15 +9,18 @@ return array(
     ),
     'view_manager' => array(
         'template_path_stack' => array(
-            'tasks' => __DIR__ . '/../view',
+            __DIR__ . '/../view',
         ),
+//        'template_map'  => array(
+//            'tasks/index/index' => '/home/bondvt04/www/tasker/module/Tasks/view/tasks/index/index.phtml',
+//        ),
     ),
     'router' => array(
         'routes' => array(
             'Tasks\index' => array(
                 'type'    => 'segment',
                 'options' => array(
-                    'route'    => '[/:lang]/tasks[/:page]',
+                    'route'    => '[/:lang]/tasks[/:page][/]',
                     'constraints' => array(
                         'lang' => '[a-zA-Z]{2}',
                         'page'     => '[0-9]+',
