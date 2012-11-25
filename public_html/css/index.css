@@ -7,29 +7,25 @@
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
  */
- 
 body {
-    width: 80%;
-    margin-left: 10%;
+  width: 80%;
+  margin-left: 10%;
 }
- 
 header {
-    border: solid 1px green;
+  border: solid 1px green;
+  background-color: #999999;
 }
-
 footer {
-    border: solid 1px red;
+  border: solid 1px red;
+  background-color: #888888;
 }
-
 .wrapper {
-    border: solid 1px blue;
-/*    margin-left: 10%;*/
+  border: solid 1px blue;
 }
-
 .content {
-    border: solid 1px black;
+  border: solid 1px black;
+  background-color: #aaaaaa;
 }
-
 .side-right {
-    border: solid 1px magenta;
+  border: solid 1px magenta;
 }
