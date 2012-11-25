@@ -1,11 +1,23 @@
 <?php echo $this->doctype(); ?>
 
-<html lang="en">
+<html>
     <head>
-        
+        <?php echo $this->head();?>
     </head>
-
     <body>
-        <?php echo $this->content; ?>
+        <header>
+            <?php echo $this->header(); ?>
+        </header>
+        <section class="wrapper span12">
+            <section class="span8">
+                <?php echo $this->content; ?>
+            </section>
+            <aside class="span4 side-right">
+                <?php echo $this->sideRight(); ?>
+            </aside>
+        </section>
+        <footer>
+            <?php echo $this->footer(); ?>
+        </footer>
     </body>
 </html>

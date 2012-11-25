@@ -3,32 +3,30 @@
 return array(
     'view_helpers' => array(
         'invokables'=> array(
-            'side_right' => 'Application\View\Helper\SideRight',
+            'sideRight' => 'Application\View\Helper\SideRight',
+            'head' => 'Application\View\Helper\Head',
+            'header' => 'Application\View\Helper\Header',
+            'footer' => 'Application\View\Helper\Footer',
         )
     ),
-    
     'router' => array(
         'routes' => array(
-//            'home' => array(
-//                'type' => 'Zend\Mvc\Router\Http\Literal',
-//                'options' => array(
-//                    'route'    => '/',
-//                    'defaults' => array(
-//                        //'controller' => 'DefaultIndex\Controller\Index',
-//                        'controller' => 'Application\Controller\Index',
-//                        'action'     => 'index',
-//                    ),
-//                ),
-//            ),
+            'home' => array(
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => array(
+                    'route'    => '/',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Index',
+                        'action'     => 'index',
+                    ),
+                ),
+            ),
         ),
     ),
     'service_manager' => array(
         'factories' => array(
             'translator' => 'Zend\I18n\Translator\TranslatorServiceFactory',
         ),
-//        'aliases' => array(
-//            'side_left' => 'side_right',
-//        ),
     ),
     'translator' => array(
         'locale' => 'en_US',

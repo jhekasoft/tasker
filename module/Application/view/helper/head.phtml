@@ -1,0 +1,31 @@
+<?php
+// headTitle
+$this->headTitle('Tasker');
+$this->headTitle()->setSeparator(' - ');
+$this->headTitle()->setAutoEscape(false);
+
+// headMeta
+$this->headMeta()->appendName('viewport', 'width=device-width, initial-scale=1.0');
+
+// headLink
+$this->headLink(array(
+    'rel' => 'shortcut icon',
+    'type' => 'image/vnd.microsoft.icon',
+    'href' => $this->basePath() . '/img/favicon.ico',
+));
+$this->headLink()->prependStylesheet($this->basePath() . '/css/index.css');
+$this->headLink()->prependStylesheet($this->basePath() . '/css/bootstrap-responsive.css');
+$this->headLink()->prependStylesheet($this->basePath() . '/css/bootstrap.css');
+
+// headScript
+$this->headScript()->prependFile($this->basePath() . '/js/bootstrap.js');
+$this->headScript()->prependFile($this->basePath() . '/js/html5.js', 'text/javascript', array('conditional' => 'lt IE 9',));
+$this->headScript()->prependFile($this->basePath() . '/js/jquery-1.7.2.min.js');
+?>
+
+<meta charset="utf-8">
+<?php echo $this->headTitle();?>
+<?php echo $this->headMeta();?>
+<?php echo $this->headLink();?>
+<?php echo $this->headScript();?>
+
