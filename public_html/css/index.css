@@ -12,20 +12,29 @@ body {
   margin-left: 10%;
 }
 header {
-  border: solid 1px green;
-  background-color: #999999;
+  background-color: #ffffff;
+  border: 2px solid #5b83ad;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
 }
 footer {
-  border: solid 1px red;
-  background-color: #888888;
-}
-.wrapper {
-  border: solid 1px blue;
+  background-color: #ffffff;
+  border: 2px solid #ff0000;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
 }
 .content {
-  border: solid 1px black;
-  background-color: #aaaaaa;
+  background-color: #ffffff;
+  border: 2px solid #5b83ad;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
 }
 .side-right {
-  border: solid 1px magenta;
+  border: 2px solid #5b83ad;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
 }

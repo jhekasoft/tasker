@@ -8,9 +8,23 @@
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
  */
 
-@skin-color: #AAA;
-@footer-color: @skin-color - #222;
-@header-color: @skin-color - #111;
+@nice-blue: #5B83AD;
+
+@skin-color: @nice-blue;
+@content-color: (@skin-color + #111111) * 10;
+@footer-color: (@skin-color + #111111) * 4;
+@header-color: (@skin-color + #111111) * 8;
+
+.nice-border(@color : @skin-color, @radius : 5px) {
+    border: 2px solid @color;
+    .border-radius(@radius);
+}
+
+.border-radius (@radius : 10px) {
+    border-radius: @radius;
+    -moz-border-radius: @radius;
+    -webkit-border-radius: @radius;
+}
  
 body {
     width: 80%;
@@ -18,24 +32,24 @@ body {
 }
  
 header {
-    border: solid 1px green;
     background-color: @header-color;
+    .nice-border
 }
 
 footer {
-    border: solid 1px red;
     background-color: @footer-color;
+    .nice-border(red, 10px);
 }
 
 .wrapper {
-    border: solid 1px blue;
+    //border: solid 1px blue;
 }
 
 .content {
-    border: solid 1px black;
-    background-color: @skin-color;
+    background-color: @content-color;
+    .nice-border
 }
 
 .side-right {
-    border: solid 1px magenta;
+    .nice-border
 }
