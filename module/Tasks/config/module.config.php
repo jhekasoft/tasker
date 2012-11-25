@@ -35,7 +35,10 @@ return array(
             'Tasks\add-task' => array(
                 'type'    => 'segment',
                 'options' => array(
-                    'route'    => 'add-task',
+                    'route'    => '[/:lang]/add',
+                    'constraints' => array(
+                        'lang' => '[a-zA-Z]{2}',
+                    ),
                     'defaults' => array(
                         'controller' => 'Tasks\Controller\AddEdit',
                         'action'     => 'add',
@@ -45,10 +48,13 @@ return array(
             'Tasks\edit-task' => array(
                 'type'    => 'segment',
                 'options' => array(
-                    'route'    => 'edit-task[/:id][/:url]',
-                    'defaults' => array(
+                    'route'    => '[/:lang]/edit[/:id][/:url]',
+                    'constraints' => array(
+                        'lang' => '[a-zA-Z]{2}',
                         'id' => '[0-9]+',
                         'url' => '[a-zA-Z0-9_-]+',
+                    ),
+                    'defaults' => array(
                         'controller' => 'Tasks\Controller\AddEdit',
                         'action'     => 'edit',
                     ),
