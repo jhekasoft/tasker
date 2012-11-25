@@ -1,0 +1,24 @@
+.nice-border(@color : @skin-color, @radius : 5px) {
+    border: 2px solid @color;
+    .border-radius(@radius);
+}
+
+.bold-border {
+    .nice-border;
+    border-width: 5px;
+}
+
+.border-radius (@radius : 10px) {
+    border-radius: @radius;
+    -moz-border-radius: @radius;
+    -webkit-border-radius: @radius;
+}
+
+body {
+    width: 80%;
+    margin-left: 10%;
+}
+ 
+.wrapper {
+    //border: solid 1px blue;
+}
