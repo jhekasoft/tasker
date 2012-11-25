@@ -2,17 +2,9 @@
 
 return array(
     'modules' => array(
-        'CommonApplication',
-        'DefaultIndex',
+        'Application',
         'Tasks',
-        'Console',
-        'Tags',
-        'Figlet',
-        'TextTable',
-        'Validator',
         'Mc',
-        'Cache',
-        'ServiceManager',
     ),
     'module_listener_options' => array(
         'config_glob_paths'    => array(

@@ -31,6 +31,7 @@ class IndexController extends AbstractActionController implements ServiceLocator
     
     public function indexAction()
     {
+        //\Zend\Debug\Debug::dump('zlo');exit();
         $this->init();
         
         $table = $this->services->get('Tasks\Model\TasksTable');
