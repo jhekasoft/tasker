@@ -5,18 +5,18 @@
         <?php echo $this->head();?>
     </head>
     <body>
-        <header>
+        <header class="row-fluid">
             <?php echo $this->header(); ?>
         </header>
-        <section class="wrapper span12">
-            <section class="span8">
+        <section class="row-fluid wrapper">
+            <section class="span8 content">
                 <?php echo $this->content; ?>
             </section>
             <aside class="span4 side-right">
                 <?php echo $this->sideRight(); ?>
             </aside>
         </section>
-        <footer>
+        <footer class="row-fluid">
             <?php echo $this->footer(); ?>
         </footer>
     </body>
