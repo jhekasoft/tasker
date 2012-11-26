@@ -7,13 +7,6 @@
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
  */
-.bold-border {
-  border: 2px solid #ff6666;
-  border-radius: 5px;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  border-width: 5px;
-}
 body {
   width: 80%;
   margin-left: 10%;
@@ -32,6 +25,13 @@ footer {
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
 }
+footer:hover {
+  border: 2px solid #9999ff;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-width: 5px;
+}
 header {
   background-color: #ffcccc;
   border: 2px solid #ff6666;
@@ -44,13 +44,6 @@ header {
   border-radius: 5px;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
-}
-.side-right:hover {
-  border: 2px solid #ff6666;
-  border-radius: 5px;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  border-width: 5px;
 }
 .text-color {
   color: #990000;

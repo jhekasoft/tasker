@@ -1,26 +1,16 @@
-<section class="container">
-    <?php if(count($this->resultSet) > 0) {?>
-        <table>
+<?php if (count($this->resultSet) > 0) { ?>
+    <table class="table table-bordered table-striped">
+        <thead>
             <tr>
-                <th>
-                    del
-                </th>
-                <th>
-                    edit
-                </th>
-                <th>
-                    id
-                </th>
-                <th>
-                    task
-                </th>
-                <th>
-                    creation time
-                </th>
+                <th>del</th>
+                <th>edit</th>
+                <th>id</th>
+                <th>task</th>
+                <th>creation time</th>
             </tr>
-            
-            <?php echo $this->partialLoop('tasks/index/task-row.phtml', $this->resultSet);?>
-        
-        </table>
-    <?php }?>
-</section>
+        </thead>
+        <tbody>
+            <?php echo $this->partialLoop('tasks/index/task-row.phtml', $this->resultSet); ?>
+        </tbody>
+    </table>
+<?php } ?>

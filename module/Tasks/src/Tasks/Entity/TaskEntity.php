@@ -23,7 +23,7 @@ class TaskEntity extends DefaultEntity //InputFilter//implements InputFilterAwar
         if(null !== $options['hydrator']) {
             $this->setHydrator($options['hydrator']);
             $this->addStrategies(array(
-                'title' => array(
+                'txt' => array(
                     'extract' => function($value) {
                         return sprintf('<<<%s>>>', $value);
                     },
