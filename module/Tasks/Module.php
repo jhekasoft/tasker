@@ -4,6 +4,7 @@ namespace Tasks;
 
 use Tasks\Model\TasksTable;
 use Tasks\Model\PrioritiesTable;
+use Tasks\Form\AddEditTaskForm;
 
 class Module
 {
@@ -22,6 +23,10 @@ class Module
                     $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
                     $table = new PriorityTable($dbAdapter);
                     return $table;
+                },
+                'Tasks\Form\AddEditTaskForm' => function($sm) {
+                    $form = new AddEditTaskForm();
+                    return $form;
                 },
             ),
         );

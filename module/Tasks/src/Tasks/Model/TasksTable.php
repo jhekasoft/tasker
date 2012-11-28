@@ -5,13 +5,12 @@ namespace Tasks\Model;
 use Zend\Db\Adapter\Adapter;
 use Zend\Db\ResultSet\HydratingResultSet;
 use Zend\Db\TableGateway\AbstractTableGateway;
-use Zend\Stdlib\Hydrator;
 use Tasks\Entity\TaskEntity;
 
 
 class TasksTable extends AbstractTableGateway
 {
-    protected $hydrator = null;
+    //protected $hydrator = null;
     protected $table ='tasks';
 
     /**
@@ -19,14 +18,12 @@ class TasksTable extends AbstractTableGateway
      */
     public function __construct(Adapter $adapter = null)
     {
-        $this->hydrator = new Hydrator\ObjectProperty;
-        
         $this->adapter = $adapter;
+        
+        $prototype = new TaskEntity();
         $this->resultSetPrototype = new HydratingResultSet();
-        $this->resultSetPrototype->setHydrator($this->hydrator)
-                                 ->setObjectPrototype(new TaskEntity(array(
-                                     'hydrator' => $this->hydrator,
-                                 )));
+        $this->resultSetPrototype->setHydrator($prototype->getHydrator())
+                                 ->setObjectPrototype($prototype);
         $this->initialize();
     }
 

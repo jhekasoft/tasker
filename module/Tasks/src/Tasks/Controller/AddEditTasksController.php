@@ -9,41 +9,19 @@ use Tasks\Entity\PriorityEntity;
 use Tasks\Form\AddEditTaskForm;
 //use Tasks\Form\TasksForm;
 
-class AddEditController extends AbstractActionController
+class AddEditTasksController extends AbstractActionController
 {
     protected $tasksTable;
-    protected $addEditTaskForm;
+    protected $form;
     
     public function init()
     {
-        //$this->form = $this->getAddEditTaskForm();
-        //$this->entity = new TaskEntity();
-        //$this->form->bind($this->entity);
+        //$form = $this->getAddEditTaskForm();
+        //$this->taskEntity = new TaskEntity();
+        //$form->bind($this->taskEntity);
     }
     
-    public function addAction()
-    {
-        $this->init();
-        
-        if($this->getRequest()->isPost()) {
-            $this->form->setInputFilter($this->entity->getInputFilter());
-            $this->form->setData($request->getPost());
-
-            if ($this->form->isValid()) {
-                $this->getTasksTable()->saveTask($this->entity);
-
-                // Redirect to list of albums
-                return $this->redirect()->toRoute('album');
-            }
-            
-            if ($form->isValid()) {
-                $this->entity->save();
-            }
-        }
-        return new ViewModel(array(
-            'addEditTaskForm' => $this->form,
-        ));
-    }
+    
     
     public function editAction()
     {
@@ -54,48 +32,65 @@ class AddEditController extends AbstractActionController
             return $this->redirect()->toRoute('tasks-add');
         }
         
-        $this->entity = $this->getTasksTable()->getTask($id);//new \Tasks\Entity\TaskEntity();//$this->getTasksTable()->getTask($id);
-        
-        \Zend\Debug\Debug::dump($this->entity->getTask());exit();
-        $this->form = $this->getAddEditTaskForm();
-        $this->form->bind($this->entity);
-        
-        
-        $this->form->setAttribute('action', $this->url()->fromRoute('tasks-edit', array(
-            'id' => $id,
-        )));
-        $this->form->get('submit')->setAttribute('value', 'Edit');
+        $form = $this->getForm();
         
         if($this->getRequest()->isPost()) {
-            $this->form->setInputFilter($this->entity->getInputFilter());
-            $this->form->setData($this->getRequest()->getPost());
+            // Сохраняем форму
+            // taskEntity - пустой объект
+            $entity = new TaskEntity(array(
+                'hydrator' => $this->getTasksTable()->getResultSetPrototype()->getHydrator()
+            ));
+            $form->bind($entity);
+            $form->setInputFilter($entity->getInputFilter());
+            $form->setData($this->getRequest()->getPost());
             
-            
-            //\Zend\Debug\Debug::dump($this->getRequest()->getPost());exit();
-            
-            
-            if ($this->form->isValid()) {
-//                \Zend\Debug\Debug::dump($this->form->getData());exit();
-                \Zend\Debug\Debug::dump($this->entity);exit();
-                
-                $this->getTasksTable()->saveTask($this->entity);
+            if ($form->isValid()) {
+                $this->getTasksTable()->save($entity);
 
                 // Redirect to list of albums
-                return $this->redirect()->toRoute('home');
+                return $this->redirect()->toRoute('Tasks\index');
             }
+        } else {
+            $this->taskEntity = $this->getTasksTable()->getTask($id);
+            $form->bind($this->taskEntity);
         }
         
         return new ViewModel(array(
-            'addEditTaskForm' => $this->form,
+            'addEditTaskForm' => $form,
         ));
     }
     
-    public function getAddEditTaskForm()
+    public function addAction()
     {
-        if (!$this->addEditTaskForm) {
-            $this->addEditTaskForm = new AddEditTaskForm();
+        $this->init();
+        
+        if($this->getRequest()->isPost()) {
+            $form->setInputFilter($this->taskEntity->getInputFilter());
+            $form->setData($request->getPost());
+
+            if ($form->isValid()) {
+                $this->getTasksTable()->saveTask($this->taskEntity);
+
+                // Redirect to list of albums
+                return $this->redirect()->toRoute('album');
+            }
+            
+            if ($form->isValid()) {
+                $this->taskEntity->save();
+            }
         }
-        return $this->addEditTaskForm;
+        return new ViewModel(array(
+            'addEditTaskForm' => $form,
+        ));
+    }
+    
+    public function getForm()
+    {
+        if (!$this->form) {
+            $sm = $this->getServiceLocator();
+            $this->form = $sm->get('Tasks\Form\AddEditTaskForm');
+        }
+        return $this->form;
     }
     
     public function getTasksTable()

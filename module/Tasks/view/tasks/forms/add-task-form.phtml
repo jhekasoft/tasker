@@ -1,5 +1,5 @@
-<?php
 
+<?php
 $this->form->prepare();
 
 echo $this->form()->openTag($this->form);
@@ -7,7 +7,7 @@ echo $this->form()->openTag($this->form);
 $task = $this->form->get('task');
 
 echo $this->formRow($task->get('id'));
-echo $this->formRow($task->get('task'));
+echo $this->formRow($task->get('txt'));
 
 
 //echo $this->formHidden($this->form->get('csrf'));

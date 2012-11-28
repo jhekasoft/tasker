@@ -9,38 +9,53 @@ use Zend\InputFilter\InputFilterInterface;
 use Zend\Stdlib\Hydrator\HydratorInterface;
 use \Mc\Hydrator\Strategy\ClosureStrategy;
 use \Mc\Entity\DefaultEntity;
+use Zend\Stdlib\Hydrator;
+use Zend\InputFilter\InputFilter;
 
 use Tasks\Entity\PriorityEntity;
 
-class TaskEntity extends DefaultEntity //InputFilter//implements InputFilterAwareInterface
+class TaskEntity  extends InputFilter // extends DefaultEntity //InputFilter//implements InputFilterAwareInterface
 {
     protected $hydrator;
-    
     protected $inputFilter;
     
-    public function __construct($options)
+    public function __construct()
     {
-        if(null !== $options['hydrator']) {
-            $this->setHydrator($options['hydrator']);
-            $this->addStrategies(array(
-                'txt' => array(
-                    'extract' => function($value) {
-                        return sprintf('-= %s =-', $value);
-                    },
-                    'hydrate' => function($value) {
-                        return sprintf('-= %s =-', $value);
-                    },
-                ),
-                'datetime' => array(
-                    'extract' => function($value) {
-                        return sprintf('--==%s==--', $value);
-                    },
-                    'hydrate' => function($value) {
-                        return sprintf('--==%s==--', $value);
-                    },
-                ),
-            ));
+        $this->hydrator = new Hydrator\ObjectProperty;
+        
+        $this->hydrator->addStrategy('txt', new ClosureStrategy(
+            function($value) {
+                return sprintf('-= %s =-', $value);
+            },
+            function($value) {
+                return sprintf('-= %s =-', $value);
+            }
+        ));
+        
+        $this->hydrator->addStrategy('datetime', new ClosureStrategy(
+            function($value) {
+                return sprintf('--==%s==--', $value);
+            },
+            function($value) {
+                return sprintf('--==%s==--', $value);
+            }
+        ));
+    }
+    
+    /**
+     * Заглушка, чтобы не словить Notice: Undefined property
+     */
+    public function __get($name)
+    {
+        if(!in_array($name, get_object_vars($this))) {
+            $this->{$name} = null;
         }
+        return $this->{$name};
+    }
+    
+    public function getHydrator()
+    {
+        return $this->hydrator;
     }
     
     public function setInputFilter(InputFilterInterface $inputFilter)

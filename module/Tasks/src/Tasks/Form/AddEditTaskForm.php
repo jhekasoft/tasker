@@ -4,7 +4,7 @@ namespace Tasks\Form;
 
 use Zend\Form\Form;
 use Zend\InputFilter\InputFilter;
-use Zend\Stdlib\Hydrator\ClassMethods as ClassMethodsHydrator;
+use Zend\Stdlib\Hydrator\ObjectProperty as ObjectPropertyHydrator;
 
 class AddEditTaskForm extends Form
 {
@@ -13,7 +13,7 @@ class AddEditTaskForm extends Form
         parent::__construct('add_edit_task_form');
 
         $this->setAttribute('method', 'post')
-             ->setHydrator(new ClassMethodsHydrator(false))
+             ->setHydrator(new ObjectPropertyHydrator(false))
              ->setInputFilter(new InputFilter());
 
         $this->add(array(
@@ -23,10 +23,10 @@ class AddEditTaskForm extends Form
             )
         ));
 
-//        $this->add(array(
-//            'type' => 'Zend\Form\Element\Csrf',
-//            'name' => 'csrf'
-//        ));
+        $this->add(array(
+            'type' => 'Zend\Form\Element\Csrf',
+            'name' => 'csrf'
+        ));
 
         $this->add(array(
             'name' => 'submit',

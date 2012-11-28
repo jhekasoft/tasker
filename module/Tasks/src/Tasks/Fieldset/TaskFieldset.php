@@ -5,20 +5,20 @@ namespace Tasks\Fieldset;
 use Tasks\Entity\TaskEntity;
 use Zend\Form\Fieldset;
 use Zend\InputFilter\InputFilterProviderInterface;
-use Zend\Stdlib\Hydrator\ClassMethods as ClassMethodsHydrator;
+use Zend\Stdlib\Hydrator\ObjectProperty as ObjectPropertyHydrator;
 
 class TaskFieldset extends Fieldset implements InputFilterProviderInterface
 {
     public function __construct()
     {
         parent::__construct('task');
-        $this->setHydrator(new ClassMethodsHydrator(false))
-             ->setObject(new TaskEntity());
+        $this->setHydrator(new ObjectPropertyHydrator(false));
+             //->setObject(new TaskEntity());
 
         $this->add(array(
             'name' => 'id',
             'options' => array(
-                'label' => 'Tasks id'
+                'label' => 'Айди'
             ),
             'attributes' => array(
                 'required' => 'required'
@@ -26,24 +26,24 @@ class TaskFieldset extends Fieldset implements InputFilterProviderInterface
         ));
         
         $this->add(array(
-            'name' => 'task',
+            'name' => 'txt',
             'options' => array(
-                'label' => 'Tasks description'
+                'label' => 'Текст'
             ),
             'attributes' => array(
                 'required' => 'required'
             )
         ));
 
-        $this->add(array(
-            'name' => 'creation_time',
-            'options' => array(
-                'label' => 'time of task add'
-            ),
-            'attributes' => array(
-                'required' => 'required'
-            )
-        ));
+//        $this->add(array(
+//            'name' => 'creation_time',
+//            'options' => array(
+//                'label' => 'time of task add'
+//            ),
+//            'attributes' => array(
+//                'required' => 'required'
+//            )
+//        ));
 
         
     }

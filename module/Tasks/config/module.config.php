@@ -4,7 +4,7 @@ return array(
     'controllers' => array(
         'invokables' => array(
             'Tasks\Controller\Index' => 'Tasks\Controller\IndexController',
-            'Tasks\Controller\AddEdit' => 'Tasks\Controller\AddEditController',
+            'Tasks\Controller\AddEditTasks' => 'Tasks\Controller\AddEditTasksController',
         ),
     ),
     'view_manager' => array(
@@ -40,7 +40,7 @@ return array(
                         'lang' => '[a-zA-Z]{2}',
                     ),
                     'defaults' => array(
-                        'controller' => 'Tasks\Controller\AddEdit',
+                        'controller' => 'Tasks\Controller\AddEditTasks',
                         'action'     => 'add',
                     ),
                 ),
@@ -55,7 +55,7 @@ return array(
                         'url' => '[a-zA-Z0-9_-]+',
                     ),
                     'defaults' => array(
-                        'controller' => 'Tasks\Controller\AddEdit',
+                        'controller' => 'Tasks\Controller\AddEditTasks',
                         'action'     => 'edit',
                     ),
                 ),
