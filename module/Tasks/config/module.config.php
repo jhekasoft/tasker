@@ -35,7 +35,7 @@ return array(
             'Tasks\add-task' => array(
                 'type'    => 'segment',
                 'options' => array(
-                    'route'    => '[/:lang]/add',
+                    'route'    => '[/:lang]/tasks/add',
                     'constraints' => array(
                         'lang' => '[a-zA-Z]{2}',
                     ),
@@ -48,7 +48,7 @@ return array(
             'Tasks\edit-task' => array(
                 'type'    => 'segment',
                 'options' => array(
-                    'route'    => '[/:lang]/edit[/:id][/:url]',
+                    'route'    => '[/:lang]/tasks/edit[/:id][/:url]',
                     'constraints' => array(
                         'lang' => '[a-zA-Z]{2}',
                         'id' => '[0-9]+',

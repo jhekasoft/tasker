@@ -25,10 +25,10 @@ class TaskEntity extends DefaultEntity //InputFilter//implements InputFilterAwar
             $this->addStrategies(array(
                 'txt' => array(
                     'extract' => function($value) {
-                        return sprintf('<<<%s>>>', $value);
+                        return sprintf('-= %s =-', $value);
                     },
                     'hydrate' => function($value) {
-                        return sprintf('<<<%s>>>', $value);
+                        return sprintf('-= %s =-', $value);
                     },
                 ),
                 'datetime' => array(

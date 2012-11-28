@@ -1,11 +1,13 @@
 <tr>
     <td>
-        <span class="badge badge-important">
-            x
-        </span>
+        <a href="#" class="btn btn-danger">
+            <i class="icon-trash icon-white"></i> Remove
+        </a>
     </td>
     <td>
-        edit
+        <a href="<?php echo $this->url('Tasks\edit-task', array('id' => $this->id));?>" class="btn btn-small btn-info">
+            <i class=" icon-pencil icon-white"></i> Edit
+        </a>
     </td>
     <td>
         <span class="badge badge-success">
