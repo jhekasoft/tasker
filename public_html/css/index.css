@@ -1,6 +1,23 @@
+/*!
+ * Bootstrap v2.2.1
+ *
+ * Copyright 2012 Twitter, Inc
+ * Licensed under the Apache License v2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Designed and built with all the love in the world @twitter by @mdo and @fat.
+ */
 body {
   width: 80%;
   margin-left: 10%;
+}
+tr.dark-gray td,
+tr.dark-gray th {
+  background-color: gray;
+}
+tr.gray td,
+tr.gray th {
+  background-color: #cdcdcd;
 }
 .content {
   background-color: #ffffff;

@@ -21,8 +21,6 @@ class AddEditTasksController extends AbstractActionController
         //$form->bind($this->taskEntity);
     }
     
-    
-    
     public function editAction()
     {
         $this->init();
@@ -60,6 +58,36 @@ class AddEditTasksController extends AbstractActionController
         ));
     }
     
+    public function addAction()
+    {
+        $this->init();
+        
+        $form = $this->getForm();
+        
+        if($this->getRequest()->isPost()) {
+            // Сохраняем форму
+            // taskEntity - пустой объект
+            $entity = new TaskEntity(array(
+                'hydrator' => $this->getTasksTable()->getResultSetPrototype()->getHydrator()
+            ));
+            $form->bind($entity);
+            $form->setInputFilter($entity->getInputFilter());
+            $form->setData($this->getRequest()->getPost());
+            
+            if ($form->isValid()) {
+                $entity->creation_time = date('Y-m-d H:i:s', time());
+                $this->getTasksTable()->save($entity);
+
+                // Redirect to list of albums
+                return $this->redirect()->toRoute('Tasks\index');
+            }
+        }
+        
+        return new ViewModel(array(
+            'addEditTaskForm' => $form,
+        ));
+    }
+    
     public function doneAction()
     {
         $this->init();
@@ -78,30 +106,6 @@ class AddEditTasksController extends AbstractActionController
         
         $this->flashmessenger()->addMessage("done");
         return $this->redirect()->toRoute('Tasks\index');
-    }
-    
-    public function addAction()
-    {
-        $this->init();
-        
-        if($this->getRequest()->isPost()) {
-            $form->setInputFilter($this->taskEntity->getInputFilter());
-            $form->setData($request->getPost());
-
-            if ($form->isValid()) {
-                $this->getTasksTable()->saveTask($this->taskEntity);
-
-                // Redirect to list of albums
-                return $this->redirect()->toRoute('album');
-            }
-            
-            if ($form->isValid()) {
-                $this->taskEntity->save();
-            }
-        }
-        return new ViewModel(array(
-            'addEditTaskForm' => $form,
-        ));
     }
     
     public function getForm()

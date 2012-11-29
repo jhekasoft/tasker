@@ -37,7 +37,7 @@ class IndexController extends AbstractActionController implements ServiceLocator
         $table = $this->services->get('Tasks\Model\TasksTable');
         
         return new ViewModel(array(
-            'resultSet' => $table->fetchAll(),
+            'resultSet' => $table->select("`done`='0'"),
         ));
     }
 }
