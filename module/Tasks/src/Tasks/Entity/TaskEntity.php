@@ -25,19 +25,19 @@ class TaskEntity  extends InputFilter // extends DefaultEntity //InputFilter//im
         
         $this->hydrator->addStrategy('txt', new ClosureStrategy(
             function($value) {
-                return sprintf('-= %s =-', $value);
+                return sprintf('%s', $value);
             },
             function($value) {
-                return sprintf('-= %s =-', $value);
+                return sprintf('%s', $value);
             }
         ));
         
         $this->hydrator->addStrategy('datetime', new ClosureStrategy(
             function($value) {
-                return sprintf('--==%s==--', $value);
+                return sprintf('%s', $value);
             },
             function($value) {
-                return sprintf('--==%s==--', $value);
+                return sprintf('%s', $value);
             }
         ));
     }

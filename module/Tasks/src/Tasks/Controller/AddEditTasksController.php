@@ -29,7 +29,7 @@ class AddEditTasksController extends AbstractActionController
         
         $id = (int) $this->params()->fromRoute('id', 0);
         if (!$id) {
-            return $this->redirect()->toRoute('tasks-add');
+            return $this->redirect()->toRoute('Tasks\tasks-add');
         }
         
         $form = $this->getForm();
@@ -51,13 +51,33 @@ class AddEditTasksController extends AbstractActionController
                 return $this->redirect()->toRoute('Tasks\index');
             }
         } else {
-            $this->taskEntity = $this->getTasksTable()->getTask($id);
-            $form->bind($this->taskEntity);
+            $entity = $this->getTasksTable()->getTask($id);
+            $form->bind($entity);
         }
         
         return new ViewModel(array(
             'addEditTaskForm' => $form,
         ));
+    }
+    
+    public function doneAction()
+    {
+        $this->init();
+        
+        $id = (int) $this->params()->fromRoute('id', 0);
+        if (!$id) {
+            $this->flashmessenger()->addMessage("id not specified");
+            return $this->redirect()->toRoute('Tasks\index');
+        }
+        
+        $entity = $this->getTasksTable()->getTask($id);
+        $entity->done = 1;
+        $entity->done_time = date('Y-m-d H:i:s', time());
+        
+        $this->getTasksTable()->save($entity);
+        
+        $this->flashmessenger()->addMessage("done");
+        return $this->redirect()->toRoute('Tasks\index');
     }
     
     public function addAction()

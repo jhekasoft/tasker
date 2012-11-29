@@ -60,6 +60,21 @@ return array(
                     ),
                 ),
             ),
+            'Tasks\done-task' => array(
+                'type'    => 'segment',
+                'options' => array(
+                    'route'    => '[/:lang]/tasks/done[/:id][/:url]',
+                    'constraints' => array(
+                        'lang' => '[a-zA-Z]{2}',
+                        'id' => '[0-9]+',
+                        'url' => '[a-zA-Z0-9_-]+',
+                    ),
+                    'defaults' => array(
+                        'controller' => 'Tasks\Controller\AddEditTasks',
+                        'action'     => 'done',
+                    ),
+                ),
+            ),
         ),
     ),
 );
