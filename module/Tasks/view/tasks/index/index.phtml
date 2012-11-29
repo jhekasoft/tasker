@@ -1,31 +1,32 @@
-<?php if (count($this->resultSet) > 0) { ?>
-    <table class="table table-bordered table-condensed">
-        <thead>
-            <tr class="gray">
-                <th>del</th>
-                <th>edit</th>
-                <th>task</th>
-            </tr>
-        </thead>
-        <tbody>
+<table class="tasks table table-bordered table-condensed">
+    <thead>
+        <tr class="gray">
+            <th>del</th>
+            <th>edit</th>
+            <th>task</th>
+            <th>tags</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php if (count($this->resultSet) > 0) { ?>
             <?php echo $this->partialLoop('tasks/index/task-row.phtml', $this->resultSet); ?>
-            <tr class="gray">
-                <td>
-                    
-                </td>
-                <td>
-                    <a href="<?php echo $this->url('Tasks\add-task');?>" class="btn btn-success">
-                        <i class="icon-plus-sign icon-white"></i>
-                        Add
-                    </a>
-                </td>
-                <td>
-                    
-                </td>
-            </tr>
-        </tbody>
-    </table>
-<?php } ?>
-<div class="span12">
-    
-</div>
+        <?php } ?>
+        <tr class="gray">
+            <td>
+
+            </td>
+            <td>
+                <a href="<?php echo $this->url('Tasks\add-task');?>" class="btn btn-success">
+                    <i class="icon-plus-sign icon-white"></i>
+                    Add
+                </a>
+            </td>
+            <td>
+
+            </td>
+            <td>
+
+            </td>
+        </tr>
+    </tbody>
+</table>

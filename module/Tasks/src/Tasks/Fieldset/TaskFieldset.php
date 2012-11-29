@@ -6,6 +6,8 @@ use Tasks\Entity\TaskEntity;
 use Zend\Form\Fieldset;
 use Zend\InputFilter\InputFilterProviderInterface;
 use Zend\Stdlib\Hydrator\ObjectProperty as ObjectPropertyHydrator;
+use Zend\Form\Form;
+use Zend\Form\Element;
 
 class TaskFieldset extends Fieldset implements InputFilterProviderInterface
 {
@@ -14,26 +16,39 @@ class TaskFieldset extends Fieldset implements InputFilterProviderInterface
         parent::__construct('task');
         $this->setHydrator(new ObjectPropertyHydrator(false));
              //->setObject(new TaskEntity());
-
-        $this->add(array(
-            'name' => 'id',
-            'options' => array(
-                'label' => 'Айди'
-            ),
-            'attributes' => array(
-                'required' => 'required'
-            )
-        ));
         
-        $this->add(array(
-            'name' => 'txt',
-            'options' => array(
-                'label' => 'Текст'
-            ),
-            'attributes' => array(
-                'required' => 'required'
-            )
+        
+        //--------------------------------------------------------------------//
+        $element = new Element\Hidden('id');
+        $this->add($element);
+        //--------------------------------------------------------------------//
+        $element = new Element\Text('tags');
+        //$element->setLabel('Теги');
+        $this->add($element);
+        //--------------------------------------------------------------------//
+        $element = new Element\Select('priority');
+        $element->setValueOptions(array(
+            '0' => 'default',
+            '5' => 'necessery',
+            '10' => 'now!',
         ));
+        $this->add($element);
+        //--------------------------------------------------------------------//
+        $element = new Element\Textarea('txt');
+        //$element->setLabel('Текст');
+        $element->setAttributes(array(
+            'class' => 'input-xxlarge',
+            'cols' => '80',
+            'rows' => '8',
+        ));
+        $this->add($element);
+        //--------------------------------------------------------------------//
+        
+        
+        
+        
+        
+        
 
 //        $this->add(array(
 //            'name' => 'creation_time',

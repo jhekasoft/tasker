@@ -11,14 +11,6 @@ body {
   width: 80%;
   margin-left: 10%;
 }
-tr.dark-gray td,
-tr.dark-gray th {
-  background-color: gray;
-}
-tr.gray td,
-tr.gray th {
-  background-color: #cdcdcd;
-}
 .content {
   background-color: #ffffff;
 }
@@ -54,4 +46,12 @@ header {
 }
 .text {
   color: #990000;
+}
+tr.dark-gray td,
+tr.dark-gray th {
+  background-color: gray;
+}
+tr.gray td,
+tr.gray th {
+  background-color: #cdcdcd;
 }
