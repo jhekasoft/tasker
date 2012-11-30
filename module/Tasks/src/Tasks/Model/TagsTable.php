@@ -3,17 +3,12 @@
 namespace Tasks\Model;
 
 use Zend\Db\Adapter\Adapter;
-use Zend\Db\ResultSet\HydratingResultSet;
 use Zend\Db\TableGateway\AbstractTableGateway;
-use Tasks\Entity\TaskEntity;
 
-
-class TasksTable extends AbstractTableGateway
+class TagsTable extends AbstractTableGateway
 {
     //protected $hydrator = null;
-    protected $table = 'tasker_tasks';
-    
-    protected $models = array();
+    protected $table ='tasker_tags';
 
     /**
      * Ждем адаптер, не обязательно общий
@@ -21,21 +16,7 @@ class TasksTable extends AbstractTableGateway
     public function __construct(Adapter $adapter = null)
     {
         $this->adapter = $adapter;
-        
-        $prototype = new TaskEntity();
-        $this->resultSetPrototype = new HydratingResultSet();
-        $this->resultSetPrototype->setHydrator($prototype->getHydrator())
-                                 ->setObjectPrototype($prototype);
         $this->initialize();
-    }
-    
-    /**
-     * Самописный метод
-     */
-    public function setDependentModels(array $models)
-    {
-        $this->models = $models;
-        return $this;
     }
 
     public function fetchAll()
@@ -52,19 +33,12 @@ class TasksTable extends AbstractTableGateway
         if (!$row) {
             throw new \Exception("Could not find row $id");
         }
-        
-        
-        // подтягиваем теги, трушно это делать именно здесь
-        \Zend\Debug\Debug::dump($this->models['tags']->fetchAll()->current());exit();
         return $row;
     }
 
-    public function save(TaskEntity $entity)
+    public function save(array $data)
     {
-        $data = get_object_vars($entity);
-        unset($data['id']);
-        
-        $id = (int)$entity->id;
+        $id = (int)$data['id'];
         if ($id == 0) {
             $this->insert($data);
         } else {

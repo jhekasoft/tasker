@@ -2,59 +2,34 @@
 
 namespace Tasks\Fieldset;
 
-use Tasks\Entity\TaskEntity;
+use Tasks\Entity\TagEntity;
 use Zend\Form\Fieldset;
 use Zend\InputFilter\InputFilterProviderInterface;
 use Zend\Stdlib\Hydrator\ObjectProperty as ObjectPropertyHydrator;
 use Zend\Form\Form;
 use Zend\Form\Element;
 
-class TaskFieldset extends Fieldset implements InputFilterProviderInterface
+class TagFieldset extends Fieldset implements InputFilterProviderInterface
 {
     public function __construct()
     {
-        parent::__construct('task');
+        parent::__construct('tag');
         $this->setHydrator(new ObjectPropertyHydrator(false))
-             ->setObject(new TaskEntity());
+             ->setObject(new TagEntity());
         
         
         //--------------------------------------------------------------------//
         $element = new Element\Hidden('id');
         $this->add($element);
         //--------------------------------------------------------------------//
-        $element = new Element\Text('tags');
-        //$element->setLabel('Теги');
-        $this->add($element);
-        //--------------------------------------------------------------------//
-        $element = new Element\Select('priority');
+        $element = new Element\Select('tag');
         $element->setValueOptions(array(
-            '0' => 'default',
-            '5' => 'necessery',
-            '10' => 'now!',
+            '1' => 'hello',
+            '2' => 'world',
+            '3' => 'hi',
         ));
         $this->add($element);
         //--------------------------------------------------------------------//
-        $element = new Element\Textarea('txt');
-        //$element->setLabel('Текст');
-        $element->setAttributes(array(
-            'class' => 'input-xxlarge',
-            'cols' => '80',
-            'rows' => '8',
-        ));
-        $this->add($element);
-        //--------------------------------------------------------------------//
-        $this->add(array(
-            'type' => 'Zend\Form\Element\Collection',
-            'name' => 'tags',
-            'options' => array(
-                //'count' => 2,
-                //'should_create_template' => true,
-                'allow_add' => true,
-                'target_element' => array(
-                    'type' => 'Tasks\Fieldset\TagFieldset'
-                )
-            )
-        ));
         
         
         

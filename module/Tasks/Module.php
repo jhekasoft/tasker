@@ -3,6 +3,8 @@
 namespace Tasks;
 
 use Tasks\Model\TasksTable;
+use Tasks\Model\TasksTagsTable;
+use Tasks\Model\TagsTable;
 use Tasks\Model\PrioritiesTable;
 use Tasks\Form\AddEditTaskForm;
 
@@ -16,6 +18,24 @@ class Module
                     // тянем общий адаптер, хотя можем взять и конкретный
                     $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
                     $table = new TasksTable($dbAdapter);
+                    $table->setDependentModels(array(
+                        'tags' => $sm->get('Tasks\Model\TasksTagsTable'),
+                    ));
+                    return $table;
+                },
+                'Tasks\Model\TasksTagsTable' => function($sm) {
+                    // тянем общий адаптер, хотя можем взять и конкретный
+                    $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
+                    $table = new TasksTagsTable($dbAdapter);
+                    $table->setDependentModels(array(
+                        'tags' => $sm->get('Tasks\Model\TagsTable'),
+                    ));
+                    return $table;
+                },
+                'Tasks\Model\TagsTable' => function($sm) {
+                    // тянем общий адаптер, хотя можем взять и конкретный
+                    $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
+                    $table = new TagsTable($dbAdapter);
                     return $table;
                 },
                 'Tasks\Model\PrioritiesTable' => function($sm) {

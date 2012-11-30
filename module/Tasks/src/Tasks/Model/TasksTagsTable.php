@@ -5,13 +5,13 @@ namespace Tasks\Model;
 use Zend\Db\Adapter\Adapter;
 use Zend\Db\ResultSet\HydratingResultSet;
 use Zend\Db\TableGateway\AbstractTableGateway;
-use Tasks\Entity\TaskEntity;
+use Tasks\Entity\TagEntity;
 
 
-class TasksTable extends AbstractTableGateway
+class TasksTagsTable extends AbstractTableGateway
 {
     //protected $hydrator = null;
-    protected $table = 'tasker_tasks';
+    protected $table ='tasker_tasks_tags';
     
     protected $models = array();
 
@@ -22,7 +22,7 @@ class TasksTable extends AbstractTableGateway
     {
         $this->adapter = $adapter;
         
-        $prototype = new TaskEntity();
+        $prototype = new TagEntity();
         $this->resultSetPrototype = new HydratingResultSet();
         $this->resultSetPrototype->setHydrator($prototype->getHydrator())
                                  ->setObjectPrototype($prototype);
@@ -52,14 +52,10 @@ class TasksTable extends AbstractTableGateway
         if (!$row) {
             throw new \Exception("Could not find row $id");
         }
-        
-        
-        // подтягиваем теги, трушно это делать именно здесь
-        \Zend\Debug\Debug::dump($this->models['tags']->fetchAll()->current());exit();
         return $row;
     }
 
-    public function save(TaskEntity $entity)
+    public function save(TagEntity $entity)
     {
         $data = get_object_vars($entity);
         unset($data['id']);

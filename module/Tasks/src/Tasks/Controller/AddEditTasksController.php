@@ -35,9 +35,7 @@ class AddEditTasksController extends AbstractActionController
         if($this->getRequest()->isPost()) {
             // Сохраняем форму
             // taskEntity - пустой объект
-            $entity = new TaskEntity(array(
-                'hydrator' => $this->getTasksTable()->getResultSetPrototype()->getHydrator()
-            ));
+            $entity = new TaskEntity();
             $form->bind($entity);
             $form->setInputFilter($entity->getInputFilter());
             $form->setData($this->getRequest()->getPost());
@@ -49,7 +47,8 @@ class AddEditTasksController extends AbstractActionController
                 return $this->redirect()->toRoute('Tasks\index');
             }
         } else {
-            $entity = $this->getTasksTable()->getTask($id);
+            $entity = $this->getTasksTable()->getItem($id);
+            \Zend\Debug\Debug::dump($entity);exit();
             $form->bind($entity);
         }
         
@@ -75,6 +74,7 @@ class AddEditTasksController extends AbstractActionController
             $form->setData($this->getRequest()->getPost());
             
             if ($form->isValid()) {
+                //\Zend\Debug\Debug::dump($entity);
                 $entity->creation_time = date('Y-m-d H:i:s', time());
                 $this->getTasksTable()->save($entity);
 

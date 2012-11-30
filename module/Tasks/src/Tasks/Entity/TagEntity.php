@@ -13,9 +13,8 @@ use Zend\Stdlib\Hydrator;
 use Zend\InputFilter\InputFilter;
 
 use Tasks\Entity\PriorityEntity;
-use Tasks\Entity\TagsEntity;
 
-class TaskEntity  extends InputFilter // extends DefaultEntity //InputFilter//implements InputFilterAwareInterface
+class TagEntity  extends InputFilter // extends DefaultEntity //InputFilter//implements InputFilterAwareInterface
 {
     protected $hydrator;
     protected $inputFilter;
@@ -24,16 +23,16 @@ class TaskEntity  extends InputFilter // extends DefaultEntity //InputFilter//im
     {
         $this->hydrator = new Hydrator\ObjectProperty;
         
-        $this->hydrator->addStrategy('txt', new ClosureStrategy(
-            function($value) {
-                return sprintf('%s', $value);
-            },
-            function($value) {
-                return sprintf('%s', $value);
-            }
-        ));
-        
-//        $this->hydrator->addStrategy('tags', new ClosureStrategy(
+//        $this->hydrator->addStrategy('txt', new ClosureStrategy(
+//            function($value) {
+//                return sprintf('%s', $value);
+//            },
+//            function($value) {
+//                return sprintf('%s', $value);
+//            }
+//        ));
+//        
+//        $this->hydrator->addStrategy('datetime', new ClosureStrategy(
 //            function($value) {
 //                return sprintf('%s', $value);
 //            },
