@@ -48,15 +48,20 @@ class TasksTable extends AbstractTableGateway
     {
         $id  = (int) $id;
         $rowset = $this->select(array('id' => $id));
-        $row = $rowset->current();
-        if (!$row) {
+        $entity = $rowset->current();
+        if (!$entity) {
             throw new \Exception("Could not find row $id");
         }
         
-        
         // подтягиваем теги, трушно это делать именно здесь
-        \Zend\Debug\Debug::dump($this->models['tags']->fetchAll()->current());exit();
-        return $row;
+        $tags = $this->models['tags']->select("`task_id`='{$entity->id}'");
+        $tagsArr = array();// массив объектов
+        foreach($tags as $tag) {
+            $tagsArr[] = $tag;
+        }
+        $entity->tags = $tagsArr;
+        
+        return $entity;
     }
 
     public function save(TaskEntity $entity)

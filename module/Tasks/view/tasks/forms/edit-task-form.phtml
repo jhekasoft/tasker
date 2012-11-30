@@ -5,44 +5,117 @@ $this->form->setAttribute('action', $this->url('Tasks\edit-task', array(
 $this->form->setAttribute('method', 'POST');
 $this->form->setAttribute('class', 'form-horizontal');
 $this->form->get('submit')->setAttribute('value', 'Редактировать!');
+
+//foreach($this->form->get('task')->get('tags')->getObject() as $tag) {
+//    
+//    echo '====================================================================';
+//}
+//exit();
+//\Zend\Debug\Debug::dump($this->form->get('task')->getObject());exit();
+//$reflector = new \ReflectionClass($this->form->get('task')->get('tags')->getTargetElement());
+//\Zend\Debug\Debug::dump($reflector->getMethods());exit();
+
+
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+////\Zend\Debug\Debug::dump($this->form->get('task')->get('tags')->getCount());exit();
+//echo $this->formCollection($this->form->get('task')->get('tags'));exit();
+//
+//$reflector = new \ReflectionClass($this->form->get('task')->get('tags'));
+//$objects = $reflector->getMethods();
+//$arr = array();
+//foreach ($objects as $obj) {
+//    $arr[] = $obj->name;
+//}
+//asort($arr);
+//echo '<pre>';
+//foreach ($arr as $class => $method) {
+//    echo "{$method}<br>";
+//}
+//echo '</pre>';
+//exit();
 ?>
 <?php $this->form->prepare();?>
 
-<script>
-    $(document).ready(function() {
-        console.log($('.tag-html'));
-    });
-    function add_category() {
-        var currentCount = $('form > fieldset > fieldset').length;
-        var template = $('form > fieldset > span').attr('data-template');
-        template = template.replace(/__index__/g, currentCount);
 
-        $('form > fieldset').append(template);
-
-        return false;
-    }
-</script>
 
 <?php echo $this->form()->openTag($this->form);?>
 <div class="control-group">
+    <!------------------------------------------------------------------------->
     <label class="control-label">Теги</label>
     <div class="controls">
-        <?php $tags = $this->form->get('task')->get('tags');?>
-        <?php if(count($tags) > 0) {?>
-            <?php foreach($tags as $tag) {?>
-                <?php echo $this->formRow($tag);?>
+        <div class="tags">
+            <?php $tags = $this->form->get('task')->get('tags')?>
+            <?php if(count($tags) > 0) {?>
+                <?php foreach($tags as $tag) {?>
+                    <div class="tag">
+                        <label class="control-label">Тег</label>
+                        <div class="controls">
+                            <?php echo $this->formCheckbox($tag->get('use'))?>
+                            <?php echo $this->formSelect($tag->get('tag_id'))?>
+                        </div>
+                    </div>
+                <?php }?>
             <?php }?>
-        <?php }?>
-        <a class="btn btn-success" onclick="return add_category()">
-            <i class="icon-plus-sign icon-white"></i> Add tag
-        </a>
-        <?php ob_start();?>
-            <input type='hidden' name='task[tags][__index__][id]' value=''><select name='task[tags][__index__][tag]'><option value='1'>hello</option>
-            <option value='2'>world</option>
-            <option value='3'>hi</option></select>
-        <?php $tagHtml = ob_get_contents();ob_end_clean();?>
-        <span class="tag-html" data-template="<?php echo $tagHtml;?>"></span>
+        </div>
+        <!------------------------------------------------------------------------->
+        <label class="control-label">Добавить тег</label>
+        <div class="controls">
+            <script>
+                $(document).ready(function() {
+                    var currentCount = $('.tag').length;
+                    var template = $('.tag-html').attr('html');
+                    console.log(template);
+                });
+                function add_category() {
+                    var currentCount = $('.tag').length;
+                    var template = $('.tag-html').attr('html');
+                    //template = template.replace(/__index__/g, currentCount);
+
+                    $('.tags').append(template);
+
+                    return false;
+                }
+            </script>
+            <a class="btn btn-success" onclick="return add_category()">
+                <i class="icon-plus-sign icon-white"></i> Add tag
+            </a>
+            <?php ob_start();?>
+                <div class="tag">
+                    <label class="control-label">Тег</label>
+                    <div class="controls">
+                        <?php echo (new \Zend\Form\View\Helper\FormHidden())->render((new \Zend\Form\Element\Hidden('tag-html-id')));?>
+                        <?php echo (new \Zend\Form\View\Helper\FormCheckbox())->render((new \Zend\Form\Element\Checkbox('tag-html-use'))->setCheckedValue(1)->setUncheckedValue(0));?>
+                        <?php echo (new \Zend\Form\View\Helper\FormSelect())->render((new \Zend\Form\Element\Select('tag-html-tag_id'))->setValueOptions(array(
+                            '1' => 'hello',
+                            '2' => 'world',
+                            '3' => 'hi',
+                        )));?>
+                    </div>
+                </div>
+            <?php $tagHtml = ob_get_contents();ob_end_clean();?>
+            <span class="tag-html" html="<?php echo $this->escapeHtmlAttr($tagHtml);?>"></span>
+        </div>
     </div>
+    
+    <!------------------------------------------------------------------------->
 </div>
 <div class="control-group">
     <label class="control-label">Приоритет</label>

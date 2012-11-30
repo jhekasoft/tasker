@@ -22,7 +22,12 @@ class TagFieldset extends Fieldset implements InputFilterProviderInterface
         $element = new Element\Hidden('id');
         $this->add($element);
         //--------------------------------------------------------------------//
-        $element = new Element\Select('tag');
+        $element = new Element\Checkbox('use');
+        $element->setCheckedValue(1);
+        $element->setUncheckedValue(0);
+        $this->add($element);
+        //--------------------------------------------------------------------//
+        $element = new Element\Select('tag_id');
         $element->setValueOptions(array(
             '1' => 'hello',
             '2' => 'world',

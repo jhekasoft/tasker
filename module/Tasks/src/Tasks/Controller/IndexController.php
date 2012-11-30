@@ -36,6 +36,13 @@ class IndexController extends AbstractActionController implements ServiceLocator
         
         $table = $this->services->get('Tasks\Model\TasksTable');
         
+//        foreach($table->select("`done`='0'") as $task) {
+//            \Zend\Debug\Debug::dump($task);
+//        }
+//        
+//        \Zend\Debug\Debug::dump('123');exit();
+        
+        
         return new ViewModel(array(
             'resultSet' => $table->select("`done`='0'"),
         ));

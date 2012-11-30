@@ -48,7 +48,6 @@ class AddEditTasksController extends AbstractActionController
             }
         } else {
             $entity = $this->getTasksTable()->getItem($id);
-            \Zend\Debug\Debug::dump($entity);exit();
             $form->bind($entity);
         }
         

@@ -22,10 +22,6 @@ class TaskFieldset extends Fieldset implements InputFilterProviderInterface
         $element = new Element\Hidden('id');
         $this->add($element);
         //--------------------------------------------------------------------//
-        $element = new Element\Text('tags');
-        //$element->setLabel('Теги');
-        $this->add($element);
-        //--------------------------------------------------------------------//
         $element = new Element\Select('priority');
         $element->setValueOptions(array(
             '0' => 'default',
@@ -47,7 +43,7 @@ class TaskFieldset extends Fieldset implements InputFilterProviderInterface
             'type' => 'Zend\Form\Element\Collection',
             'name' => 'tags',
             'options' => array(
-                //'count' => 2,
+                //'count' => 22,
                 //'should_create_template' => true,
                 'allow_add' => true,
                 'target_element' => array(
