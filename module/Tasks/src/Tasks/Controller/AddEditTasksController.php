@@ -23,6 +23,7 @@ class AddEditTasksController extends AbstractActionController
     
     public function editAction()
     {
+        //\Zend\Debug\Debug::dump((new \ReflectionClass($this->getRequest()))->getMethods());exit();
         $this->init();
         
         $id = (int) $this->params()->fromRoute('id', 0);

@@ -1,4 +1,5 @@
 <?php
+//shouldCreateTemplate
 $this->form->setAttribute('action', $this->url('Tasks\edit-task', array(
     'id' => $this->form->get('task')->get('id')->getValue(),
 )));
@@ -58,6 +59,7 @@ $this->form->get('submit')->setAttribute('value', 'Редактировать!')
 
 <?php echo $this->form()->openTag($this->form);?>
 <div class="control-group">
+    <?php echo $this->formCollection($this->form->get('task')->get('tags'));?>
     <!------------------------------------------------------------------------->
     <label class="control-label">Теги</label>
     <div class="controls">
