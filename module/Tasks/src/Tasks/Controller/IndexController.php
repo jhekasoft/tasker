@@ -7,6 +7,7 @@ use Zend\ServiceManager\ServiceLocatorInterface;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
+use Zend\Db\Sql\Select;
 use Tasks\Entity\TaskEntity;
 use Tasks\Entity\PriorityEntity;
 use Tasks\Model\TasksTable;
@@ -37,7 +38,10 @@ class IndexController extends AbstractActionController implements ServiceLocator
         $table = $this->services->get('Tasks\Model\TasksTable');
         
         return new ViewModel(array(
-            'resultSet' => $table->select("`done`='0'"),
+            'resultSet' => $table->select(function (Select $select) {
+                $select->where("`done`='0'");
+                $select->order('creation_time DESC');
+            }),
         ));
     }
 }
