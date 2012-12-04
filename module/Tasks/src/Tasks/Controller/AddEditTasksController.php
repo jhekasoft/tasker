@@ -27,14 +27,17 @@ class AddEditTasksController extends AbstractActionController
         
         $id = (int) $this->params()->fromRoute('id', 0);
         if (!$id) {
-            return $this->redirect()->toRoute('Tasks\tasks-add');
+            return $this->redirect()->toRoute('Tasks\add-task');
         }
         
         $form = $this->getForm();
+        $form->setAttribute('action', $this->url()->fromRoute('Tasks\edit-task', array(
+            'id' => $id,
+        )));
+        $form->get('submit')->setAttribute('value', 'Edit');
         
         if($this->getRequest()->isPost()) {
             // Сохраняем форму
-            // taskEntity - пустой объект
             $entity = new TaskEntity(array(
                 'hydrator' => $this->getTasksTable()->getResultSetPrototype()->getHydrator()
             ));
@@ -49,7 +52,7 @@ class AddEditTasksController extends AbstractActionController
                 return $this->redirect()->toRoute('Tasks\index');
             }
         } else {
-            $entity = $this->getTasksTable()->getTask($id);
+            $entity = $this->getTasksTable()->getItem($id);
             $form->bind($entity);
         }
         
@@ -63,6 +66,8 @@ class AddEditTasksController extends AbstractActionController
         $this->init();
         
         $form = $this->getForm();
+        $form->setAttribute('action', $this->url()->fromRoute('Tasks\add-task'));
+        $form->get('submit')->setAttribute('value', 'Add');
         
         if($this->getRequest()->isPost()) {
             // Сохраняем форму

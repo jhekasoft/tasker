@@ -1,10 +1,6 @@
 <?php
-$this->form->setAttribute('action', $this->url('Tasks\edit-task', array(
-    'id' => $this->form->get('task')->get('id')->getValue(),
-)));
 $this->form->setAttribute('method', 'POST');
 $this->form->setAttribute('class', 'form-horizontal');
-$this->form->get('submit')->setAttribute('value', 'Редактировать!');
 ?>
 <?php $this->form->prepare();?>
 

@@ -11,7 +11,7 @@ use Tasks\Entity\TaskEntity;
 class TasksTable extends AbstractTableGateway
 {
     //protected $hydrator = null;
-    protected $table ='tasker_tasks';
+    protected $table ='tasks_tasks';
 
     /**
      * Ждем адаптер, не обязательно общий
@@ -33,7 +33,7 @@ class TasksTable extends AbstractTableGateway
         return $resultSet;
     }
     
-    public function getTask($id)
+    public function getItem($id)
     {
         $id  = (int) $id;
         $rowset = $this->select(array('id' => $id));
@@ -44,16 +44,16 @@ class TasksTable extends AbstractTableGateway
         return $row;
     }
 
-    public function save(TaskEntity $task)
+    public function save(TaskEntity $entity)
     {
-        $data = get_object_vars($task);
+        $data = get_object_vars($entity);
         unset($data['id']);
         
-        $id = (int)$task->id;
+        $id = (int)$entity->id;
         if ($id == 0) {
             $this->insert($data);
         } else {
-            if ($this->getTask($id)) {
+            if ($this->getItem($id)) {
                 $this->update($data, array('id' => $id));
             } else {
                 throw new \Exception('Form id does not exist');
