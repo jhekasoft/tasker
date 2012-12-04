@@ -8,6 +8,6 @@
         <?php echo $this->txt;?>
     </td>
     <td>
-        <?php echo $this->day;?>
+        <?php echo (new DateTime($this->day))->format('Y.m.d-w');;?>
     </td>
 </tr>

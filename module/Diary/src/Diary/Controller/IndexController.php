@@ -35,6 +35,7 @@ class IndexController extends AbstractActionController implements ServiceLocator
         $this->init();
         
         $table = $this->services->get('Diary\Model\NotesTable');
+        
         //\Zend\Debug\Debug::dump($table);exit();
         
         return new ViewModel(array(
