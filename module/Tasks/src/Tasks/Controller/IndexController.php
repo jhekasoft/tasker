@@ -37,11 +37,22 @@ class IndexController extends AbstractActionController implements ServiceLocator
         
         $table = $this->services->get('Tasks\Model\TasksTable');
         
+//        $paginator = new \Zend\Paginator\Paginator(new \Zend\Paginator\Adapter\Iterator($table->select(function (Select $select) {
+//            $select->where("`done`='0'");
+//            $select->order('creation_time DESC');
+//        })));
+//        \Zend\Debug\Debug::dump($paginator);exit();
+        
+        $paginator = $table->getPaginator(array(
+            'page' => $this->params()->fromRoute('page', 1),
+        ));
+        
         return new ViewModel(array(
-            'resultSet' => $table->select(function (Select $select) {
-                $select->where("`done`='0'");
-                $select->order('creation_time DESC');
-            }),
+            'paginator' => $paginator,
+//            'resultSet' => $table->select(function (Select $select) {
+//                $select->where("`done`='0'");
+//                $select->order('creation_time DESC');
+//            }),
         ));
     }
 }

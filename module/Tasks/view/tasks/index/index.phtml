@@ -9,8 +9,8 @@
     </thead>
     <tbody>
         <?php echo $this->render('tasks/index/control-row.phtml');?>
-        <?php if (count($this->resultSet) > 0) { ?>
-            <?php echo $this->partialLoop('tasks/index/task-row.phtml', $this->resultSet); ?>
+        <?php if (count($this->paginator) > 0) { ?>
+            <?php echo $this->partialLoop('tasks/index/task-row.phtml', $this->paginator); ?>
         <?php } ?>
         <?php echo $this->render('tasks/index/control-row.phtml');?>
     </tbody>

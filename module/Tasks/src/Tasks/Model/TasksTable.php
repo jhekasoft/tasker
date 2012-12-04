@@ -6,6 +6,8 @@ use Zend\Db\Adapter\Adapter;
 use Zend\Db\ResultSet\HydratingResultSet;
 use Zend\Db\TableGateway\AbstractTableGateway;
 use Tasks\Entity\TaskEntity;
+use Zend\Paginator\Adapter\Iterator;
+use Zend\Paginator\Paginator;
 
 
 class TasksTable extends AbstractTableGateway
@@ -31,6 +33,23 @@ class TasksTable extends AbstractTableGateway
     {
         $resultSet = $this->select();
         return $resultSet;
+    }
+    
+    public function getPaginator($options = array())
+    {
+        $page = 1;
+        
+        if(!empty($options['page'])) {
+            $page = (int) $options['page'];
+        }
+        
+        $iteratorAdapter = new Iterator($this->fetchAll($options));
+        $paginator = new Paginator($iteratorAdapter);
+        
+        $paginator->setCurrentPageNumber($page);
+        $paginator->setItemCountPerPage(10);
+        
+        return $paginator;
     }
     
     public function getItem($id)
