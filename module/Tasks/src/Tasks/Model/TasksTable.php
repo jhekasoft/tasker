@@ -11,7 +11,7 @@ use Tasks\Entity\TaskEntity;
 class TasksTable extends AbstractTableGateway
 {
     //protected $hydrator = null;
-    protected $table ='tasks';
+    protected $table ='tasker_tasks';
 
     /**
      * Ждем адаптер, не обязательно общий

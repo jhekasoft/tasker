@@ -1,32 +1,17 @@
 <table class="tasks table table-bordered table-condensed">
     <thead>
         <tr class="gray">
-            <th>del</th>
+            <th>done</th>
             <th>edit</th>
             <th>task</th>
             <th>tags</th>
         </tr>
     </thead>
     <tbody>
+        <?php echo $this->render('tasks/index/control-row.phtml');?>
         <?php if (count($this->resultSet) > 0) { ?>
             <?php echo $this->partialLoop('tasks/index/task-row.phtml', $this->resultSet); ?>
         <?php } ?>
-        <tr class="gray">
-            <td>
-
-            </td>
-            <td>
-                <a href="<?php echo $this->url('Tasks\add-task');?>" class="btn btn-success">
-                    <i class="icon-plus-sign icon-white"></i>
-                    Add
-                </a>
-            </td>
-            <td>
-
-            </td>
-            <td>
-
-            </td>
-        </tr>
+        <?php echo $this->render('tasks/index/control-row.phtml');?>
     </tbody>
 </table>
