@@ -20,7 +20,7 @@ return array(
             'Tasks\index' => array(
                 'type'    => 'segment',
                 'options' => array(
-                    'route'    => '[/:lang]/tasks[/:page][/]',
+                    'route'    => '[/:lang]/tasks[/page/:page][/]',
                     'constraints' => array(
                         'lang' => '[a-zA-Z]{2}',
                         'page'     => '[0-9]+',

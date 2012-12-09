@@ -38,16 +38,29 @@ class TasksTable extends AbstractTableGateway
     public function getPaginator($options = array())
     {
         $page = 1;
-        
         if(!empty($options['page'])) {
             $page = (int) $options['page'];
         }
         
-        $iteratorAdapter = new Iterator($this->fetchAll($options));
+        $itemCountPerPage = 10;
+        if(!empty($options['itemCountPerPage'])) {
+            $itemCountPerPage = (int) $options['itemCountPerPage'];
+        }
+        
+        $resultSet = $this->select(function (\Zend\Db\Sql\Select $select) {
+            //$select->where("`done`='0'");
+            //$select->order('creation_time DESC');
+            $select->order('id ASC');
+        });
+        $resultSet->buffer();
+        
+        //\Zend\Debug\Debug::dump($paginator->getItemCount);exit();
+        
+        $iteratorAdapter = new Iterator($resultSet);
         $paginator = new Paginator($iteratorAdapter);
         
         $paginator->setCurrentPageNumber($page);
-        $paginator->setItemCountPerPage(10);
+        $paginator->setItemCountPerPage($itemCountPerPage);
         
         return $paginator;
     }

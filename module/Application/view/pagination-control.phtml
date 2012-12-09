@@ -24,3 +24,8 @@
         <?php }; ?>
     </div>
 <?php }; ?>
+<?php
+$reflector = new \ReflectionClass($this);
+\Zend\Debug\Debug::dump($reflector->getName());
+
+?>
