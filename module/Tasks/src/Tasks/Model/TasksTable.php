@@ -48,9 +48,9 @@ class TasksTable extends AbstractTableGateway
         }
         
         $resultSet = $this->select(function (\Zend\Db\Sql\Select $select) {
-            //$select->where("`done`='0'");
-            //$select->order('creation_time DESC');
-            $select->order('id ASC');
+            $select->where("`done`='0'");
+            $select->order('creation_time DESC');
+            //$select->order('id ASC');
         });
         $resultSet->buffer();
         
