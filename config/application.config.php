@@ -4,6 +4,7 @@ return array(
     'modules' => array(
         'Application',
         'Tasks',
+        'Diary',
         'Mc',
     ),
     'module_listener_options' => array(

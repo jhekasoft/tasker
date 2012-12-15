@@ -1,0 +1,16 @@
+<table class="diary notes table table-bordered table-condensed">
+    <thead>
+        <tr class="gray">
+            <th>edit</th>
+            <th>note</th>
+            <th>day</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php echo $this->render('diary/index/control-row.phtml');?>
+        <?php if (count($this->resultSet) > 0) { ?>
+            <?php echo $this->partialLoop('diary/index/note-row.phtml', $this->resultSet); ?>
+        <?php } ?>
+        <?php echo $this->render('diary/index/control-row.phtml');?>
+    </tbody>
+</table>
