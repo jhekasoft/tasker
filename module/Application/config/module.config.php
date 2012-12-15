@@ -11,7 +11,7 @@ return array(
     ),
     'router' => array(
         'routes' => array(
-            'home' => array(
+            'Application\index' => array(
                 'type' => 'Zend\Mvc\Router\Http\Literal',
                 'options' => array(
                     'route'    => '/',

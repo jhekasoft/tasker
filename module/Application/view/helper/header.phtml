@@ -1,3 +1,45 @@
-<div class="text">
-    Hi, this is header
+<div class="navbar">
+    <div class="navbar-inner">
+        <div class="container">
+            <ul class="nav">
+                <!------------------------------------------------------------->
+                <?php
+                $class = "";
+                if(0) {
+                    $class .= "active";
+                }
+                ?>
+                <li class="<?php echo $class;?>">
+                    <a href="<?php echo $this->url('Application\index');?>">
+                        Главная
+                    </a>
+                </li>
+                <!------------------------------------------------------------->
+                <?php
+                $class = "";
+                if(0) {
+                    $class .= "active";
+                }
+                ?>
+                <li class="<?php echo $class;?>">
+                    <a href="<?php echo $this->url('Diary\index');?>">
+                        Diary
+                    </a>
+                </li>
+                <!------------------------------------------------------------->
+                <?php
+                $class = "";
+                if(0) {
+                    $class .= "active";
+                }
+                ?>
+                <li class="<?php echo $class;?>">
+                    <a href="<?php echo $this->url('Tasks\index');?>">
+                        Tasks
+                    </a>
+                </li>
+                <!------------------------------------------------------------->
+            </ul>
+        </div>
+    </div>
 </div>
