@@ -11,12 +11,12 @@
  * file.
  */
 
-//if(preg_match('/bondvt04\.home\.lan$/', $_SERVER['HTTP_HOST'])){
+//if (preg_match('/bondvt04\.home\.lan$/', $_SERVER['HTTP_HOST'])) {
 //    $dbHost = "localhost";// хули, если openvpn есть
 //    $dbName = "tasker";
 //    $dbUser = "user";
 //    $dbPass = "usbw";
-//} elseif(preg_match('/.*\.lan$/', $_SERVER['HTTP_HOST'])){
+//} elseif (preg_match('/.*\.lan$/', $_SERVER['HTTP_HOST'])) {
 //    $dbHost = "10.0.0.99";
 //    $dbName = "tasker";
 //    $dbUser = "user";

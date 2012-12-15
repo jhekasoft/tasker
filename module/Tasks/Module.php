@@ -16,22 +16,25 @@ class Module
                     // тянем общий адаптер, хотя можем взять и конкретный
                     $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
                     $table = new TasksTable($dbAdapter);
+
                     return $table;
                 },
                 'Tasks\Model\PrioritiesTable' => function($sm) {
                     // тянем общий адаптер, хотя можем взять и конкретный
                     $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
                     $table = new PriorityTable($dbAdapter);
+
                     return $table;
                 },
                 'Tasks\Form\AddEditTaskForm' => function($sm) {
                     $form = new AddEditTaskForm();
+
                     return $form;
                 },
             ),
         );
     }
-    
+
     public function getAutoloaderConfig()
     {
         return array(

@@ -8,13 +8,7 @@ use Zend\ServiceManager\ServiceLocatorInterface;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 use Zend\Db\Sql\Select;
-use Tasks\Entity\TaskEntity;
-use Tasks\Entity\PriorityEntity;
 use Tasks\Model\TasksTable;
-use Tasks\Form\AddEditTaskForm;
-
-
-
 
 class IndexController extends AbstractActionController implements ServiceLocatorAwareInterface
 {
@@ -24,29 +18,29 @@ class IndexController extends AbstractActionController implements ServiceLocator
     {
         $this->services = $serviceLocator;
     }
-    
+
     public function init()
     {
-        
+
     }
-    
+
     public function indexAction()
     {
         //\Zend\Debug\Debug::dump('zlo');exit();
         $this->init();
-        
+
         $table = $this->services->get('Tasks\Model\TasksTable');
-        
+
 //        $paginator = new \Zend\Paginator\Paginator(new \Zend\Paginator\Adapter\Iterator($table->select(function (Select $select) {
 //            $select->where("`done`='0'");
 //            $select->order('creation_time DESC');
 //        })));
 //        \Zend\Debug\Debug::dump($paginator);exit();
-        
+
         $paginator = $table->getPaginator(array(
             'page' => $this->params()->fromRoute('page', 1),
         ));
-        
+
         return new ViewModel(array(
             'paginator' => $paginator,
 //            'resultSet' => $table->select(function (Select $select) {

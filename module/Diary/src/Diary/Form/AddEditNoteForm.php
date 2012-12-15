@@ -36,15 +36,15 @@ class AddEditNoteForm extends Form
             )
         ));
     }
-    
+
 //    //IF YOU WILL WORK WITH DATABASE
 //    //AND NEED bind() FORM FOR EDIT DATA, YOU NEED OVERRIDE
 //    //populateValues() FUNC LIKE THIS
 //    public function populateValues($data)
-//    {  
+//    {
 //        foreach($data as $key=>$row)
 //        {
-//           if (is_array(@json_decode($row))){
+//           if (is_array(@json_decode($row))) {
 //                $data[$key] =   new \ArrayObject(\Zend\Json\Json::decode($row), \ArrayObject::ARRAY_AS_PROPS);
 //           }
 //        }

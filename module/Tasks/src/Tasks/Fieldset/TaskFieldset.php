@@ -16,8 +16,7 @@ class TaskFieldset extends Fieldset implements InputFilterProviderInterface
         parent::__construct('task');
         $this->setHydrator(new ObjectPropertyHydrator(false));
              //->setObject(new TaskEntity());
-        
-        
+
         //--------------------------------------------------------------------//
         $element = new Element\Hidden('id');
         $this->add($element);
@@ -43,12 +42,6 @@ class TaskFieldset extends Fieldset implements InputFilterProviderInterface
         ));
         $this->add($element);
         //--------------------------------------------------------------------//
-        
-        
-        
-        
-        
-        
 
 //        $this->add(array(
 //            'name' => 'creation_time',
@@ -60,7 +53,6 @@ class TaskFieldset extends Fieldset implements InputFilterProviderInterface
 //            )
 //        ));
 
-        
     }
 
     /**

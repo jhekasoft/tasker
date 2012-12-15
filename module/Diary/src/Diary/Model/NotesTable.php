@@ -7,7 +7,6 @@ use Zend\Db\ResultSet\HydratingResultSet;
 use Zend\Db\TableGateway\AbstractTableGateway;
 use Diary\Entity\NoteEntity;
 
-
 class NotesTable extends AbstractTableGateway
 {
     //protected $hydrator = null;
@@ -19,7 +18,7 @@ class NotesTable extends AbstractTableGateway
     public function __construct(Adapter $adapter = null)
     {
         $this->adapter = $adapter;
-        
+
         $prototype = new NoteEntity();
         $this->resultSetPrototype = new HydratingResultSet();
         $this->resultSetPrototype->setHydrator($prototype->getHydrator())
@@ -30,9 +29,10 @@ class NotesTable extends AbstractTableGateway
     public function fetchAll()
     {
         $resultSet = $this->select();
+
         return $resultSet;
     }
-    
+
     public function getItem($id)
     {
         $id  = (int) $id;
@@ -41,6 +41,7 @@ class NotesTable extends AbstractTableGateway
         if (!$row) {
             throw new \Exception("Could not find row $id");
         }
+
         return $row;
     }
 
@@ -48,8 +49,8 @@ class NotesTable extends AbstractTableGateway
     {
         $data = get_object_vars($entity);
         unset($data['id']);
-        
-        $id = (int)$entity->id;
+
+        $id = (int) $entity->id;
         if ($id == 0) {
             $this->insert($data);
         } else {

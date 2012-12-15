@@ -12,55 +12,57 @@ class PriorityEntity implements InputFilterAwareInterface
     protected $id;
     protected $priority;
     protected $title;
-    
+
     protected $inputFilter;
-    
+
     public function getId()
     {
         return $this->id;
     }
-    
+
     public function setId($id)
     {
         $this->id = $id;
+
         return $this;
     }
-    
+
     public function getPriority()
     {
         return $this->priority;
     }
-    
+
     public function setPriority($priority)
     {
         $this->priority = $priority;
+
         return $this;
     }
-    
+
     public function getTitle()
     {
         return $this->priority;
     }
-    
+
     public function setTitle($title)
     {
         $this->title = $title;
+
         return $this;
     }
-    
-    
+
     public function exchangeArray($data)
     {
         $this->id     = (isset($data['id'])) ? $data['id'] : null;
         $this->priority = (isset($data['priority'])) ? $data['priority'] : null;
         $this->title  = (isset($data['title'])) ? $data['title'] : null;
     }
-    
+
     public function getArrayCopy()
     {
         return get_object_vars($this);
     }
-    
+
     public function setInputFilter(InputFilterInterface $inputFilter)
     {
         throw new \Exception("Not used");

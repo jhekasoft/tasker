@@ -17,29 +17,29 @@ use Zend\Stdlib\Hydrator\Strategy\StrategyInterface;
  */
 class ClosureStrategy implements StrategyInterface
 {
-    
+
     protected $extractFunc = null;
     protected $hydrateFunc = null;
-    
+
     public function __construct($extractFunc = null, $hydrateFunc = null)
     {
-        if(isset($extractFunc)) {
-            if(!is_callable($extractFunc)) {
+        if (isset($extractFunc)) {
+            if (!is_callable($extractFunc)) {
                 throw new \Exception('$extractFunc must be collable');
             }
-            
+
             $this->extractFunc = $extractFunc;
         } else {
             $this->extractFunc = function($value) {
                 return $value;
             };
         }
-        
-        if(isset($hydrateFunc)) {
-            if(!is_callable($hydrateFunc)) {
+
+        if (isset($hydrateFunc)) {
+            if (!is_callable($hydrateFunc)) {
                 throw new \Exception('$hydrateFunc must be collable');
             }
-            
+
             $this->hydrateFunc = $hydrateFunc;
         } else {
             $this->hydrateFunc = function($value) {
@@ -47,28 +47,30 @@ class ClosureStrategy implements StrategyInterface
             };
         }
     }
-    
+
     /**
      * Converts the given value so that it can be extracted by the hydrator.
      *
-     * @param mixed $value The original value.
+     * @param  mixed $value The original value.
      * @return mixed Returns the value that should be extracted.
      */
     public function extract($value)
     {
         $func = $this->extractFunc;
+
         return $func($value);
     }
 
     /**
      * Converts the given value so that it can be hydrated by the hydrator.
      *
-     * @param mixed $value The original value.
+     * @param  mixed $value The original value.
      * @return mixed Returns the value that should be hydrated.
      */
     public function hydrate($value)
     {
         $func = $this->hydrateFunc;
+
         return $func($value);
     }
 }

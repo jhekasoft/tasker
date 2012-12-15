@@ -5,7 +5,6 @@ namespace Tasks\Controller;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 use Tasks\Entity\TaskEntity;
-use Tasks\Entity\PriorityEntity;
 use Tasks\Form\AddEditTaskForm;
 //use Tasks\Form\TasksForm;
 
@@ -13,30 +12,30 @@ class AddEditTasksController extends AbstractActionController
 {
     protected $tasksTable;
     protected $form;
-    
+
     public function init()
     {
         //$form = $this->getAddEditTaskForm();
         //$this->taskEntity = new TaskEntity();
         //$form->bind($this->taskEntity);
     }
-    
+
     public function editAction()
     {
         $this->init();
-        
+
         $id = (int) $this->params()->fromRoute('id', 0);
         if (!$id) {
             return $this->redirect()->toRoute('Tasks\add-task');
         }
-        
+
         $form = $this->getForm();
         $form->setAttribute('action', $this->url()->fromRoute('Tasks\edit-task', array(
             'id' => $id,
         )));
         $form->get('submit')->setAttribute('value', 'Edit');
-        
-        if($this->getRequest()->isPost()) {
+
+        if ($this->getRequest()->isPost()) {
             // Сохраняем форму
             $entity = new TaskEntity(array(
                 'hydrator' => $this->getTasksTable()->getResultSetPrototype()->getHydrator()
@@ -44,7 +43,7 @@ class AddEditTasksController extends AbstractActionController
             $form->bind($entity);
             $form->setInputFilter($entity->getInputFilter());
             $form->setData($this->getRequest()->getPost());
-            
+
             if ($form->isValid()) {
                 $this->getTasksTable()->save($entity);
 
@@ -55,21 +54,21 @@ class AddEditTasksController extends AbstractActionController
             $entity = $this->getTasksTable()->getItem($id);
             $form->bind($entity);
         }
-        
+
         return new ViewModel(array(
             'addEditTaskForm' => $form,
         ));
     }
-    
+
     public function addAction()
     {
         $this->init();
-        
+
         $form = $this->getForm();
         $form->setAttribute('action', $this->url()->fromRoute('Tasks\add-task'));
         $form->get('submit')->setAttribute('value', 'Add');
-        
-        if($this->getRequest()->isPost()) {
+
+        if ($this->getRequest()->isPost()) {
             // Сохраняем форму
             // taskEntity - пустой объект
             $entity = new TaskEntity(array(
@@ -78,7 +77,7 @@ class AddEditTasksController extends AbstractActionController
             $form->bind($entity);
             $form->setInputFilter($entity->getInputFilter());
             $form->setData($this->getRequest()->getPost());
-            
+
             if ($form->isValid()) {
                 $entity->creation_time = date('Y-m-d H:i:s', time());
                 $this->getTasksTable()->save($entity);
@@ -87,50 +86,54 @@ class AddEditTasksController extends AbstractActionController
                 return $this->redirect()->toRoute('Tasks\index');
             }
         }
-        
+
         return new ViewModel(array(
             'addEditTaskForm' => $form,
         ));
     }
-    
+
     public function doneAction()
     {
         $this->init();
-        
+
         $id = (int) $this->params()->fromRoute('id', 0);
         if (!$id) {
             $this->flashmessenger()->addMessage("id not specified");
+
             return $this->redirect()->toRoute('Tasks\index');
         }
-        
+
         $entity = $this->getTasksTable()->getTask($id);
         $entity->done = 1;
         $entity->done_time = date('Y-m-d H:i:s', time());
-        
+
         $this->getTasksTable()->save($entity);
-        
+
         $this->flashmessenger()->addMessage("done");
+
         return $this->redirect()->toRoute('Tasks\index');
     }
-    
+
     public function getForm()
     {
         if (!$this->form) {
             $sm = $this->getServiceLocator();
             $this->form = $sm->get('Tasks\Form\AddEditTaskForm');
         }
+
         return $this->form;
     }
-    
+
     public function getTasksTable()
     {
         if (!$this->tasksTable) {
             $sm = $this->getServiceLocator();
             $this->tasksTable = $sm->get('Tasks\Model\TasksTable');
         }
+
         return $this->tasksTable;
     }
-    
+
 //    public function addAction()
 //    {
 //        $form = new AlbumForm();
@@ -213,21 +216,8 @@ class AddEditTasksController extends AbstractActionController
 //    }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
         //$album = $this->getAlbumTable()->getAlbum($id);
-        
+
 //        \Zend\Debug\Debug::dump($this->getRequest()->getQuery());
 //        \Zend\Debug\Debug::dump($this->getRequest()->getUri());
 //        \Zend\Debug\Debug::dump($this->getRequest()->getUriString());
@@ -236,4 +226,3 @@ class AddEditTasksController extends AbstractActionController
 //        \Zend\Debug\Debug::dump($this->params()->fromHeader());
 //        \Zend\Debug\Debug::dump($this->params()->fromFiles());
 //        exit();
-        

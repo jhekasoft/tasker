@@ -2,7 +2,6 @@
 
 namespace Diary\Fieldset;
 
-use Diary\Entity\NoteEntity;
 use Zend\Form\Fieldset;
 use Zend\InputFilter\InputFilterProviderInterface;
 use Zend\Stdlib\Hydrator\ObjectProperty as ObjectPropertyHydrator;
@@ -16,8 +15,7 @@ class NoteFieldset extends Fieldset implements InputFilterProviderInterface
         parent::__construct('note');
         $this->setHydrator(new ObjectPropertyHydrator(false));
              //->setObject(new TaskEntity());
-        
-        
+
         //--------------------------------------------------------------------//
         $element = new Element\Hidden('id');
         $this->add($element);
@@ -31,12 +29,6 @@ class NoteFieldset extends Fieldset implements InputFilterProviderInterface
         ));
         $this->add($element);
         //--------------------------------------------------------------------//
-        
-        
-        
-        
-        
-        
 
 //        $this->add(array(
 //            'name' => 'creation_time',
@@ -48,7 +40,6 @@ class NoteFieldset extends Fieldset implements InputFilterProviderInterface
 //            )
 //        ));
 
-        
     }
 
     /**

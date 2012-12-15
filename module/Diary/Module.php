@@ -15,16 +15,18 @@ class Module
                     // тянем общий адаптер, хотя можем взять и конкретный
                     $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
                     $table = new NotesTable($dbAdapter);
+
                     return $table;
                 },
                 'Diary\Form\AddEditNoteForm' => function($sm) {
                     $form = new AddEditNoteForm();
+
                     return $form;
                 },
             ),
         );
     }
-    
+
     public function getAutoloaderConfig()
     {
         return array(
