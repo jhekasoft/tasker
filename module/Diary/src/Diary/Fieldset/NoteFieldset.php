@@ -26,6 +26,7 @@ class NoteFieldset extends Fieldset implements InputFilterProviderInterface
             'class' => 'input-xxlarge',
             'cols' => '80',
             'rows' => '8',
+            'required' => true,
         ));
         $this->add($element);
         //--------------------------------------------------------------------//

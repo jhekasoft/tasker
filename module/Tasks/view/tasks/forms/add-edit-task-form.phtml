@@ -4,22 +4,38 @@ $this->form->setAttribute('class', 'form-horizontal');
 ?>
 <?php $this->form->prepare();?>
 
-<?php echo $this->form()->openTag($this->form);?>
+<?php echo $this->formTwb()->openTag($this->form);?>
 <div class="control-group">
     <label class="control-label">Теги</label>
-    <div class="controls"><?php echo $this->formRow($this->form->get('task')->get('tags'));?></div>
+    <div class="controls">
+        <?php echo $this->formTextTwb($this->form->get('task')->get('tags'), 'horizontal', array(
+            'class' => 'input-large',
+            'prependIcon' => 'icon-tag',
+        ));?>
+    </div>
 </div>
 <div class="control-group">
     <label class="control-label">Приоритет</label>
-    <div class="controls"><?php echo $this->formRow($this->form->get('task')->get('priority'));?></div>
+    <div class="controls">
+        <div class="input-prepend input-append">
+            <span class="add-on"><</span>
+            <?php echo $this->formSelectTwb($this->form->get('task')->get('priority'), null, array(
+                'class' => 'input-large',
+            ));?>
+            <span class="add-on">></span>
+        </div>
+    </div>
 </div>
 <div class="control-group">
-    <label class="control-label">Текст</label>
-    <div class="controls"><?php echo $this->formRow($this->form->get('task')->get('txt'));?></div>
+    <label class="control-label">
+        Текст
+        <span class="required">*</span>
+    </label>
+    <div class="controls"><?php echo $this->formTextareaTwb($this->form->get('task')->get('txt'));?></div>
 </div>
 <div class="control-group">
-    <div class="controls"><?php echo $this->formElement($this->form->get('submit')->setAttribute('class', 'btn btn-info'));?></div>
+    <div class="controls"><?php echo $this->formElementTwb($this->form->get('submit')->setAttribute('class', 'btn btn-info'));?></div>
 </div>
-<?php echo $this->formHidden($this->form->get('csrf'));?>
-<?php echo $this->formRow($this->form->get('task')->get('id'));?>
-<?php echo $this->form()->closeTag($this->form);?>
+<?php echo $this->formHiddenTwb($this->form->get('csrf'));?>
+<?php echo $this->formRowTwb($this->form->get('task')->get('id'));?>
+<?php echo $this->formTwb()->closeTag($this->form);?>

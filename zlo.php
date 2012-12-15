@@ -13,7 +13,6 @@ class zlo
         foreach ($zlo as $hello) {
          $asdf=vi;
 
-         
          return $ololo;
         }
     }

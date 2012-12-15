@@ -48,7 +48,7 @@ class AddEditNotesController extends AbstractActionController
         }
 
         return new ViewModel(array(
-            'addEditNoteForm' => $form,
+            'addEditForm' => $form,
         ));
     }
 
@@ -76,7 +76,7 @@ class AddEditNotesController extends AbstractActionController
         }
 
         return new ViewModel(array(
-            'addEditNoteForm' => $form,
+            'addEditForm' => $form,
         ));
     }
 

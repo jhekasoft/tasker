@@ -8,4 +8,5 @@ $baseDir = dirname($vendorDir);
 return array(
     'Zend\\' => $vendorDir . '/zendframework/zendframework/library/',
     'ZendTest\\' => $vendorDir . '/zendframework/zendframework/tests/',
+    'DluTwBootstrap' => $vendorDir . '/dlu/dlutwbootstrap/src/',
 );

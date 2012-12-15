@@ -11,6 +11,10 @@ body {
   width: 80%;
   margin-left: 10%;
 }
+span.required {
+  color: red;
+  font-weight: bold;
+}
 .content {
   background-color: #ffffff;
 }
