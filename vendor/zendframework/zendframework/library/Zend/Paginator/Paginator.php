@@ -430,6 +430,7 @@ class Paginator implements Countable, IteratorAggregate
     public function getCurrentItemCount()
     {
         if ($this->currentItemCount === null) {
+            //return 0;
             $this->currentItemCount = $this->getItemCount($this->getCurrentItems());
         }
 
@@ -677,6 +678,8 @@ class Paginator implements Countable, IteratorAggregate
         if ($this->pages === null) {
             $this->pages = $this->_createPages($scrollingStyle);
         }
+        
+        //\Zend\Debug\Debug::dump($this->pages);//exit();
 
         return $this->pages;
     }
@@ -908,6 +911,7 @@ class Paginator implements Countable, IteratorAggregate
         if ($currentPageNumber - 1 > 0) {
             $pages->previous = $currentPageNumber - 1;
         }
+        
 
         if ($currentPageNumber + 1 <= $pageCount) {
             $pages->next = $currentPageNumber + 1;
@@ -921,12 +925,16 @@ class Paginator implements Countable, IteratorAggregate
 
         // Item numbers
         if ($this->getCurrentItems() !== null) {
+            //return array();//\Zend\Debug\Debug::dump($this->pages);//exit();
             $pages->currentItemCount = $this->getCurrentItemCount();
+            
             $pages->itemCountPerPage = $this->getItemCountPerPage();
+            
             $pages->totalItemCount   = $this->getTotalItemCount();
             $pages->firstItemNumber  = (($currentPageNumber - 1) * $this->getItemCountPerPage()) + 1;
             $pages->lastItemNumber   = $pages->firstItemNumber + $pages->currentItemCount - 1;
         }
+        
 
         return $pages;
     }
