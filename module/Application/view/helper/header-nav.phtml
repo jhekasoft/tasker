@@ -1,10 +1,18 @@
-<?php $nav = $this->nav();?>
+<?php $pages = $this->nav();?>
+<?php
+//foreach($pages as $page) {
+//    $reflector = new \ReflectionClass($page);
+//    \Zend\Debug\Debug::dump($reflector->getProperties());exit();
+//    exit();
+//}
+//\Zend\Debug\Debug::dump($pages);exit();
+?>
 <div class="navbar">
     <div class="navbar-inner">
         <div class="container">
             <ul class="nav dropdown-menu11">
-                <?php if(count($nav) > 0) {?>
-                    <?php echo $this->partialLoop('helper/header-nav/item-row', $nav);?>
+                <?php if(count($pages) > 0) {?>
+                    <?php echo $this->partialLoop('helper/header-nav/item-row', $pages);?>
                 <?php }?>
             </ul>
         </div>

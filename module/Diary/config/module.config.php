@@ -23,9 +23,11 @@ return array(
                         'page'     => '[0-9]+',
                     ),
                     'defaults' => array(
+                        //'module' => 'Diary',
+                        //'controller' => 'index',
                         'controller' => 'Diary\Controller\Index',
                         'action'     => 'index',
-                        'page'     => '1',
+                        //'page'     => '1',
                     ),
                 ),
             ),

@@ -108,6 +108,7 @@ class Mvc extends AbstractPage
 //        if('Diary\Controller\Index' == $this->controller) {
 //            \Zend\Debug\Debug::dump('asd');//exit();
 //        }
+        //\Zend\Debug\Debug::dump($recursive);exit();
         if (!$this->active) {
             $reqParams = array();
             //\Zend\Debug\Debug::dump($this->routeMatch);exit();
@@ -134,9 +135,10 @@ class Mvc extends AbstractPage
                     return true;
                 }
             }
-
+            
             $myParams = $this->params;
-
+            
+            
             if (null !== $this->controller) {
                 $myParams['controller'] = $this->controller;
             } else {
@@ -145,7 +147,7 @@ class Mvc extends AbstractPage
                  */
                 $myParams['controller'] = 'index';
             }
-
+            
             if (null !== $this->action) {
                 $myParams['action'] = $this->action;
             } else {
@@ -154,12 +156,13 @@ class Mvc extends AbstractPage
                  */
                 $myParams['action'] = 'index';
             }
-
+            //\Zend\Debug\Debug::dump(count($myParams));exit();
             if (count(array_intersect_assoc($reqParams, $myParams)) == count($myParams)) {
                 $this->active = true;
                 return true;
             }
         }
+        
 
         return parent::isActive($recursive);
     }

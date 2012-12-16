@@ -8,7 +8,7 @@ return array(
             'header' => 'Application\View\Helper\Header',
             'headerNav' => 'Application\View\Helper\HeaderNav',
             'footer' => 'Application\View\Helper\Footer',
-            'nav' => 'Application\View\Helper\Nav',
+            //'nav' => 'Application\View\Helper\Nav',
         )
     ),
     'router' => array(

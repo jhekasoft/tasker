@@ -13,6 +13,9 @@ class Module
         $moduleRouteListener = new ModuleRouteListener();
         $moduleRouteListener->attach($eventManager);
         
+        //\Zend\Debug\Debug::dump($e->getApplication()->getServiceManager()->getRegisteredServices());exit();
+        
+        // определяем этот хелпер здесь, т.к. здесь нам доступен ServiceManager
         $e->getApplication()->getServiceManager()->get('viewhelpermanager')->setFactory('nav', function($sm) use ($e) {
             return new \Application\View\Helper\Nav($e->getRouteMatch());
         });

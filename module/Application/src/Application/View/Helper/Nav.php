@@ -20,41 +20,49 @@ class Nav extends AbstractHelper
             array(
                 'label' => 'Home',
                 'route' => 'Application\index',
+                'routeMatch' => $this->route,
             ),
             array(
                 'label' => 'Diary',
                 'route' => 'Diary\index',
+                'routeMatch' => $this->route,
                 'pages' => array(
                     array(
                         'label' => 'list',
                         'route' => 'Diary\index',
+                        'routeMatch' => $this->route,
                     ),
                     array(
                         'label' => 'add',
                         'route' => 'Diary\add-note',
+                        'routeMatch' => $this->route,
                     ),
                 ),
             ),
             array(
                 'label' => 'Tasks',
                 'route' => 'Tasks\index',
+                'routeMatch' => $this->route,
                 'pages' => array(
                     array(
                         'label' => 'list',
                         'route' => 'Tasks\index',
+                        'routeMatch' => $this->route,
                     ),
                     array(
                         'label' => 'add',
                         'route' => 'Tasks\add-task',
+                        'routeMatch' => $this->route,
                     ),
                 ),
             ),
         ));
         
-        //$page = $container->findOneByController('Diary\Controller\Index');
+        //$page = $container->findOneByRoute('Diary\index');
+        //\Zend\Debug\Debug::dump($page->isActive());exit();
         //$page = $container->findOneByRoute('Diary\index');
         //\Zend\Debug\Debug::dump($this->route);exit();
-        //\Zend\Debug\Debug::dump($page->isActive());exit();
+        
         
         return $container;
     }
