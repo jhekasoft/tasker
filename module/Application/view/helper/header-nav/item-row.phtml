@@ -1,0 +1,19 @@
+<?php
+$class = "";
+if(true == $this->active) {
+    $class .= " active ";
+}
+if(count($this->pages) > 0) {
+    $class .= " dropdown-submenu ";
+}
+?>
+<li class="<?php echo $class;?>">
+    <a href="<?php echo $this->url($this->route);?>">
+        <?php echo $this->label;?>
+    </a>
+    <?php if(count($this->pages) > 0) {?>
+        <ul class="dropdown-menu">
+            <?php echo $this->partialLoop('helper/header-nav/subitem-row', $this->pages);?>
+        </ul>
+    <?php }?>
+</li>

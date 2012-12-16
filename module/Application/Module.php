@@ -12,6 +12,10 @@ class Module
         $eventManager        = $e->getApplication()->getEventManager();
         $moduleRouteListener = new ModuleRouteListener();
         $moduleRouteListener->attach($eventManager);
+        
+        $e->getApplication()->getServiceManager()->get('viewhelpermanager')->setFactory('nav', function($sm) use ($e) {
+            return new \Application\View\Helper\Nav($e->getRouteMatch());
+        });
     }
 
     public function getConfig()

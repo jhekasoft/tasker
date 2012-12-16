@@ -6,7 +6,9 @@ return array(
             'sideRight' => 'Application\View\Helper\SideRight',
             'head' => 'Application\View\Helper\Head',
             'header' => 'Application\View\Helper\Header',
+            'headerNav' => 'Application\View\Helper\HeaderNav',
             'footer' => 'Application\View\Helper\Footer',
+            'nav' => 'Application\View\Helper\Nav',
         )
     ),
     'router' => array(

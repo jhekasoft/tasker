@@ -1,6 +1,7 @@
 <?php
 
 namespace Tasks\Controller;
+use \Zend as Zend;
 
 use Zend\ServiceManager\ServiceLocatorAwareInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
@@ -21,7 +22,31 @@ class IndexController extends AbstractActionController implements ServiceLocator
 
     public function init()
     {
-
+//        $container = new Zend\Navigation\Navigation(array(
+//            
+//            array(
+//                'label' => 'Page 1',
+//                'uri'   => '#',
+//              //  'order' => '100500',
+//            ),
+//            array(
+//                'label' => 'Page 2',
+//                'uri'   => '#',
+//                //'order' => '101',
+//                'pages' => array(
+//                    array(
+//                        'label' => 'Page 2.1',
+//                        'uri'   => '#',
+//                    ),
+//                    array(
+//                        'label' => 'Page 2.2',
+//                       'uri'   => '#',
+//                    ),
+//                ),
+//            ),
+//            
+//        ));
+//        \Zend\Debug\Debug::dump($container->toArray());exit();
     }
 
     public function indexAction()

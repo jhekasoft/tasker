@@ -105,8 +105,12 @@ class Mvc extends AbstractPage
      */
     public function isActive($recursive = false)
     {
+//        if('Diary\Controller\Index' == $this->controller) {
+//            \Zend\Debug\Debug::dump('asd');//exit();
+//        }
         if (!$this->active) {
             $reqParams = array();
+            //\Zend\Debug\Debug::dump($this->routeMatch);exit();
             if ($this->routeMatch instanceof RouteMatch) {
                 $reqParams  = $this->routeMatch->getParams();
 

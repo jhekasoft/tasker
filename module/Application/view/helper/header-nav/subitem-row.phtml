@@ -1,0 +1,11 @@
+<?php
+$class = "";
+if(true == $this->active) {
+    $class .= "active";
+}
+?>
+<li class="<?php echo $class;?>">
+    <a href="<?php echo $this->url($this->route);?>">
+        <?php echo $this->label;?>
+    </a>
+</li>
