@@ -1,1 +1,10 @@
 <?php echo $this->headerNav();?>
+<?php echo $this->navigation()->breadcrumbs($this->nav())->setLinkLast(false)
+                                                         ->setSeparator('<span class="divider">/</span>')
+                                                         ->setPartial('partials/breadcrumbs');
+?>
+
+<?php echo $this->navigation()->breadcrumbs($this->nav())->setLinkLast(true)
+                                                         ->setSeparator('<span class="divider">></span>')
+                                                         ->setPartial('partials/breadcrumbs');
+?>

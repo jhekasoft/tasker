@@ -9,6 +9,7 @@ return array(
             'headerNav' => 'Application\View\Helper\HeaderNav',
             'footer' => 'Application\View\Helper\Footer',
             //'nav' => 'Application\View\Helper\Nav',
+            //'breadcrumbs' => 'Application\View\Helper\Breadcrumbs',
         )
     ),
     'router' => array(
