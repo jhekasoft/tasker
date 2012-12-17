@@ -89,7 +89,6 @@ class PaginationControl extends AbstractHelper
      */
     public function __invoke(Paginator\Paginator $paginator = null, $scrollingStyle = null, $partial = null, $params = null)
     {
-        //\Zend\Debug\Debug::dump($paginator);exit();
         if ($paginator === null) {
             if (isset($this->view->paginator) and $this->view->paginator !== null and $this->view->paginator instanceof Paginator\Paginator) {
                 $paginator = $this->view->paginator;
@@ -111,7 +110,6 @@ class PaginationControl extends AbstractHelper
         }
 
         $pages = get_object_vars($paginator->getPages($scrollingStyle));
-        //$pages = array();
 
         if ($params !== null) {
             $pages = array_merge($pages, (array) $params);
