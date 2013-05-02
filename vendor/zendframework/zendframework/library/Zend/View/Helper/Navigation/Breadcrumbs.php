@@ -270,7 +270,6 @@ class Breadcrumbs extends AbstractHelper
             $partialHelper = $this->view->plugin('partial');
             return $partialHelper($partial[0], /*$partial[1], */$model);
         }
-        //\Zend\Debug\Debug::dump($model);exit();
 
         $partialHelper = $this->view->plugin('partial');
         return $partialHelper($partial, $model);

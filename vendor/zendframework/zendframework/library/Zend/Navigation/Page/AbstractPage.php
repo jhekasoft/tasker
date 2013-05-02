@@ -223,7 +223,6 @@ abstract class AbstractPage extends AbstractContainer
                 || isset($options['route']);
 
         if ($hasMvc) {
-            //\Zend\Debug\Debug::dump($options);exit();
             return new Mvc($options);
         } elseif ($hasUri) {
             return new Uri($options);
@@ -246,7 +245,6 @@ abstract class AbstractPage extends AbstractContainer
         if ($options instanceof Traversable) {
             $options = ArrayUtils::iteratorToArray($options);
         }
-        //\Zend\Debug\Debug::dump($options);exit();
         if (is_array($options)) {
             $this->setOptions($options);
         }

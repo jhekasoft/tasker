@@ -5,6 +5,7 @@ ini_set("display_errors", "On");
 ini_set("display_startup_errors", "On");
 ini_set("log_errors", "On");
 ini_set("html_errors", "On");
+date_default_timezone_set('Europe/Kiev');
 
 /**
  * This makes our life easier when dealing with paths. Everything is relative
