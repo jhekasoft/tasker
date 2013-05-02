@@ -1,0 +1,170 @@
+2013/05/02 21:00:01 [error] [exception.CException] exception 'CException' with message 'Alias "application.modules.data.Data" is invalid. Make sure it points to an existing PHP file and the file is readable.' in /home/bondvt04/www/tasker/framework/YiiBase.php:316
+Stack trace:
+#0 /home/bondvt04/www/tasker/framework/gii/generators/crud/CrudCode.php(59): YiiBase::import('application.mod...', true)
+#1 /home/bondvt04/www/tasker/framework/validators/CInlineValidator.php(42): CrudCode->validateModel('model', Array)
+#2 /home/bondvt04/www/tasker/framework/validators/CValidator.php(213): CInlineValidator->validateAttribute(Object(CrudCode), 'model')
+#3 /home/bondvt04/www/tasker/framework/base/CModel.php(159): CValidator->validate(Object(CrudCode), NULL)
+#4 /home/bondvt04/www/tasker/framework/gii/CCodeGenerator.php(159): CModel->validate()
+#5 /home/bondvt04/www/tasker/framework/gii/CCodeGenerator.php(63): CCodeGenerator->prepare()
+#6 /home/bondvt04/www/tasker/framework/web/actions/CInlineAction.php(49): CCodeGenerator->actionIndex()
+#7 /home/bondvt04/www/tasker/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#8 /home/bondvt04/www/tasker/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#9 /home/bondvt04/www/tasker/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 /home/bondvt04/www/tasker/framework/web/CWebApplication.php(282): CController->run('')
+#11 /home/bondvt04/www/tasker/framework/web/CWebApplication.php(141): CWebApplication->runController('gii/crud')
+#12 /home/bondvt04/www/tasker/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#13 /home/bondvt04/www/tasker/public_html/index.php(13): CApplication->run()
+#14 {main}
+REQUEST_URI=/index.php?r=gii/crud
+HTTP_REFERER=http://tasker.bondvt04.home.lan/index.php?r=gii/crud
+---
+2013/05/02 21:04:21 [error] [exception.CException] exception 'CException' with message 'Alias "application.modules.data.Data" is invalid. Make sure it points to an existing PHP file and the file is readable.' in /home/bondvt04/www/tasker/framework/YiiBase.php:316
+Stack trace:
+#0 /home/bondvt04/www/tasker/framework/gii/generators/crud/CrudCode.php(59): YiiBase::import('application.mod...', true)
+#1 /home/bondvt04/www/tasker/framework/validators/CInlineValidator.php(42): CrudCode->validateModel('model', Array)
+#2 /home/bondvt04/www/tasker/framework/validators/CValidator.php(213): CInlineValidator->validateAttribute(Object(CrudCode), 'model')
+#3 /home/bondvt04/www/tasker/framework/base/CModel.php(159): CValidator->validate(Object(CrudCode), NULL)
+#4 /home/bondvt04/www/tasker/framework/gii/CCodeGenerator.php(159): CModel->validate()
+#5 /home/bondvt04/www/tasker/framework/gii/CCodeGenerator.php(63): CCodeGenerator->prepare()
+#6 /home/bondvt04/www/tasker/framework/web/actions/CInlineAction.php(49): CCodeGenerator->actionIndex()
+#7 /home/bondvt04/www/tasker/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#8 /home/bondvt04/www/tasker/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#9 /home/bondvt04/www/tasker/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 /home/bondvt04/www/tasker/framework/web/CWebApplication.php(282): CController->run('')
+#11 /home/bondvt04/www/tasker/framework/web/CWebApplication.php(141): CWebApplication->runController('gii/crud')
+#12 /home/bondvt04/www/tasker/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#13 /home/bondvt04/www/tasker/public_html/index.php(13): CApplication->run()
+#14 {main}
+REQUEST_URI=/index.php?r=gii/crud
+HTTP_REFERER=http://tasker.bondvt04.home.lan/index.php?r=gii/crud
+---
+2013/05/02 22:20:29 [error] [exception.CException] exception 'CException' with message 'Alias "application.modules.data.Data" is invalid. Make sure it points to an existing PHP file and the file is readable.' in /home/bondvt04/www/tasker/framework/YiiBase.php:316
+Stack trace:
+#0 /home/bondvt04/www/tasker/framework/gii/generators/crud/CrudCode.php(59): YiiBase::import('application.mod...', true)
+#1 /home/bondvt04/www/tasker/framework/validators/CInlineValidator.php(42): CrudCode->validateModel('model', Array)
+#2 /home/bondvt04/www/tasker/framework/validators/CValidator.php(213): CInlineValidator->validateAttribute(Object(CrudCode), 'model')
+#3 /home/bondvt04/www/tasker/framework/base/CModel.php(159): CValidator->validate(Object(CrudCode), NULL)
+#4 /home/bondvt04/www/tasker/framework/gii/CCodeGenerator.php(159): CModel->validate()
+#5 /home/bondvt04/www/tasker/framework/gii/CCodeGenerator.php(63): CCodeGenerator->prepare()
+#6 /home/bondvt04/www/tasker/framework/web/actions/CInlineAction.php(49): CCodeGenerator->actionIndex()
+#7 /home/bondvt04/www/tasker/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#8 /home/bondvt04/www/tasker/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#9 /home/bondvt04/www/tasker/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 /home/bondvt04/www/tasker/framework/web/CWebApplication.php(282): CController->run('')
+#11 /home/bondvt04/www/tasker/framework/web/CWebApplication.php(141): CWebApplication->runController('gii/crud')
+#12 /home/bondvt04/www/tasker/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#13 /home/bondvt04/www/tasker/public_html/index.php(13): CApplication->run()
+#14 {main}
+REQUEST_URI=/index.php?r=gii/crud
+HTTP_REFERER=http://tasker.bondvt04.home.lan/index.php?r=gii/crud
+---
+2013/05/02 22:21:20 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "data/data".' in /home/bondvt04/www/tasker/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/bondvt04/www/tasker/framework/web/CWebApplication.php(141): CWebApplication->runController('data/data')
+#1 /home/bondvt04/www/tasker/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /home/bondvt04/www/tasker/public_html/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php?r=data/data
+---
+2013/05/02 23:27:57 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in /home/bondvt04/www/tasker/framework/web/auth/CAccessControlFilter.php:179
+Stack trace:
+#0 /home/bondvt04/www/tasker/framework/web/auth/CAccessControlFilter.php(142): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 /home/bondvt04/www/tasker/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 /home/bondvt04/www/tasker/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 /home/bondvt04/www/tasker/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 /home/bondvt04/www/tasker/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 /home/bondvt04/www/tasker/framework/web/CController.php(291): CFilterChain->run()
+#6 /home/bondvt04/www/tasker/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /home/bondvt04/www/tasker/framework/web/CWebApplication.php(282): CController->run('create')
+#8 /home/bondvt04/www/tasker/framework/web/CWebApplication.php(141): CWebApplication->runController('data/data/creat...')
+#9 /home/bondvt04/www/tasker/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#10 /home/bondvt04/www/tasker/public_html/index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/index.php?r=data/data/create
+HTTP_REFERER=http://tasker.bondvt04.home.lan/index.php?r=site/login
+---
+2013/05/02 23:28:24 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in /home/bondvt04/www/tasker/framework/web/auth/CAccessControlFilter.php:179
+Stack trace:
+#0 /home/bondvt04/www/tasker/framework/web/auth/CAccessControlFilter.php(142): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 /home/bondvt04/www/tasker/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 /home/bondvt04/www/tasker/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 /home/bondvt04/www/tasker/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 /home/bondvt04/www/tasker/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 /home/bondvt04/www/tasker/framework/web/CController.php(291): CFilterChain->run()
+#6 /home/bondvt04/www/tasker/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /home/bondvt04/www/tasker/framework/web/CWebApplication.php(282): CController->run('create')
+#8 /home/bondvt04/www/tasker/framework/web/CWebApplication.php(141): CWebApplication->runController('data/data/creat...')
+#9 /home/bondvt04/www/tasker/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#10 /home/bondvt04/www/tasker/public_html/index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/index.php?r=data/data/create
+HTTP_REFERER=http://tasker.bondvt04.home.lan/index.php?r=site/login
+---
+2013/05/02 23:28:33 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in /home/bondvt04/www/tasker/framework/web/auth/CAccessControlFilter.php:179
+Stack trace:
+#0 /home/bondvt04/www/tasker/framework/web/auth/CAccessControlFilter.php(142): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 /home/bondvt04/www/tasker/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 /home/bondvt04/www/tasker/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 /home/bondvt04/www/tasker/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 /home/bondvt04/www/tasker/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 /home/bondvt04/www/tasker/framework/web/CController.php(291): CFilterChain->run()
+#6 /home/bondvt04/www/tasker/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /home/bondvt04/www/tasker/framework/web/CWebApplication.php(282): CController->run('create')
+#8 /home/bondvt04/www/tasker/framework/web/CWebApplication.php(141): CWebApplication->runController('data/data/creat...')
+#9 /home/bondvt04/www/tasker/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#10 /home/bondvt04/www/tasker/public_html/index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/index.php?r=data/data/create
+HTTP_REFERER=http://tasker.bondvt04.home.lan/index.php?r=data/data
+---
+2013/05/02 23:29:04 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in /home/bondvt04/www/tasker/framework/web/auth/CAccessControlFilter.php:179
+Stack trace:
+#0 /home/bondvt04/www/tasker/framework/web/auth/CAccessControlFilter.php(142): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 /home/bondvt04/www/tasker/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 /home/bondvt04/www/tasker/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 /home/bondvt04/www/tasker/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 /home/bondvt04/www/tasker/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 /home/bondvt04/www/tasker/framework/web/CController.php(291): CFilterChain->run()
+#6 /home/bondvt04/www/tasker/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /home/bondvt04/www/tasker/framework/web/CWebApplication.php(282): CController->run('create')
+#8 /home/bondvt04/www/tasker/framework/web/CWebApplication.php(141): CWebApplication->runController('data/data/creat...')
+#9 /home/bondvt04/www/tasker/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#10 /home/bondvt04/www/tasker/public_html/index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/index.php?r=data/data/create
+HTTP_REFERER=http://tasker.bondvt04.home.lan/index.php?r=data/data
+---
+2013/05/02 23:29:13 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in /home/bondvt04/www/tasker/framework/web/auth/CAccessControlFilter.php:179
+Stack trace:
+#0 /home/bondvt04/www/tasker/framework/web/auth/CAccessControlFilter.php(142): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 /home/bondvt04/www/tasker/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 /home/bondvt04/www/tasker/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 /home/bondvt04/www/tasker/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 /home/bondvt04/www/tasker/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 /home/bondvt04/www/tasker/framework/web/CController.php(291): CFilterChain->run()
+#6 /home/bondvt04/www/tasker/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /home/bondvt04/www/tasker/framework/web/CWebApplication.php(282): CController->run('create')
+#8 /home/bondvt04/www/tasker/framework/web/CWebApplication.php(141): CWebApplication->runController('data/data/creat...')
+#9 /home/bondvt04/www/tasker/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#10 /home/bondvt04/www/tasker/public_html/index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/index.php?r=data/data/create
+HTTP_REFERER=http://tasker.bondvt04.home.lan/index.php?r=data/data
+---
+2013/05/02 23:29:22 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in /home/bondvt04/www/tasker/framework/web/auth/CAccessControlFilter.php:179
+Stack trace:
+#0 /home/bondvt04/www/tasker/framework/web/auth/CAccessControlFilter.php(142): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 /home/bondvt04/www/tasker/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 /home/bondvt04/www/tasker/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 /home/bondvt04/www/tasker/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 /home/bondvt04/www/tasker/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 /home/bondvt04/www/tasker/framework/web/CController.php(291): CFilterChain->run()
+#6 /home/bondvt04/www/tasker/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /home/bondvt04/www/tasker/framework/web/CWebApplication.php(282): CController->run('create')
+#8 /home/bondvt04/www/tasker/framework/web/CWebApplication.php(141): CWebApplication->runController('data/data/creat...')
+#9 /home/bondvt04/www/tasker/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#10 /home/bondvt04/www/tasker/public_html/index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/index.php?r=data/data/create
+HTTP_REFERER=http://tasker.bondvt04.home.lan/index.php?r=data/data
+---
