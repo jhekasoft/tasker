@@ -6,7 +6,7 @@
 // This is the main Web application configuration. Any writable
 // CWebApplication properties can be configured here.
 return array(
-	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
+    'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'My Web Application',
 
 	// preloading 'log' component
@@ -17,10 +17,14 @@ return array(
 		'application.models.*',
 		'application.components.*',
 	),
+    
+    'defaultController'=>'add/default',
 
 	'modules'=>array(
 		// uncomment the following to enable the Gii tool
+        'add',
         'data',
+        'tag',
 		'gii'=>array(
 			'class'=>'system.gii.GiiModule',
 			'password'=>'hello_world',
@@ -56,6 +60,7 @@ return array(
 			'username' => 'user',
 			'password' => 'usbw',
 			'charset' => 'utf8',
+            'tablePrefix' => 'bnd_',
 		),
 		'errorHandler'=>array(
 			// use 'site/error' action to display errors
