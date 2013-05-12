@@ -40,12 +40,15 @@
         ?>
 		
         
-        <?php $form=$this->beginWidget('ext.tag.TagsSelector'); ?>
+        <?php $this->beginWidget('ext.tag.TagsSelector'); ?>
             <script>
                 $(document).ready(function() {
                     var availableTags = <?php echo json_encode(array_values(CHtml::listData(Tag::model()->findAll(), 'id', 'title')))?>;
                     $('.tags_mother_fucker').tagit({
-                        availableTags:availableTags
+                        availableTags:availableTags,
+                        singleField: true,
+                        singleFieldNode: $('#mySingleField'),
+                        removeConfirmation: true
                     });
                 });
             </script>
@@ -59,15 +62,15 @@
                     <?php }?>
                 <?php }?>
             </ul>
+            
+            <?php $model->tags = implode(',', array_values(CHtml::listData($model->tags, 'id', 'title')));?>
+            <?php //echo $form->textField($model,'tags',array('size'=>60,'maxlength'=>255,'disabled'=>'true','style'=>'display:nonek')); ?>
         <?php $this->endWidget(); ?>
-        <?php //echo $form->error($model,'tags'); ?>
+        <?php echo $form->error($model,'tags'); ?>
+            
+        <input name="tags" id="mySingleField" value="Apple, Orange" disabled="true">
 	</div>
     
-    <div class="row buttons">
-		
-	</div>
-    
-
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
 	</div>

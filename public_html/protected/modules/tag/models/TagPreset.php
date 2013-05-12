@@ -37,6 +37,7 @@ class TagPreset extends CActiveRecord
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
             array('tags', 'length', 'max'=>255),
+            array('tags', 'required'),
 			array('id', 'safe', 'on'=>'search'),
 		);
 	}
@@ -87,6 +88,7 @@ class TagPreset extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
+            'tags'=>'TAGS'
 		);
 	}
 

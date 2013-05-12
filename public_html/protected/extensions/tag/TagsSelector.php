@@ -2,8 +2,6 @@
 
 class TagsSelector extends CTabView
 {
-    public $selector = '.tags';
-    
     public $cssFiles = array();
     public $jsFiles = array();
     
@@ -29,12 +27,6 @@ class TagsSelector extends CTabView
     public function run()
     {
         $content = ob_get_contents();ob_end_clean();
-        /*if(empty($content) || !preg_match('/[\w]+/ui', $content)) {
-            $this->selector = '.tags';
-            ob_start();?>
-            <input name="tags" class="tags" type="text" />
-            <?php $content = ob_get_contents();ob_end_clean();
-        }*/
         
         echo $content;
     }
@@ -54,12 +46,5 @@ class TagsSelector extends CTabView
                 $cs->registerScriptFile($file);
             }
         }
-        
-//        $cs->registerScript('tagit',
-//            '$(document).ready(function() {
-//                $("' . $this->selector . '").tagit();
-//            });'
-//        );
-            
     }
 }
