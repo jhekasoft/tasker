@@ -1,6 +1,6 @@
 <?php
 
-class AddModule extends CWebModule
+class TagModule extends CWebModule
 {
 	public function init()
 	{
@@ -9,8 +9,8 @@ class AddModule extends CWebModule
 
 		// import the module-level models and components
 		$this->setImport(array(
-			'add.models.*',
-			'add.components.*',
+			'tag.models.*',
+			'tag.components.*',
 		));
 	}
 

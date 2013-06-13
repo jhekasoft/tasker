@@ -18,13 +18,15 @@ return array(
 		'application.components.*',
 	),
     
-    'defaultController'=>'add/default',
+    'defaultController'=>'inbox/default/add',
 
 	'modules'=>array(
 		// uncomment the following to enable the Gii tool
-        'add',
         'data',
+        'inbox',
+        'info',
         'tag',
+        'task',
 		'gii'=>array(
 			'class'=>'system.gii.GiiModule',
 			'password'=>'hello_world',
