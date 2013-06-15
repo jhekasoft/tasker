@@ -5,7 +5,7 @@
 
 // This is the main Web application configuration. Any writable
 // CWebApplication properties can be configured here.
-return array(
+$config = array(
     'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'My Web Application',
 
@@ -56,14 +56,7 @@ return array(
 //			'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/testdrive.db',
 //		),
 		// uncomment the following to use a MySQL database
-		'db'=>array(
-			'connectionString' => 'mysql:host=localhost;dbname=tasker',
-			'emulatePrepare' => true,
-			'username' => 'user',
-			'password' => 'usbw',
-			'charset' => 'utf8',
-            'tablePrefix' => 'bnd_',
-		),
+		
 		'errorHandler'=>array(
 			// use 'site/error' action to display errors
 			'errorAction'=>'site/error',
@@ -92,3 +85,25 @@ return array(
 		'adminEmail'=>'webmaster@example.com',
 	),
 );
+
+if(preg_match('/tasker\.ru/', $_SERVER['HTTP_HOST'])) {
+    $config['components']['db']=array(
+        'connectionString' => 'mysql:host=localhost;dbname=tasker',
+        'emulatePrepare' => true,
+        'username' => 'root',
+        'password' => '',
+        'charset' => 'utf8',
+        'tablePrefix' => 'bnd_',
+    );
+} else {
+    $config['components']['db']=array(
+        'connectionString' => 'mysql:host=localhost;dbname=tasker',
+        'emulatePrepare' => true,
+        'username' => 'user',
+        'password' => 'usbw',
+        'charset' => 'utf8',
+        'tablePrefix' => 'bnd_',
+    );
+}
+
+return $config;
