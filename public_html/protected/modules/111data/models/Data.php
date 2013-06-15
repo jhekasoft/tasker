@@ -1,14 +1,13 @@
 <?php
 
 /**
- * This is the model class for table "{{data}}".
+ * This is the model class for table "bnd_data".
  *
- * The followings are the available columns in table '{{data}}':
+ * The followings are the available columns in table 'bnd_data':
  * @property integer $id
  * @property string $data
  * @property string $create_time
  * @property string $update_time
- * @property integer $user_id
  */
 class Data extends CActiveRecord
 {
@@ -27,7 +26,7 @@ class Data extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return '{{data}}';
+		return 'bnd_data';
 	}
 
 	/**
@@ -38,11 +37,10 @@ class Data extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('data, create_time, update_time, user_id', 'required'),
-			array('user_id', 'numerical', 'integerOnly'=>true),
+			array('data', 'required'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, data, create_time, update_time, user_id', 'safe', 'on'=>'search'),
+			array('id, data, create_time, update_time', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -67,7 +65,6 @@ class Data extends CActiveRecord
 			'data' => 'Data',
 			'create_time' => 'Create Time',
 			'update_time' => 'Update Time',
-			'user_id' => 'User',
 		);
 	}
 
@@ -86,10 +83,38 @@ class Data extends CActiveRecord
 		$criteria->compare('data',$this->data,true);
 		$criteria->compare('create_time',$this->create_time,true);
 		$criteria->compare('update_time',$this->update_time,true);
-		$criteria->compare('user_id',$this->user_id);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
 	}
+    
+    protected function beforeSave()
+    {
+        if(parent::beforeSave()) {
+            if($this->isNewRecord) {
+                $this->create_time=$this->update_time=date('Y-m-d H:i:s');
+                $this->user_id=Yii::app()->user->id;
+            } else {
+                $this->update_time=date('Y-m-d H:i:s');
+            }
+            
+            $this->user_id = '-1';
+            
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
+    /**
+     * Удаление записи должно вызывать удаление всех комментариев к ней.
+     * Вдобавок, мы должны обновить теги в таблице tbl_tag.
+     */
+    protected function afterDelete()
+    {
+        parent::afterDelete();
+        //Comment::model()->deleteAll('post_id='.$this->id);
+        //Tag::model()->updateFrequency($this->tags, '');
+    }
 }
