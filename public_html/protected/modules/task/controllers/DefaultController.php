@@ -36,7 +36,7 @@ class DefaultController extends Controller
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete'),
+				'actions'=>array('admin','delete', 'done'),
 				'users'=>array('admin'),
 			),
 			array('deny',  // deny all users
@@ -62,6 +62,7 @@ class DefaultController extends Controller
 	 */
 	public function actionCreate()
 	{
+        //var_dump('asdf');exit();
 		$model=new Task;
         
         if(null === $model->data) {
@@ -134,7 +135,18 @@ class DefaultController extends Controller
 
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 		if(!isset($_GET['ajax']))
-			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
+	}
+    
+    public function actionDone($id)
+	{
+		$model = $this->loadModel($id);
+        $model->progress = 'done';
+        $model->save();
+
+		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
+		if(!isset($_GET['ajax']))
+			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
 	}
 
 	/**
@@ -142,7 +154,13 @@ class DefaultController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Task');
+		$dataProvider=new CActiveDataProvider(Task::model()->new()
+            , array(
+                'criteria' => array(
+                    'order' => "todo_time ASC",
+                ),
+            )
+        );
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));

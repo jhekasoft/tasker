@@ -5,29 +5,23 @@
 
 <div class="view">
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('id')); ?>:</b>
-	<?php echo CHtml::link(CHtml::encode($data->id), array('view', 'id'=>$data->id)); ?>
+<div class="view">
+    
+    <div style="float:right; background-color:#aaaaaa; padding:5px;">
+        <?php echo CHtml::link('done', array('done', 'id'=>$data->id)); ?>
+    </div>
+	
+
+	<?php echo CHtml::link(CHtml::encode($data->todo_time), array('/data/default/view', 'id'=>$data->data_id)); ?>
+	<br />
+    
+    
+
+	<?php /*<b><?php echo CHtml::encode($data->data->getAttributeLabel('data')); ?>:</b>*/?>
+	<?php echo CHtml::encode($data->data->data); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('data_id')); ?>:</b>
-	<?php echo CHtml::encode($data->data_id); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('task_id')); ?>:</b>
-	<?php echo CHtml::encode($data->task_id); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('user_id')); ?>:</b>
-	<?php echo CHtml::encode($data->user_id); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('progress')); ?>:</b>
-	<?php echo CHtml::encode($data->progress); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('todo_time')); ?>:</b>
-	<?php echo CHtml::encode($data->todo_time); ?>
-	<br />
+</div>
 
 
 </div>

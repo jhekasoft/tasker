@@ -13,6 +13,39 @@
  */
 class Task extends CActiveRecord
 {
+    public function scopes()
+    {
+        return array(
+            'done'=>array(
+                'condition'=>"`progress`='done'",
+            ),
+            'new'=>array(
+                'condition'=>"`progress`='new'",
+            ),
+            'in_progress'=>array(
+                'condition'=>"`progress`='in_progress'",
+            ),
+            'actual'=>array(
+                'condition'=>"`progress`!='done'",
+            ),
+        );
+    }
+    
+    public function getDescription()
+    {
+        return date('Y-m-d', time($this->todo_time)).' / '.$this->substrWords($this->data->data, 5);
+    }
+    
+    public function substrWords($text, $wordCount = 5)
+    {
+        $sep = ' ';
+        $words = split($sep, $text);
+        if (count($words) > $wordCount) {
+            $text = join($sep, array_slice($words, 0, $wordCount)) . '...';
+        }
+        return $text;
+    }
+    
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
