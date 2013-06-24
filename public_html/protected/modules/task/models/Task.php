@@ -1,19 +1,22 @@
 <?php
 
 /**
- * This is the model class for table "{{inbox}}".
+ * This is the model class for table "{{task}}".
  *
- * The followings are the available columns in table '{{inbox}}':
+ * The followings are the available columns in table '{{task}}':
  * @property integer $id
  * @property integer $data_id
+ * @property integer $task_id
  * @property integer $user_id
+ * @property string $progress
+ * @property string $todo_time
  */
-class Inbox extends CActiveRecord
+class Task extends CActiveRecord
 {
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
-	 * @return Inbox the static model class
+	 * @return Task the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
@@ -25,7 +28,7 @@ class Inbox extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return '{{inbox}}';
+		return '{{task}}';
 	}
 
 	/**
@@ -36,11 +39,12 @@ class Inbox extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			//array('data_id', 'required'),
-			array('data_id, user_id', 'numerical', 'integerOnly'=>true),
+			array('data_id', 'required'),
+			array('data_id, task_id, user_id', 'numerical', 'integerOnly'=>true),
+			array('progress', 'length', 'max'=>11),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, data_id, user_id', 'safe', 'on'=>'search'),
+			array('id, data_id, task_id, user_id, progress, todo_time', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -64,7 +68,10 @@ class Inbox extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'data_id' => 'Data',
+			'task_id' => 'Task',
 			'user_id' => 'User',
+			'progress' => 'Progress',
+			'todo_time' => 'Todo Time',
 		);
 	}
 
@@ -81,7 +88,10 @@ class Inbox extends CActiveRecord
 
 		$criteria->compare('id',$this->id);
 		$criteria->compare('data_id',$this->data_id);
+		$criteria->compare('task_id',$this->task_id);
 		$criteria->compare('user_id',$this->user_id);
+		$criteria->compare('progress',$this->progress,true);
+		$criteria->compare('todo_time',$this->todo_time,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -91,9 +101,7 @@ class Inbox extends CActiveRecord
     public function beforeValidate()
     {
         if($this->isNewRecord) {
-            $this->create_time=$this->update_time=date('Y-m-d H:i:s');
-        } else {
-            $this->update_time=date('Y-m-d H:i:s');
+            $this->todo_time=date('Y-m-d H:i:s');
         }
 
         $this->user_id=Yii::app()->user->id;

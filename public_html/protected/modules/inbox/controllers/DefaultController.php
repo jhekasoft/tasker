@@ -82,7 +82,7 @@ class DefaultController extends Controller
                 $model->data_id = $model->data->id;
                 if($model->validate()) {
                     $model->save();
-                    $this->redirect(array('data/default/view','id'=>$model->data->id));
+                    $this->redirect(array('/data/default/view','id'=>$model->data->id));
                 }
             }
 		}

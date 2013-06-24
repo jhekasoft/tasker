@@ -36,6 +36,8 @@
                     'items'=>array(
                         array('label'=>'Inbox', 'url'=>array('/inbox/')),
                         
+                        array('label'=>'Data', 'url'=>array('/data/')),
+                        
                         array('label'=>'Tasks', 'url'=>array('/task/')),
                         array('label'=>'Tags', 'url'=>array('/tag/')),
                         

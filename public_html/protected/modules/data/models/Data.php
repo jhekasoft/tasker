@@ -95,8 +95,14 @@ class Data extends CActiveRecord
     
     public function beforeValidate()
     {
-        $this->update_time = $this->create_time = (new \DateTime())->format('Y-m-d H:i:s');
-        $this->user_id = -1;
+        if($this->isNewRecord) {
+            $this->update_time = $this->create_time = (new \DateTime())->format('Y-m-d H:i:s');
+            $this->user_id=Yii::app()->user->id;
+        } else {
+            $this->update_time=date('Y-m-d H:i:s');
+        }
+
+        $this->user_id=Yii::app()->user->id;
 
         return true;
     }
