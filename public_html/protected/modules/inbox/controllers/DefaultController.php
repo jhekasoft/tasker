@@ -71,18 +71,18 @@ class DefaultController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-        //var_dump($_POST);exit();
         
 		if(Yii::app()->request->getParam('Data'))
 		{
 			$model->data->attributes=Yii::app()->request->getParam('Data');
+            
             if($model->data->validate()) {
                 $model->data->save();
                 
                 $model->data_id = $model->data->id;
                 if($model->validate()) {
                     $model->save();
-                    $this->redirect(array('view','id'=>$model->id));
+                    $this->redirect(array('data/default/view','id'=>$model->data->id));
                 }
             }
 		}

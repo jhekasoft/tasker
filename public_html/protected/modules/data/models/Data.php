@@ -92,4 +92,12 @@ class Data extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+    
+    public function beforeValidate()
+    {
+        $this->update_time = $this->create_time = (new \DateTime())->format('Y-m-d H:i:s');
+        $this->user_id = -1;
+
+        return true;
+    }
 }

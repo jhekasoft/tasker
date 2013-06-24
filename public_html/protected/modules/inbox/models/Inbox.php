@@ -93,21 +93,17 @@ class Inbox extends CActiveRecord
 		));
 	}
     
-    protected function beforeSave()
+    protected function beforeValidate()
     {
-        if(parent::beforeSave()) {
-            if($this->isNewRecord) {
-                $this->create_time=$this->update_time=date('Y-m-d H:i:s');
-                $this->user_id=Yii::app()->user->id;
-            } else {
-                $this->update_time=date('Y-m-d H:i:s');
-            }
-            
-            $this->user_id = '-1';
-            
-            return true;
+        if($this->isNewRecord) {
+            $this->create_time=$this->update_time=date('Y-m-d H:i:s');
+            $this->user_id=Yii::app()->user->id;
         } else {
-            return false;
+            $this->update_time=date('Y-m-d H:i:s');
         }
+
+        $this->user_id = '-1';
+
+        return true;
     }
 }
