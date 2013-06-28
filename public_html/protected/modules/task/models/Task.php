@@ -33,7 +33,19 @@ class Task extends CActiveRecord
     
     public function getDescription()
     {
-        return date('Y-m-d', time($this->todo_time)).' / '.$this->substrWords($this->data->data, 5);
+        $time = 'null';
+        if(!empty($this->todo_time)) {
+            $time = date('Y-m-d', time($this->todo_time));
+        }
+        
+        $data = 'null';
+        if(!empty($this->data)) {
+            $data = $this->substrWords($this->data->data, 5);
+        }
+        
+        $description = $time . '/' . $data;
+        
+        return $description;
     }
     
     public function substrWords($text, $wordCount = 5)
@@ -90,6 +102,7 @@ class Task extends CActiveRecord
         
 		return array(
             'data'=>array(self::BELONGS_TO, 'Data', 'data_id'),
+            'tasks'=>array(self::HAS_MANY, 'Task', 'task_id'),
 		);
 	}
 
@@ -101,7 +114,7 @@ class Task extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'data_id' => 'Data',
-			'task_id' => 'Task',
+			'task_id' => 'Parent Task',
 			'user_id' => 'User',
 			'progress' => 'Progress',
 			'todo_time' => 'Todo Time',
@@ -138,6 +151,11 @@ class Task extends CActiveRecord
         }
 
         $this->user_id=Yii::app()->user->id;
+        
+//        echo '<pre>';
+//        var_dump($this->attributes);
+//        echo '</pre>';
+//        exit();
 
         return true;
     }

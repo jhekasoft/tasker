@@ -16,20 +16,30 @@
 
 	<?php echo $form->errorSummary($model); ?>
 
+    <div class="row">
+        <?php /*@var $form CActiveForm*/?>
+        <?php
+        $task_id = Yii::app()->request->getParam('task_id');
+        if($task_id) {
+            $model->task_id = $task_id;
+        } else {
+            $model->task_id = 0;
+        }
+        ?>
+        <?php echo $form->labelEx($model,'task_id'); ?>
+        <?php echo $form->dropDownList($model,'task_id', array_merge(array(0=>'none'), CHtml::listData(Task::model()->findAll(),'id','description'))); ?>
+        <?php echo $form->error($model,'task_id'); ?>
+    </div>
+    
+    
+    
+    
     <?php
 //    echo '<pre>';
-//    print_r($model->findAll());
+//    var_dump($model->data);exit();
 //    echo '</pre>';
 //    exit();
     ?>
-    
-    <div class="row">
-        <?php /*@var $form CActiveForm*/?>
-        <?php echo $form->labelEx($model,'task_id'); ?>
-        <?php echo $form->dropDownList($model,'task_id', CHtml::listData(Task::model()->actual()->findAll(),'id','description')); ?>
-		<?php //echo $form->dropDownList($model,'task_id', CHtml::listData(Task::model()->actual()->findAll(),'id','todo_time')); ?>
-		<?php echo $form->error($model,'task_id'); ?>
-	</div>
     
     <div class="row">
         <?php /*@var $form CActiveForm*/?>

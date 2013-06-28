@@ -32,7 +32,7 @@ class DefaultController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
+				'actions'=>array('create','update', 'childs'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -65,27 +65,32 @@ class DefaultController extends Controller
         //var_dump('asdf');exit();
 		$model=new Task;
         
+        
+        
         if(null === $model->data) {
             $model->data = new Data;
         }
-
+        
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
         
-		if(Yii::app()->request->getParam('Data'))
+        if(Yii::app()->request->getParam('Data') && Yii::app()->request->getParam('Task'))
 		{
 			$model->data->attributes=Yii::app()->request->getParam('Data');
+            $model->attributes=Yii::app()->request->getParam('Task');
             
-            if($model->data->validate()) {
+            if($model->data->validate() && $model->validate()) {
                 $model->data->save();
-                
                 $model->data_id = $model->data->id;
+                $model->save();
                 
-                if($model->validate()) {
-                    $model->save();
-                    $this->redirect(array('/data/default/view','id'=>$model->data->id));
+                if(!empty($model->task_id)) {
+                    $this->redirect(array('/task/default/index', 'filter'=>'{"onlyNew":"yes"}', 'task_id'=>$model->task_id));
+                } else {
+                    $this->redirect(array('/task/default/index', 'filter'=>'{"onlyNew":"yes"}'));
                 }
+                
             }
 		}
         
@@ -112,11 +117,31 @@ class DefaultController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Task']))
+        if(null === $model->data) {
+            $model->data = new Data;
+        }
+        
+		// Uncomment the following line if AJAX validation is needed
+		// $this->performAjaxValidation($model);
+
+        
+        if(Yii::app()->request->getParam('Data') && Yii::app()->request->getParam('Task'))
 		{
-			$model->attributes=$_POST['Task'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+			$model->data->attributes=Yii::app()->request->getParam('Data');
+            $model->attributes=Yii::app()->request->getParam('Task');
+            
+            if($model->data->validate() && $model->validate()) {
+                $model->data->save();
+                $model->data_id = $model->data->id;
+                $model->save();
+                
+                if(!empty($model->task_id)) {
+                    $this->redirect(array('/task/default/index', 'filter'=>'{"onlyNew":"yes"}', 'task_id'=>$model->task_id));
+                } else {
+                    $this->redirect(array('/task/default/index', 'filter'=>'{"onlyNew":"yes"}'));
+                }
+                
+            }
 		}
 
 		$this->render('update',array(
@@ -145,8 +170,14 @@ class DefaultController extends Controller
         $model->save();
 
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-		if(!isset($_GET['ajax']))
-			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
+        if(!isset($_GET['ajax'])) {
+            if(!empty($model->task_id)) {
+                $this->redirect(array('/task/default/index', 'filter'=>'{"onlyNew":"yes"}', 'task_id'=>$model->task_id));
+            } else {
+                $this->redirect(array('/task/default/index', 'filter'=>'{"onlyNew":"yes"}'));
+            }
+        }
+//        $this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
 	}
 
 	/**
@@ -154,17 +185,55 @@ class DefaultController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider(Task::model()->new()
-            , array(
-                'criteria' => array(
-                    'order' => "todo_time ASC",
-                ),
+        $criteria = new CDbCriteria();
+        $criteria->order = "`progress` ASC, `todo_time` DESC";
+        
+        
+        $task_id = Yii::app()->request->getParam('task_id');
+        if($task_id) {
+            $criteria->addCondition("`task_id`='{$task_id}'");
+        } else {
+            $criteria->addCondition("`task_id`='0'");
+        }
+        
+        $filter = json_decode(Yii::app()->request->getParam('filter'));
+        if(!empty($filter->onlyNew) && 'yes' == $filter->onlyNew) {
+            $criteria->scopes[] = 'new';
+            //&filter={"onlyNew":"yes"}
+            //&task_id=6
+        }
+        
+//        echo '<pre>';
+//        var_dump($criteria->order);
+//        echo '</pre>';
+//        exit();
+        
+        //$criteria->scopes
+        
+        $dataProvider=new CActiveDataProvider(Task::model(), array(
+                'criteria' => $criteria,
             )
         );
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
 	}
+    
+//	public function actionChilds($task_id)
+//	{
+//		$dataProvider=new CActiveDataProvider(Task::model()->new()
+//            , array(
+//                'criteria' => array(
+//                    'condition' => "`task_id`='{$task_id}'",
+//                    'order' => "todo_time ASC",
+//                ),
+//            )
+//        );
+//        
+//		$this->render('childs',array(
+//			'dataProvider'=>$dataProvider,
+//		));
+//	}
 
 	/**
 	 * Manages all models.
