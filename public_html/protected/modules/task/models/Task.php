@@ -18,18 +18,43 @@ class Task extends CActiveRecord
         return array(
             'done'=>array(
                 'condition'=>"`progress`='done'",
+                'order'=>"todo_time DESC",
             ),
             'new'=>array(
                 'condition'=>"`progress`='new'",
+                'order'=>"todo_time DESC",
             ),
             'in_progress'=>array(
                 'condition'=>"`progress`='in_progress'",
+                'order'=>"todo_time DESC",
             ),
             'actual'=>array(
                 'condition'=>"`progress`!='done'",
+                'order'=>"todo_time DESC",
             ),
         );
     }
+    
+    /**
+	 * @return array relational rules.
+	 */
+	public function relations()
+	{
+        Yii::app()->getModule('data');
+        
+		return array(
+            'parent'=>array(self::BELONGS_TO, 'Task', 'task_id'),
+            'data'=>array(self::BELONGS_TO, 'Data', 'data_id'),
+            'tasks'=>array(self::HAS_MANY, 'Task', 'task_id'),
+            'actualTasks'=>array(
+                self::HAS_MANY,
+                'Task',
+                'task_id',
+                'order'=>'actualTasks.todo_time DESC',
+                'condition'=>"`actualTasks`.`progress`!='done'",
+            ),
+		);
+	}
     
     public function getDescription()
     {
@@ -93,18 +118,7 @@ class Task extends CActiveRecord
 		);
 	}
 
-	/**
-	 * @return array relational rules.
-	 */
-	public function relations()
-	{
-        Yii::app()->getModule('data');
-        
-		return array(
-            'data'=>array(self::BELONGS_TO, 'Data', 'data_id'),
-            'tasks'=>array(self::HAS_MANY, 'Task', 'task_id'),
-		);
-	}
+	
 
 	/**
 	 * @return array customized attribute labels (name=>label)

@@ -15,14 +15,19 @@ if('done' == $data->progress) {
     
     <?php
     $color = '#eeeeee';
-    if(count($data->tasks) > 0) {
-        $color = '#ccaaaa';
+    if(count($data->actualTasks) > 0) {
+        $color = '#ccffcc';
     }?>
     <div style="float:right; background-color:<?php echo $color;?>; padding:5px;">
-        <?php echo CHtml::link('childs', array('index', 'task_id'=>$data->id)); ?>
+        <?php echo CHtml::link('childs', array('index', 'task_id'=>$data->id, 'filter'=>'{"onlyNew":"yes"}')); ?>
     </div>
     
-    <div style="float:right; background-color:#aaaaaa; padding:5px;">
+    <?php
+    $doneStyle = 'background-color:#aaaaaa;';
+    if(count($data->actualTasks) > 0) {
+        $doneStyle = 'background-color:#ccaaaa; pointer-events: none; cursor: default;';
+    }?>
+    <div style="float:right;  padding:5px; <?php echo $doneStyle;?>">
         <?php echo CHtml::link('done', array('done', 'id'=>$data->id)); ?>
     </div>
     
@@ -34,7 +39,7 @@ if('done' == $data->progress) {
         <?php echo CHtml::link('data', array('/data/default/process', 'id'=>$data->data->id)); ?>
     </div>
 	
-	<?php echo CHtml::link(CHtml::encode($data->todo_time), array('/data/default/process', 'id'=>$data->data_id), array('target'=>'_blank')); ?>
+	<?php echo CHtml::link(CHtml::encode($data->todo_time), array('/task/default/update', 'id'=>$data->id), array('target'=>'_blank')); ?>
 	<br />
     
     <?php if(!empty($data->data)) {?>
