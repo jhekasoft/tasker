@@ -49,7 +49,7 @@
     <div class="row">
         <?php /*@var $form CActiveForm*/?>
         <?php echo $form->labelEx($model->data,'data'); ?>
-		<?php echo $form->textArea($model->data,'data'); ?>
+		<?php echo $form->textArea($model->data,'data', array('rows'=>10, 'cols'=>80)); ?>
 		<?php echo $form->error($model->data,'data'); ?>
 	</div>
 

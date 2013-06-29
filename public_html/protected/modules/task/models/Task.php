@@ -65,7 +65,7 @@ class Task extends CActiveRecord
         
         $data = 'null';
         if(!empty($this->data)) {
-            $data = $this->substrWords($this->data->data, 5);
+            $data = $this->substr($this->data->data, 100);
         }
         
         $description = $time . '/' . $data;
@@ -73,15 +73,32 @@ class Task extends CActiveRecord
         return $description;
     }
     
-    public function substrWords($text, $wordCount = 5)
+    public function substr($str, $len=40)
     {
-        $sep = ' ';
-        $words = split($sep, $text);
-        if (count($words) > $wordCount) {
-            $text = join($sep, array_slice($words, 0, $wordCount)) . '...';
+        $result = mb_substr($str, 0, $len);
+        if(mb_strlen($str) > $len) {
+            $result .= '...';
         }
-        return $text;
+        
+        return $result.mb_strlen($str);
     }
+    
+//    public function substrWords($text, $wordCount = 5)
+//    {
+//        $sep = ' ';
+//        $words = split($sep, $text);
+//        
+//        if(preg_match('/phpmyadmin/', $text)) {
+//            var_dump(mb_strlen($text));
+//            var_dump(mb_substr($text, 0, 5));
+//            exit();
+//        }
+//        
+//        if (count($words) > $wordCount) {
+//            $text = join($sep, array_slice($words, 0, $wordCount)) . '...';
+//        }
+//        return $text;
+//    }
     
 	/**
 	 * Returns the static model of the specified AR class.

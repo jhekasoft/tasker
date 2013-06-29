@@ -2829,3 +2829,44 @@ Stack trace:
 #16 {main}
 REQUEST_URI=/index.php?r=info
 ---
+2013/06/28 18:20:47 [error] [php] Undefined variable: style (/home/bondvt04/www/tasker/public_html/protected/modules/info/views/default/_view.php:8)
+Stack trace:
+#0 /home/bondvt04/www/tasker/framework/zii/widgets/CListView.php(281): DefaultController->renderFile()
+#1 /home/bondvt04/www/tasker/framework/zii/widgets/CBaseListView.php(160): CListView->renderItems()
+#2 unknown(0): CListView->renderSection()
+#3 /home/bondvt04/www/tasker/framework/zii/widgets/CBaseListView.php(143): preg_replace_callback()
+#4 /home/bondvt04/www/tasker/framework/zii/widgets/CBaseListView.php(128): CListView->renderContent()
+#5 /home/bondvt04/www/tasker/framework/web/CBaseController.php(173): CListView->run()
+#6 /home/bondvt04/www/tasker/public_html/protected/modules/info/views/default/index.php(47): DefaultController->widget()
+#7 /home/bondvt04/www/tasker/framework/web/CBaseController.php(126): require()
+#8 /home/bondvt04/www/tasker/framework/web/CBaseController.php(95): DefaultController->renderInternal()
+#9 /home/bondvt04/www/tasker/framework/web/CController.php(869): DefaultController->renderFile()
+#10 /home/bondvt04/www/tasker/framework/web/CController.php(782): DefaultController->renderPartial()
+#11 /home/bondvt04/www/tasker/public_html/protected/modules/info/controllers/DefaultController.php(219): DefaultController->render()
+#12 /home/bondvt04/www/tasker/framework/web/actions/CInlineAction.php(49): DefaultController->actionIndex()
+#13 /home/bondvt04/www/tasker/framework/web/CController.php(308): CInlineAction->runWithParams()
+#14 /home/bondvt04/www/tasker/framework/web/filters/CFilterChain.php(133): DefaultController->runAction()
+#15 /home/bondvt04/www/tasker/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#16 /home/bondvt04/www/tasker/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#17 /home/bondvt04/www/tasker/framework/web/filters/CInlineFilter.php(58): DefaultController->filterAccessControl()
+#18 /home/bondvt04/www/tasker/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#19 /home/bondvt04/www/tasker/framework/web/CController.php(291): CFilterChain->run()
+#20 /home/bondvt04/www/tasker/framework/web/CController.php(265): DefaultController->runActionWithFilters()
+#21 /home/bondvt04/www/tasker/framework/web/CWebApplication.php(282): DefaultController->run()
+#22 /home/bondvt04/www/tasker/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#23 /home/bondvt04/www/tasker/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#24 /home/bondvt04/www/tasker/public_html/index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php?r=info
+in /home/bondvt04/www/tasker/public_html/protected/modules/info/views/default/_view.php (8)
+in /home/bondvt04/www/tasker/public_html/protected/modules/info/views/default/index.php (47)
+in /home/bondvt04/www/tasker/public_html/protected/modules/info/controllers/DefaultController.php (219)
+2013/06/28 18:25:24 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "add".' in /home/bondvt04/www/tasker/framework/web/CController.php:483
+Stack trace:
+#0 /home/bondvt04/www/tasker/framework/web/CController.php(270): CController->missingAction('add')
+#1 /home/bondvt04/www/tasker/framework/web/CWebApplication.php(282): CController->run('add')
+#2 /home/bondvt04/www/tasker/framework/web/CWebApplication.php(141): CWebApplication->runController('')
+#3 /home/bondvt04/www/tasker/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#4 /home/bondvt04/www/tasker/public_html/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/
+---

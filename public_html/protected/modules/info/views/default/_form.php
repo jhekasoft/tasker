@@ -28,7 +28,7 @@
             }
         }
         
-        $list = CHtml::listData(Info::model()->actual()->findAll(),'id','description');
+        $list = CHtml::listData(Info::model()->findAll(),'id','description');
         $list[0] = 'none';
         ?>
         <?php echo $form->labelEx($model,'info_id'); ?>
@@ -49,7 +49,7 @@
     <div class="row">
         <?php /*@var $form CActiveForm*/?>
         <?php echo $form->labelEx($model->data,'data'); ?>
-		<?php echo $form->textArea($model->data,'data'); ?>
+		<?php echo $form->textArea($model->data,'data', array('rows'=>10, 'cols'=>80)); ?>
 		<?php echo $form->error($model->data,'data'); ?>
 	</div>
 

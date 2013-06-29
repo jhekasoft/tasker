@@ -5,13 +5,7 @@
 
 <div class="view">
 
-<?php
-$style = '';
-if('done' == $data->progress) {
-    $style = 'background-color: #EEDDDD';
-}?>
-    
-<div class="view" style="<?php echo $style;?>">
+<div class="view" style="">
     
     <?php
     $color = '#eeeeee';
@@ -24,11 +18,11 @@ if('done' == $data->progress) {
     
     <?php
     $doneStyle = 'background-color:#aaaaaa;';
-    if(count($data->actualInfos) > 0) {
+    if(count($data->infos) > 0) {
         $doneStyle = 'background-color:#ccaaaa; pointer-events: none; cursor: default;';
     }?>
     <div style="float:right;  padding:5px; <?php echo $doneStyle;?>">
-        <?php echo CHtml::link('done', array('done', 'id'=>$data->id)); ?>
+        <?php echo CHtml::link('delete', array('done', 'id'=>$data->id)); ?>
     </div>
     
     <div style="float:right; background-color:#eeeeee; padding:5px;">
@@ -36,7 +30,7 @@ if('done' == $data->progress) {
     </div>
     
     <div style="float:right; background-color:#ccffcc; padding:5px;">
-        <?php echo CHtml::link('data', array('/data/default/process', 'id'=>$data->data->id), array('target'=>'_blank')); ?>
+        <?php echo CHtml::link('data', array('/data/default/process', 'id'=>$data->data->id)); ?>
     </div>
 	
 	<?php echo CHtml::link(CHtml::encode($data->todo_time), array('/info/default/update', 'id'=>$data->id), array('target'=>'_blank')); ?>
@@ -48,10 +42,6 @@ if('done' == $data->progress) {
         </div>
         <br />
     <?php }?>
-    
-    
-    <?php echo CHtml::encode($data->progress); ?>
-	<br />
 
 </div>
 
