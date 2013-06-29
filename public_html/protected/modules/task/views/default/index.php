@@ -53,7 +53,9 @@ $this->menu=array(
     <?php echo CHtml::link('Add Task', $params, array('style'=>'background-color:#00cc00; padding:5px;')); ?>
 </div>
 
-<?php $this->widget('zii.widgets.CListView', array(
+<?php
+$dataProvider->pagination->pageSize=50;
+$this->widget('zii.widgets.CListView', array(
 	'dataProvider'=>$dataProvider,
 	'itemView'=>'_view',
 )); ?>

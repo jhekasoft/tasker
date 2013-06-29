@@ -227,3 +227,42 @@ div.search-form
 {
 	background: #80CFFF;
 }
+
+.data_left, .data_right {
+    padding-bottom:10000px;
+    margin-bottom:-10000px;
+/*    display: inline-block;*/
+}
+
+.data_cols {
+    display:table;
+    padding:0px;
+    margin: 0px;
+    width: 98%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.data_cols > div {
+    display: table-cell;
+    
+}
+
+.data_col_left {
+    width: 80%;
+}
+
+.data_col_right {
+    width: 20%;
+    border:2px solid #eeeeee;
+}
+
+.right_button {
+    padding: 5px;
+    width: 80%;
+    margin: 5px;
+}
+
+.span-19 {
+    width: 100%;
+}
