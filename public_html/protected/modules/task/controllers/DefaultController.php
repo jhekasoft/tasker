@@ -88,7 +88,7 @@ class DefaultController extends Controller
                 if(!empty($model->task_id)) {
                     $this->redirect(array('/task/default/index', 'filter'=>'{"onlyNew":"yes"}', 'task_id'=>$model->task_id));
                 } else {
-                    $this->redirect(array('/task/default/index', 'filter'=>'{"onlyNew":"yes"}'));
+                    $this->redirect(array('/task/default/index', 'filter'=>'{"onlyNew":"yes","priority":"'.$model->priority.'"}'));
                 }
                 
             }
@@ -112,7 +112,7 @@ class DefaultController extends Controller
 	 */
 	public function actionUpdate($id)
 	{
-		$model=$this->loadModel($id);
+        $model=$this->loadModel($id);
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
@@ -138,7 +138,7 @@ class DefaultController extends Controller
                 if(!empty($model->task_id)) {
                     $this->redirect(array('/task/default/index', 'filter'=>'{"onlyNew":"yes"}', 'task_id'=>$model->task_id));
                 } else {
-                    $this->redirect(array('/task/default/index', 'filter'=>'{"onlyNew":"yes"}'));
+                    $this->redirect(array('/task/default/index', 'filter'=>'{"onlyNew":"yes","priority":"'.$model->priority.'"}'));
                 }
                 
             }
@@ -174,7 +174,7 @@ class DefaultController extends Controller
             if(!empty($model->task_id)) {
                 $this->redirect(array('/task/default/index', 'filter'=>'{"onlyNew":"yes"}', 'task_id'=>$model->task_id));
             } else {
-                $this->redirect(array('/task/default/index', 'filter'=>'{"onlyNew":"yes"}'));
+                $this->redirect(array('/task/default/index', 'filter'=>'{"onlyNew":"yes","priority":"'.$model->priority.'"}'));
             }
         }
 //        $this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
@@ -199,8 +199,10 @@ class DefaultController extends Controller
         $filter = json_decode(Yii::app()->request->getParam('filter'));
         if(!empty($filter->onlyNew) && 'yes' == $filter->onlyNew) {
             $criteria->scopes[] = 'new';
-            //&filter={"onlyNew":"yes"}
-            //&task_id=6
+        }
+        
+        if(!empty($filter->priority)) {
+            $criteria->addCondition("`priority`='{$filter->priority}'");
         }
         
 //        echo '<pre>';

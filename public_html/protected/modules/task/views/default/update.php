@@ -2,11 +2,9 @@
 /* @var $this DefaultController */
 /* @var $model Task */
 
-$this->breadcrumbs=array(
-	'Tasks'=>array('index'),
-	$model->id=>array('view','id'=>$model->id),
-	'Update',
-);
+echo $this->renderPartial('_breadcrumbs');
+
+$this->breadcrumbs[]='Update';
 
 $this->menu=array(
 	array('label'=>'List Task', 'url'=>array('index')),

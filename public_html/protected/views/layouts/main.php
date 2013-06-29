@@ -38,7 +38,7 @@
                         
                         array('label'=>'Data', 'url'=>array('/data/')),
                         
-                        array('label'=>'Tasks', 'url'=>array('/task/', 'filter'=>'{"onlyNew":"yes"}')),
+                        array('label'=>'Tasks', 'url'=>array('/task/', 'filter'=>'{"onlyNew":"yes","priority":"normal"}')),
                         array('label'=>'Tags', 'url'=>array('/tag/')),
                         
                         array('label'=>'Info', 'url'=>array('/info/')),

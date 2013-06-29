@@ -36,6 +36,23 @@
         <?php echo $form->error($model,'task_id'); ?>
     </div>
     
+    <div class="row">
+        <?php if(empty($model->priority)) {
+            $model->priority = 'normal';
+        }?>
+        <?php echo $form->radioButtonList($model,'priority', array(
+            'urgent'=>'<span style="color:red">Urgent</span>',
+            'normal'=>'<span style="color:green">Normal</span>',
+            'later'=>'<span style="color:gray">Later</span>',
+        ),
+        array(
+            'separator'=>'----------------',
+            'labelOptions'=> array('style'=>'display:inline'),
+        ));?>
+    </div>
+    
+    
+    
     
     
     
