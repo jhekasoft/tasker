@@ -80,7 +80,7 @@ class Task extends CActiveRecord
             $result .= '...';
         }
         
-        return $result.mb_strlen($str);
+        return $result;//.mb_strlen($str);
     }
     
 //    public function substrWords($text, $wordCount = 5)

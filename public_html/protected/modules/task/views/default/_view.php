@@ -13,7 +13,7 @@
     <div class="view data_cols" style="<?php echo $style;?>">
         <div class="data_col_left">
             <div style="widht:100%; padding:5px; color:gray;">
-                Todo time: <?php echo CHtml::link(CHtml::encode($data->todo_time), array('/task/default/update', 'id'=>$data->id), array('target'=>'_blank')); ?>
+                Todo time: <?php echo CHtml::link(CHtml::encode($data->todo_time), array('create', 'task_id' => $data->id), array('target'=>'_blank')); ?>
             </div>
             <?php if(!empty($data->data)) {?>
                 <div style="widht:100%; padding:5px;">

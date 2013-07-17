@@ -70,8 +70,7 @@ class DefaultController extends Controller
         if(null === $model->data) {
             $model->data = new Data;
         }
-        
-		// Uncomment the following line if AJAX validation is needed
+        // Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
         

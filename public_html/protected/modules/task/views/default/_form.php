@@ -37,8 +37,12 @@
     </div>
     
     <div class="row">
-        <?php if(empty($model->priority)) {
-            $model->priority = 'normal';
+        <?php if(empty($model->priority) || empty($model->id)) {
+            if(!empty($model->parent)) {
+                $model->priority = $model->parent->priority;
+            } else {
+                $model->priority = 'normal';
+            }
         }?>
         <?php echo $form->radioButtonList($model,'priority', array(
             'urgent'=>'<span style="color:red">Urgent</span>',

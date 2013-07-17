@@ -12,36 +12,7 @@ $this->menu=array(
 
 <h1>Tasks</h1>
 
-<div style="width:100%;height:50px;">
-    <?php $filter = json_decode(Yii::app()->request->getParam('filter'));?>
-    <a href="<?php echo Yii::app()->createAbsoluteUrl('/task/default/index', array('filter'=>'{"onlyNew":"yes","priority":"urgent"}'));?>">
-        <?php $style = "";
-        if(!empty($filter->priority) && 'urgent' == $filter->priority) {
-            $style="border:2px solid black;";
-        }?>
-        <div style="<?php echo $style;?>; width:30%; background-color:#ccaaaa;display:inline-block;padding:5px;">
-            Urgent
-        </div>
-    </a>
-    <a href="<?php echo Yii::app()->createAbsoluteUrl('/task/default/index', array('filter'=>'{"onlyNew":"yes","priority":"normal"}'));?>">
-        <?php $style = "";
-        if(!empty($filter->priority) && 'normal' == $filter->priority) {
-            $style="border:2px solid black;";
-        }?>
-        <div style="<?php echo $style;?>; width:30%; background-color:#aaccaa;display:inline-block;padding:5px;">
-            Normal
-        </div>
-    </a>
-    <a href="<?php echo Yii::app()->createAbsoluteUrl('/task/default/index', array('filter'=>'{"onlyNew":"yes","priority":"later"}'));?>">
-        <?php $style = "";
-        if(!empty($filter->priority) && 'later' == $filter->priority) {
-            $style="border:2px solid black;";
-        }?>
-        <div style="<?php echo $style;?>; width:30%; background-color:#eeeeee;display:inline-block;padding:5px;">
-            Later
-        </div>
-    </a>
-</div>
+<?php echo $this->renderPartial('_filter_priority');?>
 
 <div style="">
     <?php

@@ -95,6 +95,15 @@ if(preg_match('/tasker\.ru/', $_SERVER['HTTP_HOST'])) {
         'charset' => 'utf8',
         'tablePrefix' => 'bnd_',
     );
+} elseif(preg_match('/bondvt04\.p\.ht/', $_SERVER['HTTP_HOST'])) {
+    $config['components']['db']=array(
+        'connectionString' => 'mysql:host=mysql.hostinger.ru;dbname=u987603361_tasker',
+        'emulatePrepare' => true,
+        'username' => 'u987603361_user',
+        'password' => 'hello_world',
+        'charset' => 'utf8',
+        'tablePrefix' => 'bnd_',
+    );
 } else {
     $config['components']['db']=array(
         'connectionString' => 'mysql:host=localhost;dbname=tasker',
