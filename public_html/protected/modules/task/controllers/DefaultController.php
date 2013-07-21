@@ -158,7 +158,7 @@ class DefaultController extends Controller
 		$this->loadModel($id)->delete();
 
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-		if(!isset($_GET['ajax']))
+		if(!isset($_POST['ajax']))
 			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
 	}
     
@@ -169,7 +169,7 @@ class DefaultController extends Controller
         $model->save();
 
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-        if(!isset($_GET['ajax'])) {
+        if(!isset($_POST['ajax'])) {
             if(!empty($model->task_id)) {
                 $this->redirect(array('/task/default/index', 'filter'=>'{"onlyNew":"yes"}', 'task_id'=>$model->task_id));
             } else {
@@ -243,8 +243,8 @@ class DefaultController extends Controller
 	{
 		$model=new Task('search');
 		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Task']))
-			$model->attributes=$_GET['Task'];
+		if(isset($_POST['Task']))
+			$model->attributes=$_POST['Task'];
 
 		$this->render('admin',array(
 			'model'=>$model,

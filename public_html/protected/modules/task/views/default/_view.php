@@ -17,7 +17,8 @@
             </div>
             <?php if(!empty($data->data)) {?>
                 <div style="widht:100%; padding:5px;">
-                    <?php echo CHtml::encode($data->data->data); ?>
+                    <?php //echo CHtml::encode($data->data->data); ?>
+                    <?php echo nl2br($data->data->data); ?>
                 </div>
             <?php }?>
             <?php if('done' == $data->progress) {?>

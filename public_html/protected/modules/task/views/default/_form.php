@@ -9,7 +9,8 @@
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'task-form',
 	'enableAjaxValidation'=>false,
-    'method'=>'get'
+    //'method'=>'get'
+    'method'=>'post'
 )); ?>
 
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
